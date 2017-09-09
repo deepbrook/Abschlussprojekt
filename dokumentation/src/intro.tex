@@ -8,9 +8,9 @@ Strategien. Die Rolle des Auftraggebers und Kunden übernimmt im Rahmen des
 Projektes Sebastian Freundt, stellvertretend für die Abteilung Datenverarbeitung.\par
 
 \subsection{Projektziel}
-Ziel ist es, eine machinell erstellte Verknüpfung zwischen zwei Symbolen für
-Derivate von verschiedenen Anbietern zu bewerten und auf Basis einer Metrik
-mit erhöhter Trefferquote zu assoziieren. \par
+Ziel ist es, ein Kommandozeilenprogramm zu schreiben, welches mehrere Derivatsymbole 
+von verschiedenen Anbietern anhand einer Metrik vergleicht und übereinstimmende 
+Strings ausgibt.\par
 
 \subsection{Projektbegründung}
 Die GA Financial Solutions handelt Wertpapiere aller Art auf eigene
@@ -40,33 +40,32 @@ Zeitaufwand ist entsprechend hoch, die Fehlerrate ebenfalls.  Es
 verbietet sich geradezu, die bisherigen Heuristiken systematisch zur
 Zuordnung aller Herausgeber aller Wertpapiere zu benutzen.\par
 
-Das zu entwickelnde Tool soll vor allem den Zeitaufwand und die benötigte
-menschliche Komponente, und somit Fehlerquellen, reduzieren, so dass entsprechend Ressourcen entsprechend
-anderen Aufgaben zu geteilt werden können.
-Ein Faktor, der in einem kleinen Betrieb wie diesem essenziell ist.\par
+Das zu entwickelnde Tool soll vor Allem den Zeitaufwand und die benötigte
+menschliche Komponente, und somit Fehlerquellen, reduzieren, so dass diese Ressourcen entsprechend
+anderen Aufgaben zu geteilt werden können.\par
 
 \subsection{Projektschnittstellen}
-Das Tool wird als Kommandozeilenprogramm, welches
-Daten per Pipe (" | ") annimmt und diese im .csv Format über STDOUT ausgibt. Dies ist vor allem
-nützlich für die Prototyping phase, welche oft höchst-agile Einbindungen
-verschiedener Tools erfordert, ohne vorher viel Bootstrapping betreiben
-zu müssen. Die Nutzung dieses Tools findet hierbei vor Allem in der Abteilung
+Das Programm wird als Kommandozeilenprogramm angeboten, welches
+Daten per Pipe (" | ")  oder unter Angabe eines Dateipfads annimmt und diese im .csv 
+Format über STDOUT ausgibt. Dieser Ansatz der Resultatausgabe wird explizit gewünscht, 
+da sich das Programm so mühelos in die bisherige Toolchain der Firma einbinden lässt.
+Die Nutzung dieses Tools findet hierbei vor Allem in der Abteilung
 Datenverarbeitung statt.\par
 
-Als technische Schnittstelle ist vor Allem unser Datensammelsystem zu nennen,
+Als technische Schnittstelle ist insbesondere das Datensammelsystem zu nennen,
 welches täglich unsere Datenbanken mit neuen Datensätzen füttert. Die Ergebnisse
 dieses Systems liegen im CSV format auf unseren Servern, bevor sie am Ende des
-Tages komprimiert werden. Jedoch findet keine direkte Anbindung des zu entwickelnden Projekts an das Datensammelsystem statt.
-Es ist nur wichtig, dass das Programm .CSV Dateien unterstützt, welche vom System bereitgestellt werden.\par
+Tages komprimiert werden. Jedoch findet keine direkte Anbindung des zu entwickelnden 
+Projekts an das Datensammelsystem statt. Es ist nur wichtig, dass das Programm 
+.CSV Dateien unterstützt, welche vom System bereitgestellt werden.\par
 
 Mittel und Genehmigung des Projekts stellt die Abteilung Datenverarbeitung,
-vertreten durch Sebastian Freundt, welchem auch am Ende des Projekts dieses
-präsentiert wird.\par
+vertreten durch Sebastian Freundt.\par
 
 \subsection{Projektabgrenzung}
 Während mehrere hundert-tausend Symbole miteinander verglichen und die
-effiziente Gestaltung dieser Vergleiche eine Priorität ist, so sind folgende
-Themen explizit nicht Teil der Aufgabe diese Projektes:
+effiziente Gestaltung dieser Vergleiche Hauptziel des Projektes ist, sind folgende
+Themen explizit nicht Teil der Aufgabe:
 
 \begin{itemize}
     \item Datenintegrität - Die Überprüfung des Datenformats ist nicht Teil unseres Aufgabenfeldes.
