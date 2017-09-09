@@ -1,0 +1,244 @@
+%---------------------------------------------------------------------------
+\documentclass[fontsize=12pt,paper=a4,draft=off,titlepage=off]{scrartcl}
+%---------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{url}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\usepackage{palatino}
+\usepackage{inputenc}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{longtable}
+\usepackage{epstopdf}
+\usepackage{pgf-pie} % /home/nils/git/abschlussprojekt/documentation/pgf-pie
+\usepackage{enumitem}
+\setlist[enumerate]{label*=\arabic*.}
+\setlength\headsep{2cm}
+\lhead{}
+\chead{}
+\rhead{\includegraphics[bb=0 0 667 57, scale=0.5]{/home/freundt/business/GA_Logo.jpeg}}
+
+\newcolumntype{d}{D{.}{.}{4}}
+
+\title{Projektantrag\\ \textbf{Ausbildung zum Fachinformatiker f. Anwendungsentwicklung}}
+\author{Nils Diefenbach}
+\date{Abschlussprüfung Winter 2017\\ \small{Version vom \today}}
+
+%---------------------------------------------------------------------------
+\begin{document}
+\pagestyle{fancy}
+%\maketitle
+
+\begin{titlepage}
+\centering
+{\scshape\LARGE Projektantrag\par}
+\vspace{1cm}
+{\scshape\Large Ausbildung zum Fachinformatiker f. Anwendungsentwicklung\par}
+\vspace{1.5cm}
+{\huge\bfseries Abschlussprüfung Winter 2017\par\\IHK Berlin\par}
+\vspace{2cm}
+Auszubildender:\par
+{\Large\itshape Nils Diefenbach\par}
+Ident-Nummer:\par
+{\Large\itshape 3590244\par}
+\vfill
+Ausbilder:\par
+Sebastian Freundt\par \textsc{GA Financial Solutions GmbH}
+\vfill
+{\large \today\par}
+\end{titlepage}
+
+\clearpage
+
+\tableofcontents{}
+
+\clearpage
+
+\section{Projektbezeichnung}
+Verbindung von Tabellen auf Basis eines Fuzzy-Vergleichsalgorithmus.\par
+
+\subsection{Aufgabenstellung}
+Für die GA Financial Solutions GmbH soll die Assoziierung von Namen diverser
+Wertpapiere von unterschiedlichen Datenanbietern effizienter und fehlerfreier
+gestaltet werden.\par
+Hierzu wird ein Tool entwickelt, welches sowohl über Kommandozeile und Unix
+Pipes nutzbar ist, als auch in Python Code als Bibliothek einbindbar ist und
+den Vergleich mit Hilfe einer Fuzzy-String-Suche bewerkstelligt.\par
+
+\subsection{Ist-Zustand}
+Die GA Financial Solutions handelt Wertpapiere aller Art auf eigene
+Rechnung.  Dabei ist es marktüblich, dass Referenzdaten, Preisdaten
+und Ausführungen von unterschiedlichen Dienstleistern bezogen werden.
+So stehen ca. 223 Mio. handelbaren Wertpapieren rund 500000 mögliche
+Herausgeber an ca. 1200 Börsen weltweit gegenüber.  Jede einzelne
+Börse bzw. jeder einzelne Makler im Markt unterstützt jedoch nur
+einen Bruchteil der Papiere.\par
+
+In Ermangelung eines weltweiten Standards, der jedem Marktteilnehmer in
+jeder Handelsphase gerecht wird, werden unterschiedliche Symbologien
+benutzt, deren kleinster gemeinsamer Nenner stets die
+Klartextbezeichnung des begebenen Papiers zusammen mit der
+Klartextbezeichnung des Herausgebers ist.  Erschwert wird die
+Problematik überdies noch durch unterschiedliche Transliterationsverfahren,
+so führt z.B. die NASDAQ die Firma "`Panasonic Corp."',
+die GLEIS-Datenbank\footnote{Global Legal Entity Identifier System} jedoch unter
+\begin{CJK}{UTF8}{min}
+"パナソニック株式会社"
+\end{CJK}%
+, was transskribiert wiederum "`Panasonikku Kabushiki-gaisha"' ergibt. \par
+
+Bei der GA Financial Solutions werden Zuordnungen zwischen Symbologien
+aktuell ad-hoc mit Heuristiken und Handarbeit bewerkstelligt.  Der
+Zeitaufwand ist entsprechend hoch, die Fehlerrate ebenfalls.  Es
+verbietet sich geradezu, die bisherigen Heuristiken systematisch zur
+Zuordnung aller Herausgeber aller Wertpapiere zu benutzen.\par
+
+
+\clearpage
+
+\section{Soll-Konzept}
+
+\subsection{Was soll am Ende des Projektes erreicht sein?}
+Mithilfe des Tools soll es möglich sein, die Entitäten aus zwei gegebenen,
+beliebig langen Listen anhand einer Metrik, Winkels oder Scores
+so vergleichen zu können, dass die in den Listen enthaltenen Varianten
+miteinander assoziierbar werden.\par
+
+Hierbei liegt das Hauptaugenmerk auf der Fehlerreduktion (Reduzierung von so genannten "`False Negatives"') und
+performanteren Bearbeitung dieser Listen.\par
+
+Das Programm wird mit Hilfe von Unit-Tests geprüft und lässt sich
+sowohl per Unix Pipe in unseren Toolchains einsetzen, als auch per Bibliothek in
+Python nutzen. Für die Kommandozeilenvariante müssen die GNU Coding
+Conventions und die POSIX Utilities Guidelines eingehalten werden.\par
+
+\subsection{Welche Anforderungen müssen erfüllt sein?}
+\begin{itemize}
+\item Ein Command Line Interface muss vorhanden sein
+\item Das CLI muss Daten via Pipe annehmen und verarbeiten können
+\item Das Tool soll Teil eines Python Pakets sein, welches mit Python Version
+3.x nutzbar ist.
+\item Die Ergebnisse des Tools und des Pakets müssen mit geeigneten Tests überprüft werden
+\item Die Leistungsfähigkeit des Tools soll in einem geeignetem Benchmark unter Beweis gestellt werden
+\end{itemize}
+
+\clearpage
+
+\section{Projektstrukturplan}
+\subsection{Was ist zur Erfüllung der Zielsetzung erforderlich}
+Das Projekt wird nach dem Wasserfall-Prinzip entwickelt werden. Hierbei werden
+Meilensteine zuvor festgelegt, welche mit Hilfe von Tests dokumentiert und nach
+erreichen mit dem Fachbereich besprochen werden.
+Die Entwicklung und Implementierung ist testgetrieben und wird mit Hilfe von
+Unit-Tests und der NOSE-Testsuite durchgeführt.\par
+Eine Versionierung des Projekts findet über ein Git Repository statt.
+
+\subsection{Aufgabenliste}
+\begin{enumerate}
+\item Analysephase
+    \begin{enumerate}
+    \item Durchführung einer Ist-Analyse
+    \item Durchführung einer Wirtschaftlichkeitsanalyse und Amortisationsrechnung
+    \item Ermittlung von Use-Cases
+    \item Erstellung eines Lastenheftes
+    \end{enumerate}
+\item{Entwurfsphase}
+    \begin{enumerate}
+    \item Komponentendiagramm
+    \item Schnittstellenentwurf für Python
+    \item Pflichtenheft
+    \item Entwurf der Tests anhand des Pflichtenhefts
+    \item Entwurf eines Benchmark-Tests
+    \end{enumerate}
+\item{Implementationsphase}
+    \begin{enumerate}
+    \item Implementierung des C Codes
+    \item Erstellung des Python Wrappers
+    \end{enumerate}
+\item{Abnahme}
+    \begin{enumerate}
+    \item Eingliederung in Betriebsablauf
+    \item Finales Benchmarking
+    \end{enumerate}
+\item{Dokumentationsphase}
+    \begin{enumerate}
+    \item Erstellung Projektdokumentation
+    \item Erstellung Entwicklerdokumentation
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Grafische und tabellarische Darstellung}
+
+\begin{tikzpicture}
+    \pie [rotate = 180]
+    {9/Analyse, 31/Entwurf, 43/Implementierung, 4/Abnahme, 13/Dokumentation}
+\end{tikzpicture}
+
+\begin{table}[!htp]
+    \centering
+    \label{Übersicht Phasendauer}
+    \begin{tabular}{ll}
+        Phase           & Dauer in Stunden \\
+        \hline
+        Analyse         & 6  \\
+        Entwurf         & 22 \\
+        Implementierung & 30 \\
+        Abnahme         & 3  \\
+        Dokumentation   & 9  \\
+        \hline
+        Summe           & 70 \\
+    \end{tabular}
+\end{table}
+
+
+\clearpage
+\section{Projektphasen mit Zeitplanung in Stunden}
+\begin{table}[!htp]
+    \centering
+    \label{Übersicht Phasendauer}
+    \begin{tabular}{ll}
+        \textbf{Analysephase} & \textbf{6h} \\
+        \hline
+            Ist-Analyse & 2h \\
+            Wirtschaftlichkeitsanalyse und Amortisationsrechnung & 1h \\
+            Erstellung eines Lastenheftes & 3h \\
+
+        \textbf{Entwurfsphase} & \textbf{22h} \\
+        \hline
+            Komponentendiagramm erstellen & 1h \\
+            Schnittstellenentwurf für C und Python & 3h \\
+            Aktivitätsdiagramm zur Nutzung via Pipe & 1h \\
+            Pflichtenheft & 5h \\
+            Entwurf der Tests anhand des Pflichtenhefts (User Stories) & 7h \\
+            Entwurf eines Benchmark-Tests & 5h \\
+
+        \textbf{Implementationsphase} & \textbf{30h} \\
+        \hline
+            Implementierung des C Codes mit Tests & 21h \\
+            - Implementierung eines Suffix-Trie & \textit{8h} \\
+            - Implementierung Fuzzy-Such-Algorithmus & \textit{8h} \\
+            - Implementierung Scoring-System & \textit{5h} \\
+            Erstellung des Python Wrappers mit Tests & 5h \\
+            - C Code über Cython Einbinden & \textit{2h} \\
+            - Bibliothek erstellen und optimieren & \textit{3h} \\
+
+        \textbf{Abnahme und Deployment} & \textbf{3h} \\
+        \hline
+            Eingliederung in Betriebsablauf & 2h \\
+            - Eingliederung in Cronjobs und automatiesiert Scripts & \textit{1h} \\
+            - Deployment in global-installiertes Toolset & \textit{1h} \\
+            Finales Benchmarking & 1h \\
+
+        \textbf{Dokumentationsphase} & \textbf{9h} \\
+        \hline
+            Erstellung Projektdokumentation & 7h \\
+            Erstellung Entwicklerdokumentation & 2h \\
+    \end{tabular}
+\end{table}
+%---------------------------------------------------------------------------
+\end{document}
+%---------------------------------------------------------------------------

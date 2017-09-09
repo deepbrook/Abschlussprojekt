@@ -1,0 +1,120 @@
+\section{Analysephase}
+\subsection{Ist-Analyse}
+Die GA Financial Solutions holt sich täglich aktuelle Symbole von sechse verschiedenen
+Anbietern ab: Interactive Brokers\cite{IB}, Google, Yahoo, Morningstar, Bloomberg und GLEIS.
+Diese Symbole ändern sich zu einem gewissen Prozentsatz täglich und im Schnitt kommen etwa
+1.67 Millionen Instrumente hinzu.\par
+
+Zur Zeit werden diese Symbol ad hoc mit Heuristiken und Handarbeit verglichen -
+dabei wird meist immer nur eine kleine Teilmenge verglichen, und die gefunden Ergebnisse
+wieder verworfen, da es sich meist um spezialisierte Werte handelt.\par
+
+Es besteht somit zur Zeit keine firmenweite Datenbank, welche die Symbole
+bereits verglichen und sortiert bereitstellt.\par
+
+Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein Distanz\footnotemark:
+er sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
+Anbieter darstellt. Dies resultiert in einem circa 23 PetaBytes großem Datenobjekt
+im Arbeitsspeicher unserer Systeme, und führt, wie man erwarten kann, zu Speicherüberläufen.
+In Rechenaufrufen ausgedrückt bedeutet dass etwa 1.038.901.988.746.226\footnotemark DLD Aufrufe
+benötigt werden um die Daten miteinander zu vergleichen und die Datenbank zu erstellen,
+wobei das DLD-Matrix Verfahren etwa 1.340.000 Aufrufe pro Sekunde (CPU Zeit) schafft.
+Daraus ergibt sich eine Initial-Laufzeit von etwa ~6.15 Jahren auf einem 4-Kern
+Rechner bei voller Nutzlast (dies exkludiert die täglich hinzukommenden Daten
+während der Berechnung). Ist diese Datenbank erstellt, werden durch die neu
+hinzukommenden Daten circa ~16 Milliarden DLD Aurfufe täglich benötigt um die
+Datenbank zu aktualisieren. Dies entspricht weiteren ~33 Minuten Rechenzeit auf
+einem 4-Kerner pro Tag.\par
+
+Gewünscht ist eine performantere, ressourcen-schonendere Implementierung des obigen Prozesses,
+sodass die Daten auf einem Firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
+Hierbei ist es nicht erforderlich die, dem derzeitigen Prozess zugrunde liegende,
+Damerau-Levenshtein Distanz zu verwenden. Zudem soll erziehlt werden, dass die
+menschliche Komponente aus dem Vergleichsverfahren eliminiert wird,
+somit also keine Heuristiken zum Symbol-Vergleich benötigt werden.\par
+
+
+\footnotetext{Die Damerau-Levenshtein Distanz\cite{dl_distance} beschreibt die minimale Anzahl
+an Operationen welche benötigt wird um einen String A in einen zu
+vergleichenden String B zu verwandeln}
+
+\footnotetext{Eine Billiarde achtunddreißig Billionen neunhundertein Milliarden
+neunhundertachtundachtzig Millionen siebenhundertsechsundvierzigtausendzweihundertsechsundzwanzig}
+
+\subsection{Wirtschaftlichkeitsanalyse}
+\subsubsection{Make-or-Buy Entscheidung}
+Ein Tool, welches das obig-beschriebene Problem löst, gibt es zur Zeit nur mit dem
+ressourcenintensiven DLD Matrix Verfahren. Ein Projekt, welches ein ähnliches
+Problem löst, ist das Open-source Projekt fuzzy-join\footnote{https://github.com/dgrtwo/fuzzyjoin}.
+Jedoch vergleicht dieses Tool Daten nur in eine Richtung (One-To-Many), während unser
+Use-Case ein Bi-direktionales Verfahren benötigt (Many-To-Many).\par
+
+Somit stellte sich die Frage nach der optimalen Vorgehensweise zur Umsetzung des
+Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse erstellt, um die diversen
+Lösungswege zu evaluieren. Diese wurden anhand der folgenden Kriterien bewertet:
+
+blieb nur die Ausweichung auf Alternativen, zum Beispiel die Auslagerung in
+einen Cloud-Dienst. Dies wäre jedoch nach unseren Erfahrungen mit dieser Art
+Berechnung nicht kompatibel und Anpassungen des DLD Verfahrens nötig gewesen.
+Die vollständige Liste der Alternativen lautet wie folgt:
+
+\begin{itemize}
+    \item \textbf{Projektkosten}\\
+    Größtes Kriterium bei der Entwicklung des Projektes waren logischerweise die
+     potentiellen Entwicklungskosten. Diese wurden anhand Branchentypischer Stundenlöhne
+     (im Falle der externen Entwicklung), bzw. der Preislisten der Cloud Computing
+     Anbieter unseres Vertrauens (MassiveGrid, Amazon Web Services) berechnet und verglichen.
+
+    \item \textbf{Nachhaltigkeit}\\
+    Inwiefern die Lösung weitere Integration mit anderen Services und unserer
+    Toolchain erlaubt, wurde mit diesem Kriterium bewertet.
+
+    \item \textbf{Flexibilität}\\
+    Bei der Untersuchung dieses Kriteriums lag das Augenmerk vor Allem auf der
+    Möglichkeit der Anpassung der Software und der Ergebnisse während der Entwicklung,
+    sowie nach Abschluss der Entwicklung (z.B. über Parameter).
+
+    \item \textbf{Unterhaltskosten}\\
+    Dieses Kriterium beschreibt die laufenden Kosten nachdem das Projekt umgesetzt worden ist.
+\end{itemize}
+
+
+
+\subsubsection{Projektkosten}
+
+\begin{table}[!htp]
+\centering
+\caption{Projektkosten}
+\label{projektkosten}
+\begin{tabular}{llllll}
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Vorgang}} & {\color[HTML]{FFFFFF} \textbf{Mitarbeiter}} & {\color[HTML]{FFFFFF} \textbf{Stunden}} & {\color[HTML]{FFFFFF} \textbf{Personal}} & {\color[HTML]{FFFFFF} \textbf{Ressources}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} \\
+Entwicklungskosten                      & 1                                           & 70                                      & 385.00 €                                 & 1,295.00 €                                 & 1,680.00 €                             \\
+\rowcolor[HTML]{BBDAFF}
+Fachgespräch                            & 2                                           & 5                                       & 350.00 €                                 & 92.50 €                                    & 1,842.50 €                             \\
+Code Review                             & 2                                           & 2                                       & 140.00 €                                 & 37.00 €                                    & 317.00 €                               \\
+\rowcolor[HTML]{BBDAFF}
+Abnahme                                 & 2                                           & 0.5                                     & 35.00 €                                  & 9.25 €                                     & 44.25 €                                \\
+                                        &                                             &                                         & \multicolumn{2}{l}{\textbf{Projektkosten Gesamt:}}                                    & \textbf{3,883.75 €}
+\end{tabular}
+\end{table}
+
+
+
+\subsubsection{Amortisationsdauer}
+
+
+\subsection{Nutzwertanalyse}
+
+\subsection{Anwendungsfälle}
+Ein ungefähre Übersicht der Anwendungsfälle des Programms wurde mit Hilfe eines Use-Case-Diagramms
+im zuge der Analysephase erstellt. Sie befindet sich im Anhang auf Seite X und lässt
+alle benötigten Funktionen aus Endanwendersicht erkennen.\par
+
+\subsection{Lastenheft / Fachkonzept}
+Ein Lastenheft wurde von der Abteilung Datenverarbeitung, vertreten durch Sebastian Freundt,
+erstellt und dem Autor vorgelegt. Ein Auszug dieses Dokumentes befindet sich im Anhang auf Seite X.\par
+
+
+\subsection{Zwischenstand}
+\clearpage

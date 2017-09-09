@@ -1,0 +1,38 @@
+\section{Implementierungsphase}
+
+\subsection{Entwicklungsvorbereitung}
+Zunächst wurden einige organisatorische Bedingungen erfüllt, bevor die eigentliche
+Entwicklungsphase offiziell begann. So wurden das Kanban Board mit den
+Aufgabenpaketen aus dem Pflichtenheft populiert. Hierzu wurden Tests und deren
+dazugehörigen Funktionen separat betrachtet und als Arbeitspaket beschrieben.
+
+\subsection{Implementierung der Datenstruktur}
+Wie bereits in Sektion X erwähnt, werden zwei spezielle Datenstrukturen für das
+Programm benötigt - Hashmaps und dynamisch wachsende Arrays.
+
+\subsubsection{Hashmap Implementation}
+
+
+Auf die eigene Implementierung einer Hashmap wurde verzichtet, stattdessen wurde
+eine frei-verfügbare Bibliothek genutzt, welche eine Hashmap für
+String-Integer Paare zur Verfügung.
+
+Der Code wurde weitesgehend verbatim übernommen, mit der Ausnahme des
+Containertyps, welches die Hashmap speichert. Da ein QGram in mehreren Strings
+vorkommen kann, musste der Containertyp von einem Integer zu einer dynamisch
+wachsenden Array abgewandelt werden. Da letztere ohnehin entwickelt werden muss,
+war die Komplexität dieser Anforderung gering.
+
+\subsubsection{Dynamische Array Implementation}
+C besitzt von Haus heraus nur simple Datentypen, welche dem Nutzer erlauben
+exponentiell komplexe Datenstrukturen zu erschaffen. Da auch eine dynamische wachsende
+Array nicht in ANSI-C zur Verfügung steht, musste eine Datenstruktur für diese erstellt werden.
+Das Konzept hierbei ist recht einfach - sollte die Array voll sein, so wird beim
+nächsten Aufruf der Insert Funktion die Länge der Array verdoppelt. Hierfür wurde eine
+neue Datenstruktur angelegt und 3 Funktionen definiert, um mit der Datenstruktur
+zu interagieren. Ein Auszug des Quellcodes dieser Datenstruktur is auf Seite X
+im Anhang vorzufinden.\par
+
+\subsection{Implementierung der Benutzeroberfläche}
+
+\clearpage

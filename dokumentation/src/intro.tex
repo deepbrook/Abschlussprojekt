@@ -1,0 +1,77 @@
+\section{Einleitung}
+\subsection{Projektumfeld}
+Die GA Financial Solutions GmbH ist ein 5-köpfiger Finanzdienstleister im
+Herzen Berlins. Die Firma spezialisiert sich auf computer-gestütztes Handeln
+von Futures, Aktien und anderen Derivaten. Direkte Kunden gibt es zur Zeit
+nicht; die Firma finanziert sich durch Investoren und den Gewinn ihrer
+Strategien. Die Rolle des Auftraggebers und Kunden übernimmt im Rahmen des
+Projektes Sebastian Freundt, stellvertretend für die Abteilung Datenverarbeitung.\par
+
+\subsection{Projektziel}
+Ziel ist es, eine machinell erstellte Verknüpfung zwischen zwei Symbolen für
+Derivate von verschiedenen Anbietern zu bewerten und auf Basis einer Metrik
+mit erhöhter Trefferquote zu assoziieren. \par
+
+\subsection{Projektbegründung}
+Die GA Financial Solutions handelt Wertpapiere aller Art auf eigene
+Rechnung.  Dabei ist es marktüblich, dass Referenzdaten, Preisdaten
+und Ausführungen von unterschiedlichen Dienstleistern bezogen werden.
+So stehen ca. 223 Mio. handelbaren Wertpapieren rund 500000 mögliche
+Herausgeber an ca. 1200 Börsen weltweit gegenüber.  Jede einzelne
+Börse bzw. jeder einzelne Makler im Markt unterstützt jedoch nur
+einen Bruchteil der Papiere.\par
+
+In Ermangelung eines weltweiten Standards, der jedem Marktteilnehmer in
+jeder Handelsphase gerecht wird, werden unterschiedliche Symbologien
+benutzt, deren kleinster gemeinsamer Nenner stets die
+Klartextbezeichnung des begebenen Papiers zusammen mit der
+Klartextbezeichnung des Herausgebers ist.  Erschwert wird die
+Problematik überdies noch durch unterschiedliche Transliterationsverfahren,
+so führt z.B. die NASDAQ die Firma "`Panasonic Corp."',
+die GLEIS-Datenbank\footnote{Global Legal Entity Identifier System} jedoch unter
+\begin{CJK}{UTF8}{min}
+"パナソニック株式会社"
+\end{CJK}%
+, was transskribiert wiederum "`Panasonikku Kabushiki-gaisha"' ergibt. \par
+
+Bei der GA Financial Solutions werden Zuordnungen zwischen Symbologien
+aktuell ad-hoc mit Heuristiken und Handarbeit bewerkstelligt.  Der
+Zeitaufwand ist entsprechend hoch, die Fehlerrate ebenfalls.  Es
+verbietet sich geradezu, die bisherigen Heuristiken systematisch zur
+Zuordnung aller Herausgeber aller Wertpapiere zu benutzen.\par
+
+Das zu entwickelnde Tool soll vor allem den Zeitaufwand und die benötigte
+menschliche Komponente, und somit Fehlerquellen, reduzieren, so dass entsprechend Ressourcen entsprechend
+anderen Aufgaben zu geteilt werden können.
+Ein Faktor, der in einem kleinen Betrieb wie diesem essenziell ist.\par
+
+\subsection{Projektschnittstellen}
+Das Tool wird als Kommandozeilenprogramm, welches
+Daten per Pipe (" | ") annimmt und diese im .csv Format über STDOUT ausgibt. Dies ist vor allem
+nützlich für die Prototyping phase, welche oft höchst-agile Einbindungen
+verschiedener Tools erfordert, ohne vorher viel Bootstrapping betreiben
+zu müssen. Die Nutzung dieses Tools findet hierbei vor Allem in der Abteilung
+Datenverarbeitung statt.\par
+
+Als technische Schnittstelle ist vor Allem unser Datensammelsystem zu nennen,
+welches täglich unsere Datenbanken mit neuen Datensätzen füttert. Die Ergebnisse
+dieses Systems liegen im CSV format auf unseren Servern, bevor sie am Ende des
+Tages komprimiert werden. Jedoch findet keine direkte Anbindung des zu entwickelnden Projekts an das Datensammelsystem statt.
+Es ist nur wichtig, dass das Programm .CSV Dateien unterstützt, welche vom System bereitgestellt werden.\par
+
+Mittel und Genehmigung des Projekts stellt die Abteilung Datenverarbeitung,
+vertreten durch Sebastian Freundt, welchem auch am Ende des Projekts dieses
+präsentiert wird.\par
+
+\subsection{Projektabgrenzung}
+Während mehrere hundert-tausend Symbole miteinander verglichen und die
+effiziente Gestaltung dieser Vergleiche eine Priorität ist, so sind folgende
+Themen explizit nicht Teil der Aufgabe diese Projektes:
+
+\begin{itemize}
+    \item Datenintegrität - Die Überprüfung des Datenformats ist nicht Teil unseres Aufgabenfeldes.
+    \item Datenverifizierung - Die Prüfung ob \textbf{eingehende} Daten korrekt sind, fällt nicht in unser Aufgabenfeld.
+    \item Datenbereitstellung - Die Bereitstellung der verarbeiteten Daten (z.B. als Datenbank o.Ä.) ist ebenfalls nicht teil des Projekts.
+\end{itemize}
+\clearpage
+

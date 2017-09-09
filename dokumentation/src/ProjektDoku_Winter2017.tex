@@ -1,0 +1,104 @@
+%---------------------------------------------------------------------------
+\documentclass[fontsize=12pt,paper=a4,draft=off,titlepage=off]{scrartcl}
+%---------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{CJKutf8}
+\usepackage{url}
+\usepackage[german]{babel}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\DeclareGraphicsExtensions{.png, .eps, .pdf}
+\usepackage{palatino}
+\usepackage{inputenc}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[table, xcdraw]{xcolor}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{epstopdf}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{packages/dirtytalk}
+\usepackage{packages/pgf-pie} % /home/nils/git/abschlussprojekt/documentation/pgf-pie
+\usepackage{enumitem}
+\setlist[enumerate]{label*=\arabic*.}
+
+
+\input{Allgemein/Befehle} % eigene allgemeine Befehle, die z.B. die Arbeit mit LaTeX erleichtern
+
+\setlength\headsep{2cm}
+\lhead{}
+\chead{}
+\rhead{\includegraphics[bb=0 0 667 57, scale=0.5]{/home/freundt/business/GA_Logo.jpeg}}
+
+\newcolumntype{d}{D{.}{.}{4}}
+
+
+\clearpage
+
+
+%---------------------------------------------------------------------------
+\begin{document}
+\pagestyle{fancy}
+%---------------------------------------------------------------------------
+
+
+\begin{titlepage}
+    \centering
+    {\scshape\LARGE Projektdokumentation\par}
+    \vspace{1cm}
+    {\scshape\Large Ausbildung zum Fachinformatiker f. Anwendungsentwicklung\par}
+    \vspace{1.5cm}
+    {\huge\bfseries Abschlussprüfung Winter 2017\par\\IHK Berlin\par}
+    \vspace{2cm}
+    Auszubildender:\par
+    {\Large\itshape Nils Diefenbach\par}
+    Ident-Nummer:\par
+    {\Large\itshape 3590244\par}
+    \vfill
+    Ausbilder:\par
+    Sebastian Freundt\par \textsc{GA Financial Solutions GmbH}
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+\clearpage
+
+\tableofcontents{}
+\clearpage
+
+\input{acronyms}
+\clearpage
+
+\include{intro}
+\clearpage
+
+\include{analysephase}
+\clearpage
+
+\include{entwurfsphase}
+\clearpage
+
+\include{implementierung}
+\clearpage
+
+\include{abnahme}
+\clearpage
+
+\include{einfuehrungsphase}
+\clearpage
+
+\include{dokumentationsphase}=
+\clearpage
+
+\include{postmortem}
+\clearpage
+
+\include{anhang}
+
+\bibliography{bibliography}
+%---------------------------------------------------------------------------
+\end{document}
+%---------------------------------------------------------------------------

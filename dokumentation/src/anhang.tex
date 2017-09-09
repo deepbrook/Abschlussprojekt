@@ -1,0 +1,161 @@
+\section{Anhang}
+\subsection{Analysephase}
+\subsubsection{Vergleich: DLD Aufwand vs QGram Aufwand mit Fuzzy Join}
+\subsubsection{Vergleich: Theoretischer DLD vs QGram Zeitvergleich }
+
+\subsubsection{Lastenheft}
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+\begin{enumerate}
+    \item Spezifikationen des Algorithmus
+        \begin{enumerate}
+            \item Der Algorithmus muss 2 Listen von Strings verarbeiten können,
+            wobei eine dieser Listen garantiert in den Speicher passt und die zweite
+            eine beliebige Größe haben kann.
+            \item Der Algorithmus muss aus der ersten Liste sämtliche Strings finden,
+            welche den Strings aus der zweiten Liste ähneln. Die gefundenen Strings
+            sollen ausgegeben werden.
+            \item Der Algorithmus ist in C zu programmieren.
+            \item der Algorithmus verarbeitet 7-Bit ASCII Strings schreibungsunabhängig. Zeichensetzung
+            ist beim Vergleich generell zu ignorieren; Ausnahmen bilden die
+            Charaktere Bindestrich, Unterstrich und Leerzeichen.
+        \end{enumerate}
+    \item Spezifikationen des Kommandozeilenprogramms
+        \begin{enumerate}
+            \item Der Algorithmus muss über die Kommmandozeile ausführbar sein.
+            \item Die Erste Liste wird immer als Dateiname übergeben.
+            \item Die zweite Liste kann entweder als Dateiname oder über STDIN übergeben werden.
+            \item die GNU Standards für Kommandozeilenprogramme müssen eingehalten werden.
+            \item Die POSIX Utility Guidelines müssen eingehalten werden.
+            \item Das Programm muss unter openSuSE 13.1 laufen.
+            \item Alle für das Programm erforderliche Abhängigkeiten
+            (z.B. Pakete, Bibliotheken) müssen für openSuSE 13.1 verfügbar sein.
+            \item Das Programm muss auf einem einzigen Kern lauffähig sein, und
+            darf das laufen auf mehreren Kernen in einem Shared-Memory-Environment
+            unterstützen.
+            \item Das Programm darf mit maximal 32GB Arbeitsspeicher arbeiten, und nicht mehr
+            als 200 GB Festplattenspeicher zur Kalkulation verwenden. Zwischenprozessliche Kommunikationswege
+            sind ausgeschlossen.
+            \item Das Programm gibt Fehler und Debug Daten über STDERR aus.
+            \item Errechnete Ergebnisse werden über STDOUT ausgegeben.
+            \item Die Zielplatform ist Intel x86-64 (intel64).
+        \end{enumerate}
+    \item Spezifikationen der Qualitätssicherung
+        \begin{enumerate}
+            \item Der Algorithmus muss überprüfbar sein.
+            \item Unittests sind verfügbar gemacht worden.
+        \end{enumerate}
+    \item Spezifikationen der Dokumentation
+        \begin{enumerate}
+            \item Sämtliche Funktionen müssen über einen Doc String dokumentiert werden
+            \item Die Doc Strings der Funktionen müssen auf Englisch geschrieben werden.
+        \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Nutzwertanalyse: Projektentwicklung}
+
+\begin{table}[!htp]
+\centering
+\caption{Nutzwertanalyse Projektentwicklung}
+\label{nwa_projektentwicklung}
+\begin{tabular}{llllllllll}
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Kriterien}} & {\color[HTML]{FFFFFF} \textbf{Gewicht}} & {\color[HTML]{FFFFFF} \textbf{Externe Entwicklung}} & {\color[HTML]{FFFFFF} \textbf{}}       & {\color[HTML]{FFFFFF} \textbf{Interne Entwicklung}} & {\color[HTML]{FFFFFF} \textbf{}}       & {\color[HTML]{FFFFFF} \textbf{Dedizierter 12-Kerner}} & {\color[HTML]{FFFFFF} \textbf{}}       & {\color[HTML]{FFFFFF} \textbf{Cluster}}   & {\color[HTML]{FFFFFF} \textbf{}}       \\
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{}}          & {\color[HTML]{FFFFFF} \textbf{}}        & {\color[HTML]{FFFFFF} \textbf{Bewertung}}           & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}           & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}             & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} \\
+Projektkosten                             & 45.00\%                                 & 4                                                   & 1.8                                    & 5                                                   & 2.25                                   & 4                                                     & 1.8                                    & 3                                         & 1.35                                   \\
+\rowcolor[HTML]{BBDAFF}
+Nachhaltigkeit                            & 15.00\%                                 & 4                                                   & 0.6                                    & 4                                                   & 0.6                                    & 1                                                     & 0.15                                   & 1                                         & 0.15                                   \\
+Flexibilit채t                              & 5.00\%                                  & 3                                                   & 0.15                                   & 5                                                   & 0.25                                   & 4                                                     & 0.2                                    & 4                                         & 0.2                                    \\
+\rowcolor[HTML]{BBDAFF}
+Unterhaltskosten                          & 35.00\%                                 & 4                                                   & 1.4                                    & 4                                                   & 1.4                                    & 2                                                     & 0.7                                    & 1                                         & 0.35                                   \\
+\textbf{Gesamt}                           & \textbf{100.00\%}                       & \textbf{}                                           & \textbf{3.95}                          & \textbf{}                                           & \textbf{4.5}                           & \textbf{}                                             & \textbf{2.85}                          & \textbf{}                                 & \textbf{2.05}
+\end{tabular}
+\end{table}
+
+\subsubsection{Use-Case QGJoin}
+
+\subsection{Entwurfsphase}
+\subsubsection{Nutzwertanalyse: Programmiersprachen}
+
+\begin{table}[!htp]
+    \centering
+    \caption{My caption}
+    \label{my-label}
+    \begin{tabular}{llllllllll}
+        \rowcolor[HTML]{9698ED}
+        {\color[HTML]{FFFFFF} \textbf{Kriterien}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}} & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{C}}}                                                                                              & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{C++}}}                                                                                            & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Java}}}                                                                                           & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Haskell}}}                                                                                        \\
+        \rowcolor[HTML]{9698ED}
+        {\color[HTML]{FFFFFF} \textbf{}}          & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{}}}        & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} \\
+        Performanz                                & 30.00\%                                                                             & 5                                                                                     & 1.5                                                                                & 5                                                                                     & 1.5                                                                                & 4                                                                                     & 1.2                                                                                & 5                                                                                     & 1.5                                                                                \\
+        \rowcolor[HTML]{BBDAFF}
+        Speichereffizienz                         & 30.00\%                                                                             & 5                                                                                     & 1.5                                                                                & 5                                                                                     & 1.5                                                                                & 3                                                                                     & 0.9                                                                                & 4                                                                                     & 1.2                                                                                \\
+        Dokumentation                             & 20.00\%                                                                             & 5                                                                                     & 1                                                                                  & 4                                                                                     & 0.8                                                                                & 4                                                                                     & 0.8                                                                                & 2                                                                                     & 0.4                                                                                \\
+        \rowcolor[HTML]{BBDAFF}
+        Systemische Vorraussetzungen              & 10.00\%                                                                             & 5                                                                                     & 0.5                                                                                & 5                                                                                     & 0.5                                                                                & 3                                                                                     & 0.3                                                                                & 3                                                                                     & 0.3                                                                                \\
+        Datenstrukturen                           & 10.00\%                                                                             & 3                                                                                     & 0.3                                                                                & 4                                                                                     & 0.4                                                                                & 5                                                                                     & 0.5                                                                                & 5                                                                                     & 0.5                                                                                \\
+        \rowcolor[HTML]{BBDAFF}
+        \textbf{Gesamt}                           & \textbf{100.00\%}                                                                   & \textbf{}                                                                             & \textbf{4.8}                                                                       & \textbf{}                                                                             & \textbf{4.7}                                                                       & \textbf{}                                                                             & \textbf{3.7}                                                                       & \textbf{}                                                                             & \textbf{3.9}
+    \end{tabular}
+\end{table}
+
+\subsubsection{Nutzwertanalyse: Datentyp der Menge Q}
+
+\begin{table}[!htp]
+    \centering
+    \label{nwa_datentyp}
+    \begin{tabular}{llllll}
+        \rowcolor[HTML]{9698ED}
+        \cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} }                                     & \cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} }                                   & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Hashmap}}} & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Binärbaum}}} \\
+        \rowcolor[HTML]{9698ED}
+        \multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Kriterien}}} & \multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}  & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}   & {\color[HTML]{FFFFFF} \textbf{Gesamt}}  \\
+        Speicheraufwand                                                                     & 25.00\%                                                                           & 2                                          & 0.5                                    & 2                                           & 0.5                                     \\
+        \rowcolor[HTML]{BBDAFF}
+        Schnelligkeit Daten Einfügen (Insert                                                & 20.00\%                                                                           & 5                                          & 1                                      & 4                                           & 0.8                                     \\
+        Schnelligkeit Auslesen (Look-up)                                                    & 55.00\%                                                                           & 5                                          & 2.75                                   & 4                                           & 2.2                                     \\
+        \rowcolor[HTML]{BBDAFF}
+        \textbf{Gesamt}                                                                     & \textbf{100.00\%}                                                                 & \textbf{}                                  & \textbf{4.25}                          & \textbf{}                                   & \textbf{3.5}
+    \end{tabular}
+\end{table}
+
+\subsubsection{Pseudocode: Algorithmus}
+\subsubsection{Aktivitätsdiagramm: Programmlogik}
+\begin{figure}[!htp]
+    \caption{Aktivitätsdiagramm der Programmlogik}
+    \label{programmlogik}
+    \includegraphics[width=\textwidth]{algo}
+    \centering
+\end{figure}
+
+\subsubsection{Analyse: Verteilung der Qgramme}
+\begin{figure}[!htp]
+    \caption{Verteilung der QGramme im zu bearbeitenden Datensatz}
+    \label{qgram_verteilung}
+    \includegraphics[width=\textwidth]{multiplicity_of_qgrams.eps}
+    \centering
+\end{figure}
+
+\subsubsection{Datenmodell}
+\begin{figure}[!htp]
+    \caption{UML Darstellung des vorhandenen Datenmodells}
+    \label{qgram_verteilung}
+    \includegraphics[width=\textwidth]{datenmodell}
+    \centering
+\end{figure}
+
+\subsubsection{Pflichtenheft}
+
+\subsection{Implementierungsphase}
+\subsubsection{Quellcodeauszug: Dynamische Array}
+\lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der dynamischen Array]{anhang/array.c}
+
+\subsubsection{Quellcodeauszug: Hashtable Implementation}
+\lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der dynamischen Array]{anhang/hashmap.c}
+
+\subsubsection{Auszug: Hilfeausgabe des Kommandozeilenprogramms}
+
+\subsection{Dokumentationsphase}
+\subsubsection{Auszug: Entwicklerdokumentation}
+\lstinputlisting[language=C, caption=Beispiel eines Docstrings für Entwickler]{anhang/docstring.c}
+
+\subsubsection{Auszug: Endnutzerdokumentation}

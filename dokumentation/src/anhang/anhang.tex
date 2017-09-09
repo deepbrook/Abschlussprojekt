@@ -1,0 +1,52 @@
+\section{Anhang}
+\subsection{Analysephase}
+\subsubsection{Vergleich: DLD Aufwand vs QGram Aufwand mit Fuzzy Join}
+\subsubsection{Vergleich: Theoretischer DLD vs QGram Zeitvergleich }
+\subsubsection{Lastenheft}
+\subsubsection{Use Case QGJoin}
+
+\subsection{Entwurfsphase}
+\subsubsection{Nutzwertanalyse: Programmiersprachen}
+\subsubsection{Nutzwertanalyse: Datenstrukturen}
+\begin{table}[]
+    \centering
+    \caption{Nutzwertanalyse der Datenstrukturen für Menge Q}
+    \label{my-label}
+    \begin{tabular}{llllll}
+        \hline
+        \rowcolor[HTML]{9698ED}
+        \cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} }                                     & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} }}                                   & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Hashmap}}}                                                                                          & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Binärbaum}}}                                                                                        \\ \cline{3-6}
+        \rowcolor[HTML]{9698ED}
+        \multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Kriterien}}} & \multicolumn{1}{c}{\multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{l|}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} \\ \hline
+        \multicolumn{1}{|l|}{Speicheraufwand}                                               & \multicolumn{1}{l|}{25.00\%}                                                                          & \multicolumn{1}{l|}{2}                                                                 & \multicolumn{1}{l|}{0.5}                                                            & \multicolumn{1}{l|}{2}                                                                 & \multicolumn{1}{l|}{0.5}                                                            \\ \hline
+        \rowcolor[HTML]{BBDAFF}
+        \multicolumn{1}{|l|}{\cellcolor[HTML]{BBDAFF}Schnelligkeit Daten Einf체gen (Insert)} & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}20.00\%}                                                  & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}5}                                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}1}                                      & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}4}                                         & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}0.8}                                    \\ \hline
+        \multicolumn{1}{|l|}{Schnelligkeit Auslesen (Look-up)}                              & \multicolumn{1}{l|}{55.00\%}                                                                          & \multicolumn{1}{l|}{5}                                                                 & \multicolumn{1}{l|}{2.75}                                                           & \multicolumn{1}{l|}{4}                                                                 & \multicolumn{1}{l|}{2.2}                                                            \\ \hline
+        \rowcolor[HTML]{BBDAFF}
+        \multicolumn{1}{|l|}{\cellcolor[HTML]{BBDAFF}\textbf{Gesamt}}                       & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}\textbf{100.00\%}}                                        & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}\textbf{}}                                 & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}\textbf{4.25}}                          & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}\textbf{}}                                 & \multicolumn{1}{l|}{\cellcolor[HTML]{BBDAFF}\textbf{3.5}}                           \\ \hline
+                                                                                            &                                                                                                       &                                                                                        &                                                                                     &                                                                                        &                                                                                     \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Pseudocode: Algorithmus}
+\subsubsection{Aktivitätsdiagramm: Programmlogik}
+\subsubsection{Analyse: Erwartete Verteilung der Qgramme}
+\subsubsection{Datenmodell}
+\subsubsection{Pflichtenheft}
+
+\subsection{Implementierungsphase}
+\subsubsection{Quellcodeauszug: Dynamische Array}
+\lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der dynamischen Array]{anhang/array.c}
+
+\subsubsection{Quellcodeauszug: Hashtable Implementation}
+\lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der dynamischen Array]{anhang/hashmap.c}
+
+\subsubsection{Auszug: Hilfeausgabe des Kommandozeilenprogramms}
+
+\subsection{Dokumentationsphase}
+\subsubsection{Auszug: Entwicklerdokumentation}
+\lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der dynamischen Array]{anhang/docstring.c}
+
+\subsubsection{Auszug: Endnutzerdokumentation}
+
+

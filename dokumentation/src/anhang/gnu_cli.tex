@@ -1,0 +1,74 @@
+\say{4.7 Standards for Command Line Interfaces\\
+
+It is a good idea to follow the POSIX guidelines for the command-line options of
+a program. The easiest way to do this is to use getopt to parse them. Note that
+the GNU version of getopt will normally permit options anywhere among the arguments
+unless the special argument ‘--’ is used. This is not what POSIX specifies; it
+is a GNU extension.\par
+
+Please define long-named options that are equivalent to the single-letter
+Unix-style options. We hope to make GNU more user friendly this way. This is
+easy to do with the GNU function getopt_long.\par
+
+One of the advantages of long-named options is that they can be consistent from
+program to program. For example, users should be able to expect the “verbose”
+option of any GNU program which has one, to be spelled precisely ‘--verbose’. To
+achieve this uniformity, look at the table of common long-option names when you
+choose the option names for your program (see Option Table).\par
+
+It is usually a good idea for file names given as ordinary arguments to be input
+files only; any output files would be specified using options (preferably ‘-o’
+or ‘--output’). Even if you allow an output file name as an ordinary argument for
+compatibility, try to provide an option as another way to specify it. This will
+lead to more consistency among GNU utilities, and fewer idiosyncrasies for users
+to remember.\par
+
+All programs should support two standard options: ‘--version’ and ‘--help’. CGI
+programs should accept these as command-line options, and also if given as the
+PATH_INFO; for instance, visiting ‘http://example.org/p.cgi/--help’ in a browser
+should output the same information as invoking ‘p.cgi --help’ from the command
+line.\par
+
+[...]
+
+4.7.1 --version \\
+
+The standard --version option should direct the program to print information
+about its name, version, origin and legal status, all on standard output, and
+then exit successfully. Other options and arguments should be ignored once this
+is seen, and the program should not perform its normal function.\par
+
+The first line is meant to be easy for a program to parse; the version number
+proper starts after the last space. In addition, it contains the canonical name
+for this program, in this format:\par
+
+GNU Emacs 19.30 \\
+
+The program’s name should be a constant string; don’t compute it from argv[0].
+The idea is to state the standard or canonical name for the program, not its file
+name. There are other ways to find out the precise file name where a command is
+found in PATH.\par
+
+[...]
+
+4.7.2 --help \\
+
+The standard --help option should output brief documentation for how to invoke
+the program, on standard output, then exit successfully. Other options and
+arguments should be ignored once this is seen, and the program should not perform
+its normal function.\par
+
+Near the end of the ‘--help’ option’s output, please place lines giving the email
+address for bug reports, the package’s home page (normally ‘http://www.gnu.org/software/pkg’,
+and the general page for help using GNU programs. The format should be like
+this: \par
+
+Report bugs to: mailing-address \\
+pkg home page: <http://www.gnu.org/software/pkg/> \\
+General help using GNU software: <http://www.gnu.org/gethelp/> \\
+
+It is ok to mention other appropriate mailing lists and web pages.\par
+
+}
+
+src https://www.gnu.org/prep/standards/standards.html

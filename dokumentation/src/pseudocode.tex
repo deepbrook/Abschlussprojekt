@@ -1,0 +1,115 @@
+Input: S1, S2,  Si vector of strings
+Output: S1 x S2
+
+## Setup
+if |S1| < |S2|
+	S <- S1
+	T <- S2
+else
+	S <- S2
+	T <- S1
+end
+
+for each s from S with |s| >= 5
+	i <- intern(s)
+	Q <- 5grams(s)
+	for each q from Q
+		R(q) <- R(q) u i
+	end
+end
+
+## Run
+while read t from T with |t| >= 5
+	Q <- 5grams(t)
+	W <- 1
+
+	I <- call zero_interns
+	for each q from Q
+		for each r from R(q)
+			I(r) += W
+		end
+		W <- W * 2
+	end
+
+	J <- call zero_streaks
+	max <- 0
+	for each s from S with |s| >= 5
+		i <- intern(s)
+		J(i) <- longest_streak(I(i))
+		if (J(i) > max)
+			max = J(i)
+			M <- {s}
+		else if (J(i) == max)
+			M <- M u s
+		end
+	end
+
+	## Optional max check
+	if (max < |t| / 2)
+		continue
+	end
+
+	## Output
+	for each s from M:
+		output s, t, max
+	end
+end
+
+
+
+
+Example:
+
+S1 <- "COMMERZBANK", "DEUTSCHE BANK", "DEUTSCHE POSTBANK"
+S2 <- "COMMERZBANK AG", "DEUTSCHE BANK AG", "DT. POSTBANK", "DT. HYPOBANK"
+
+## 5grams are
+## COMME, OMMER, MMERZ, MERZB, ERZBA, RZBAN, ZBANK
+## DEUTS, EUTSC, UTSCH, TSCHE, SCHEB, CHEBA, HEBAN, EBANK
+## DEUTS, EUTSC, UTSCH, TSCHE, SCHEP, CHEPO, HEPOS, EPOST, POSTB, OSTBA, STBAN, TBANK
+
+R(CHEBA) = 2
+R(CHEPO) = 3
+R(COMME) = 1
+R(DEUTS) = 2, 3
+R(EBANK) = 2
+R(EPOST) = 3
+R(ERZBA) = 1
+R(EUTSC) = 2, 3
+R(HEBAN) = 2
+R(HEPOS) = 3
+R(MERZB) = 1
+R(MMERZ) = 1
+R(OMMER) = 1
+R(OSTBA) = 3
+R(POSTB) = 3
+R(RZBAN) = 1
+R(SCHEB) = 2
+R(SCHEP) = 3
+R(STBAN) = 3
+R(TBANK) = 3
+R(TSCHE) = 2, 3
+R(UTSCH) = 2, 3
+R(ZBANK) = 1
+
+## one step from the while loop
+"DEUTSCHE HYPOBANK" in S1?
+
+Q <- DEUTS, EUTSC, UTSCH, TSCHE, SCHEH, CHEHY, HEHYP, EHYPO, HYPOB, YPOBA, POBAN, OBANK
+## W 1      2      4      8      16     32     64     128    256    512    1024   2048
+##   2, 3   2, 3   2, 3   2, 3   0      0      0      0      0      0      0      0
+
+I(1) = 0
+I(2) = 1 + 2 + 4 + 8 = 15
+I(3) = 1 + 2 + 4 + 8 = 15
+
+J(1) = 0
+J(2) = 4
+J(3) = 4
+
+Max check:
+4 < 16/2
+
+Output:
+DEUTSCHE BANK -- DEUTSCHE HYPOBANK
+DEUTSCHE POSTBANK -- DEUTSCHE HYPOBANK
