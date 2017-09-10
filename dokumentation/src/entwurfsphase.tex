@@ -131,31 +131,31 @@ ebenfalls zunächst ein Test geschrieben.
 
 
 \subsection{Entwurf der Benutzeroberfläche}
-Der GNU Codingstandard\footnote{\url{https://www.gnu.org/prep/standards/standards.html\#User-Interfaces}},
-sowie die POSIX Utility Guidelines\footnote{\url{http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html}}
+Der GNU Codingstandard\cite{gnuCodingStandard},
+sowie die POSIX Utility Guidelines\cite{posixGuidelines}
 spezifizieren standardisierte Parameternamen und Funktionen eines Programms, sowie
 deren erwartete Funktion. Da es sich bei der Zielgruppe um erfahrene Linuxnutzer handelt, wurde das
 Kommandozeilenprogramm nach diesen Standards auch entwickelt. Ein Auszug dieser
 Vorgaben befindet sich im Anhang auf Seite X.\par
 
-Auf eine grafische Nutzeroberfläche wird nicht gewünscht, da die bevorzugte
+Auf eine grafische Nutzeroberfläche wird verzichetet, da die bevorzugte
 Oberfläche der Endnutzer die Kommandozeile ist.
 
 \subsection{Datenmodell}
 Aufgrund der Natur der Daten ist das Datenmodell für das Projekt trivial. Es besteht aus einer
-einspaltigen Tabelle, welche in Relation zu sich selbst steht. Ein Modell eines Strings sieht dann wie folgt aus:
-
-aus diesen Gründen wird auf eine weitere Ausführung des Modells verzichtet.
+einspaltigen Tabelle, welche in Relation zu sich selbst steht. Aus diesen Gründen wird auf eine weitere Ausführung des 
+Modells verzichtet - die UML Grafik des Modells kann jedoch im Anhang\ref{fig:datenmodell} eingesehen werden.
 
 Es ist zu klärifizieren, dass die GA Financial Solution kaum bis gar nicht Datenbanksysteme wie
-MySQL, MariaDB u.Ä. nutzt. Stattdessen werden komprimmierte csv Dateien verwendet, welche
+MySQL, MongoDB u.Ä. nutzt. Stattdessen werden komprimmierte csv Dateien verwendet, welche
 meist nur aus 3 Zeilen (Zeitstempel, Typ und Wert) bestehen. Dies ergibt sich aus
 der negativen Erfahrung mit Datenbankmanagementsystemen und der Vereinfachung des Workflows durch
 die Nutzung von CSV Daten in Kombination mit der hauseigenen CLI Toolchain.
 
 
 \subsection{Geschäftslogik}
-Die bisherige Geschäftslogik wird auf Seite X im Anhang dargestellt. Wie dort zu erkennen ist,
+Zur Veranschaulichung der beisherigen Geschäftslogik, wurde eine Aktivitätendiagramm\ref{fig:geschäftslogikAlt} 
+erstellt.Wie dort zu erkennen ist,
 ist die Abholung der Daten von Anbietern automatisiert, die Verarbeitung jedoch nicht.
 Diese geschieht bei Bedarf und erfordert u.A. die Vorsortierung der Daten in handhabbare
 Datensätze, welche einfacher und in angemessener Zeit von unseren 4 Kern Maschinen
@@ -164,11 +164,10 @@ der Ergebnisse. Die Darausentstehenden Daten werden schließlich für das derzei
 genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisiert sind,
 und nicht zur generellen Nutzung innerhalb der Firma eignen.\par
 
-Im Anhang auf Seite X ist ein Komponentendiagramm vorzufinden, welche die
-unterschiedlichen Komponenten innerhalb der Geschäftslogik darstellt.
+
 
 \subsection{Pflichtenheft / Datenverarbeitungskonzept}
 Abschließend zur Entwurfsphase wurde ein Pflichtenheft erstellt und dieses als
 Roter Faden für das Projekt der Abteilung für Datenverarbeitung vorgelegt. Wie im
 Projektmanagement üblich, baut dieses auf dem Lastenheft auf.
-Ein Auszug des Pflichtenhefts befindet sich im Anhang.
+Ein Auszug des Pflichtenhefts\ref{anhang:pflichtenheft} befindet sich im Anhang.
