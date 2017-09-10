@@ -16,22 +16,22 @@ Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein D
 er sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
 Anbieter darstellt. Dies resultiert in einem circa 23 PetaBytes großem Datenobjekt
 im Arbeitsspeicher unserer Systeme, und führt, wie man erwarten kann, zu Speicherüberläufen.
-In Rechenaufrufen ausgedrückt bedeutet dass etwa 1.038.901.988.746.226\footnotemark DLD Aufrufe
-benötigt werden um die Daten miteinander zu vergleichen und die Datenbank zu erstellen,
-wobei das DLD-Matrix Verfahren etwa 1.340.000 Aufrufe pro Sekunde (CPU Zeit) schafft.
+In Rechenaufrufen ausgedrückt bedeutet dass etwa \\
+1.038.901.988.746.226\footnotemark DLD Aufrufe benötigt werden um die Daten miteinander 
+zu vergleichen und die Datenbank zu erstellen, wobei das DLD-Matrix Verfahren 
+etwa 1.340.000 Aufrufe pro Sekunde (CPU Zeit) schafft.
 Daraus ergibt sich eine Initial-Laufzeit von etwa ~6.15 Jahren auf einem 4-Kern
 Rechner bei voller Nutzlast (dies exkludiert die täglich hinzukommenden Daten
-während der Berechnung). Ist diese Datenbank erstellt, werden durch die neu
+während der Berechnungszeit). Ist diese Datenbank erstellt, werden durch die neu
 hinzukommenden Daten circa ~16 Milliarden DLD Aurfufe täglich benötigt um die
 Datenbank zu aktualisieren. Dies entspricht weiteren ~33 Minuten Rechenzeit auf
 einem 4-Kerner pro Tag.\par
 
 Gewünscht ist eine performantere, ressourcen-schonendere Implementierung des obigen Prozesses,
-sodass die Daten auf einem Firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
+sodass die Daten auf einem firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
 Hierbei ist es nicht erforderlich die, dem derzeitigen Prozess zugrunde liegende,
-Damerau-Levenshtein Distanz zu verwenden. Zudem soll erziehlt werden, dass die
-menschliche Komponente aus dem Vergleichsverfahren eliminiert wird,
-somit also keine Heuristiken zum Symbol-Vergleich benötigt werden.\par
+Damerau-Levenshtein Distanz zu verwenden. Desweiteren soll der Zeitaufwand zur ad hoc 
+Vergleichung der Ergebnisse drastisch reduziert werden können.\par
 
 \subsection{Wirtschaftlichkeitsanalyse}
 \subsubsection{Make-or-Buy Entscheidung}
@@ -45,10 +45,6 @@ Somit stellte sich die Frage nach der optimalen Vorgehensweise zur Umsetzung des
 Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse erstellt, um die diversen
 Lösungswege zu evaluieren. Diese wurden anhand der folgenden Kriterien bewertet:
 
-blieb nur die Ausweichung auf Alternativen, zum Beispiel die Auslagerung in
-einen Cloud-Dienst. Dies wäre jedoch nach unseren Erfahrungen mit dieser Art
-Berechnung nicht kompatibel und Anpassungen des DLD Verfahrens nötig gewesen.
-Die vollständige Liste der Alternativen lautet wie folgt:
 
 \begin{itemize}
     \item \textbf{Projektkosten}\\
@@ -59,15 +55,23 @@ Die vollständige Liste der Alternativen lautet wie folgt:
 
     \item \textbf{Nachhaltigkeit}\\
     Inwiefern die Lösung weitere Integration mit anderen Services und unserer
-    Toolchain erlaubt, wurde mit diesem Kriterium bewertet.
+    Toolchain erlaubt, wurde mit diesem Kriterium bewertet. So wurden Lösungen, welche 
+    geringe Abhängigkeiten haben besser bewertet, als solche mit vielen Abhängigkeiten.
+    Auch wurden die Abhängigkeiten nach Wichtigkeit gewertet - so schnitten externe Lösungen, welche
+    abhängig von fremder Infrastruktur sind schlechter ab als solche, die es nicht sind.\\
 
     \item \textbf{Flexibilität}\\
     Bei der Untersuchung dieses Kriteriums lag das Augenmerk vor Allem auf der
-    Möglichkeit der Anpassung der Software und der Ergebnisse während der Entwicklung,
-    sowie nach Abschluss der Entwicklung (z.B. über Parameter).
+    Möglichkeit der Anpassung der Software und der Ergebnisse während,
+    sowie nach der Entwicklung. Ein Beispiel hierfür wären zum Beispiel anpassbare
+    Vergleichsparameter, die Möglichkeit Funktionen zu erweitern sowie die Integration der
+    Lösung mit anderen Teilen der Entwicklungsumgebung bevorzugt.
 
     \item \textbf{Unterhaltskosten}\\
-    Dieses Kriterium beschreibt die laufenden Kosten nachdem das Projekt umgesetzt worden ist.
+    Dieses Kriterium beschreibt die laufenden Kosten nachdem das Projekt umgesetzt 
+    worden ist. Dies beinhaltet nicht nur personelle Kosten (Wartung, Fehlerbehebung, 
+    Supervision), sondern auch Kosten für eventuelle Hardware, Servermiete und 
+    benötigte Softwarelizenzen.
 \end{itemize}
 
 
@@ -82,7 +86,6 @@ der Räumlichkeiten, Rechner Software und weiterer Utensilien wurden mit 20€ p
 
 
 \subsubsection{Amortisationsdauer}
-Im Schnitt verbringt ein Mitarbeiter etwa 2.5h pro Woche mit der heuristischen Auswertung der Derivatsymbole.
 
 
 \subsection{Nutzwertanalysen}
