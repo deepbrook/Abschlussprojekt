@@ -1,104 +1,33 @@
 \section{Analysephase}
 \subsection{Ist-Analyse}
-Die GA Financial Solutions holt sich täglich aktuelle Symbole von sechse verschiedenen
-Anbietern ab: Interactive Brokers\cite{IB}, Google, Yahoo, Morningstar, Bloomberg und GLEIS.
-Diese Symbole ändern sich zu einem gewissen Prozentsatz täglich und im Schnitt kommen etwa
-1.67 Millionen Instrumente hinzu.\par
+Die GA Financial Solutions GmbH holt sich täglich aktuelle Symbole von sechs verschiedenen
+Anbietern ab: Interactive Brokers, Google, Yahoo, Morningstar, Bloomberg und GLEIS.
+Täglich ändern sich diese Symbole um einen gewissen Prozentsatz und es kommen im Durchschnitt etwa 1,67 Millionen Instrumente hinzu.\par
 
-Zur Zeit werden diese Symbol ad hoc mit Heuristiken und Handarbeit verglichen -
-dabei wird meist immer nur eine kleine Teilmenge verglichen, und die gefunden Ergebnisse
-wieder verworfen, da es sich meist um spezialisierte Werte handelt.\par
+Zur Zeit werden diese Symbole ad hoc mittels Heuristiken und Handarbeit verglichen -
+dabei wird meist nur eine kleine Teilmenge benutzt; gefundene Ergebnisse werden
+nach Abschluss eines Projekts wieder verworfen, da es sich meist um spezialisierte Werte handelt.\par
 
-Es besteht somit zur Zeit keine firmenweite Datenbank, welche die Symbole
+Somit besteht zur Zeit keine firmenweite Datenbank, welche die Symbole
 bereits verglichen und sortiert bereitstellt.\par
 
-Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein Distanz\footnotemark:
-er sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
+Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein Distanz\footnotemark (kurz: DLD). Dieser sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
 Anbieter darstellt. Dies resultiert in einem circa 23 PetaBytes großem Datenobjekt
-im Arbeitsspeicher unserer Systeme, und führt, wie man erwarten kann, zu Speicherüberläufen.
-In Rechenaufrufen ausgedrückt bedeutet dass etwa \\
+im Arbeitsspeicher unserer Systeme, und führt erwartungsgemäß zu Speicherüberläufen.
+In Rechenaufrufen ausgedrückt bedeutet dies, dass etwa \\
 1.038.901.988.746.226\footnotemark DLD Aufrufe benötigt werden um die Daten miteinander 
-zu vergleichen und die Datenbank zu erstellen, wobei das DLD-Matrix Verfahren 
-etwa 1.340.000 Aufrufe pro Sekunde (CPU Zeit) schafft.
-Daraus ergibt sich eine Initial-Laufzeit von etwa ~6.15 Jahren auf einem 4-Kern
-Rechner bei voller Nutzlast (dies exkludiert die täglich hinzukommenden Daten
+zu vergleichen und die Datenbank zu erstellen. Das DLD-Matrix-Verfahren schafft hierbei 
+etwa 1.340.000 Aufrufe pro Sekunde (CPU-Zeit).
+Daraus ergibt sich eine Initiallaufzeit von etwa 6,15 Jahren auf einem 4-Kern-Rechner bei voller Nutzlast (dies exkludiert die täglich hinzukommenden Daten
 während der Berechnungszeit). Ist diese Datenbank erstellt, werden durch die neu
-hinzukommenden Daten circa ~16 Milliarden DLD Aurfufe täglich benötigt um die
-Datenbank zu aktualisieren. Dies entspricht weiteren ~33 Minuten Rechenzeit auf
-einem 4-Kerner pro Tag.\par
+hinzukommenden Daten circa ~16 Milliarden DLD-Aurfufe täglich benötigt um die
+Datenbank zu aktualisieren. Pro Tag entspricht dies weiteren ~33 Minuten Rechenzeit auf
+einem 4-Kerner.\par
 
-Gewünscht ist eine performantere, ressourcen-schonendere Implementierung des obigen Prozesses,
+Gewünscht ist eine performantere und Ressourcen-schonendere Implementierung des obigen Prozesses,
 sodass die Daten auf einem firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
-Hierbei ist es nicht erforderlich die, dem derzeitigen Prozess zugrunde liegende,
-Damerau-Levenshtein Distanz zu verwenden. Desweiteren soll der Zeitaufwand zur ad hoc 
-Vergleichung der Ergebnisse drastisch reduziert werden können.\par
-
-\subsection{Wirtschaftlichkeitsanalyse}
-\subsubsection{Make-or-Buy Entscheidung}
-Ein Tool, welches das obig-beschriebene Problem löst, gibt es zur Zeit nur mit dem
-ressourcenintensiven DLD Matrix Verfahren. Ein Projekt, welches ein ähnliches
-Problem löst, ist das Open-source Projekt fuzzy-join\footnote{https://github.com/dgrtwo/fuzzyjoin}.
-Jedoch vergleicht dieses Tool Daten nur in eine Richtung (One-To-Many), während unser
-Use-Case ein Bi-direktionales Verfahren benötigt (Many-To-Many).\par
-
-Somit stellte sich die Frage nach der optimalen Vorgehensweise zur Umsetzung des
-Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse erstellt, um die diversen
-Lösungswege zu evaluieren. Diese wurden anhand der folgenden Kriterien bewertet:
-
-
-\begin{itemize}
-    \item \textbf{Projektkosten}\\
-    Größtes Kriterium bei der Entwicklung des Projektes waren logischerweise die
-     potentiellen Entwicklungskosten. Diese wurden anhand Branchentypischer Stundenlöhne
-     (im Falle der externen Entwicklung), bzw. der Preislisten der Cloud Computing
-     Anbieter unseres Vertrauens (MassiveGrid, Amazon Web Services) berechnet und verglichen.
-
-    \item \textbf{Nachhaltigkeit}\\
-    Inwiefern die Lösung weitere Integration mit anderen Services und unserer
-    Toolchain erlaubt, wurde mit diesem Kriterium bewertet. So wurden Lösungen, welche 
-    geringe Abhängigkeiten haben besser bewertet, als solche mit vielen Abhängigkeiten.
-    Auch wurden die Abhängigkeiten nach Wichtigkeit gewertet - so schnitten externe Lösungen, welche
-    abhängig von fremder Infrastruktur sind schlechter ab als solche, die es nicht sind.\\
-
-    \item \textbf{Flexibilität}\\
-    Bei der Untersuchung dieses Kriteriums lag das Augenmerk vor Allem auf der
-    Möglichkeit der Anpassung der Software und der Ergebnisse während,
-    sowie nach der Entwicklung. Ein Beispiel hierfür wären zum Beispiel anpassbare
-    Vergleichsparameter, die Möglichkeit Funktionen zu erweitern sowie die Integration der
-    Lösung mit anderen Teilen der Entwicklungsumgebung bevorzugt.
-
-    \item \textbf{Unterhaltskosten}\\
-    Dieses Kriterium beschreibt die laufenden Kosten nachdem das Projekt umgesetzt 
-    worden ist. Dies beinhaltet nicht nur personelle Kosten (Wartung, Fehlerbehebung, 
-    Supervision), sondern auch Kosten für eventuelle Hardware, Servermiete und 
-    benötigte Softwarelizenzen.
-\end{itemize}
-
-
-
-\subsubsection{Projektkosten}
-Als nächstes wurden die exakten Projektkosten berechnet. Hierfür wurden pauschale Beträge 
-für Mitarbeiterstundenlöhne, sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
-(Papier, Drucker, Programme, Rechner etc) veranschlagt. Diese können in der tabelle 
-\ref{projektkosten} eingesehen werden. Es wurden hierfür ein Stundenlohn von 5,50€ für den 
-Autoren, sowie ein Stundenlohn von 35€ für jeden weiteren Mitarbeiter angesetzt. Nutzungskosten 
-der Räumlichkeiten, Rechner Software und weiterer Utensilien wurden mit 20€ pro Stunde kalkuliert. \par
-
-
-\subsubsection{Amortisationsdauer}
-
-
-\subsection{Nutzwertanalysen}
-
-\subsection{Anwendungsfälle}
-Ein ungefähre Übersicht der Anwendungsfälle des Programms wurde mit Hilfe eines Use-Case-Diagramms
-im zuge der Analysephase erstellt. Sie befindet sich im Anhang auf Seite X und lässt
-alle benötigten Funktionen aus Endanwendersicht erkennen.\par
-
-\subsection{Lastenheft / Fachkonzept}
-Ein Lastenheft wurde von der Abteilung Datenverarbeitung, vertreten durch Sebastian Freundt,
-erstellt und dem Autor vorgelegt. Ein Auszug dieses Dokumentes befindet sich im Anhang auf Seite X.\par
-
+Hierbei ist es nicht unbedingt erforderlich die, Damerau-Levenshtein-Distanz zu verwenden. Desweiteren soll der Zeitaufwand der ad-hoc 
+Vergleichue der Ergebnisse drastisch reduziert werden.\par
 
 % FOOTNOTES
 
@@ -108,6 +37,57 @@ erstellt und dem Autor vorgelegt. Ein Auszug dieses Dokumentes befindet sich im 
 
 \footnotetext{Eine Billiarde achtunddreißig Billionen neunhundertein Milliarden
 	neunhundertachtundachtzig Millionen siebenhundertsechsundvierzigtausendzweihundertsechsundzwanzig}
+
+
+
+\subsection{Wirtschaftlichkeitsanalyse}
+\subsubsection{Make-or-Buy Entscheidung}
+Ein Tool, welches das oben beschriebene Problem löst gibt es zur Zeit nur mit dem
+ressourcenintensiven DLD-Matrix-Verfahren. Ein Projekt, welches ein ähnliches
+Problem löst, ist das Open-source Projekt fuzzy-join\footnote{https://github.com/dgrtwo/fuzzyjoin}.
+Dieses Tool vergleicht Daten jedoch nur in eine Richtung (One-To-Many), während unser
+Use-Case ein bidirektionales Verfahren benötigt (Many-To-Many).\par
+
+Somit stellte sich die Frage nach einer optimalen Vorgehensweise zur Umsetzung des
+Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse\ref{nwa:projektentwicklung} erstellt, um diversen Lösungswege zu evaluieren. \\
+Diese wurden anhand der folgenden Kriterien bewertet:
+
+
+\begin{itemize}
+    \item \textbf{Projektkosten} - Wie hoch sind diePersonal-, Server- und/oder Softwarekosten der jeweiligen Lösung?
+
+    \item \textbf{Nachhaltigkeit} - Gibt es externe Abhängigkeiten? Wenn ja, wie viele und besteht ein Risiko des Ausfalls dieser Abhängigkeiten? Wie gut lässt sich das Programm in unseren Arbeitsprozess eingliedern? 
+
+    \item \textbf{Flexibilität} - Wie leicht ist das Programm erweiterbar? Besteht die Möglichkeit in Zukunft weitere Parameter anzugeben um die Ergebnisse anzupassen? Wenn ja, wie sehr beeinträchtigt diese Erweiterung die Performanz des Programms?
+
+    \item \textbf{Unterhaltungskosten} - Neben den Initialen Projektkosten, wie hoch sind die laufenden Kosten für die Lösung? Fallen Mietkosten für Server an? Wie hoch ist der Überwachungsaufwand der benötigt wird um die Funktionsfähigkeit der Lösung zu überprüfen?
+
+\end{itemize}
+
+
+
+\subsubsection{Projektkosten}
+Als nächstes wurden die Projektkosten berechnet. Hierfür wurden pauschale Beträge 
+für Mitarbeiterstundenlöhne, sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
+(Papier, Drucker, Programme, Rechner etc) veranschlagt. Diese können in der Tabelle 
+\ref{projektkosten} eingesehen werden. Es wurden hierfür ein Stundenlohn von 5,50€ für den 
+Autoren, sowie ein Stundenlohn von 35€ für jeden weiteren Mitarbeiter angesetzt. Nutzungskosten 
+der Räumlichkeiten, Rechner, Software und weiterer Utensilien wurden mit 20€ pro Stunde kalkuliert. \par
+
+
+\subsubsection{Amortisationsdauer}
+
+
+\subsection{Anwendungsfälle}
+Um eine Übersicht über die Anwendungsfälle zu bekommen hat der Autor sich zunächst mit der Abteilung für Datenverarbeitung zusammengesetzt und evaluiert. Aus diesem Meeting erstellte der Autor ein Use-Case-Diagramm, um diese Fälle zu visualisieren und zu verdeutlichen. Das erstellte Diagramm wurde
+im Anhang\ref{fig:qgjoinUseCase} beigefügt.
+
+
+\subsection{Lastenheft / Fachkonzept}
+Ein Lastenheft wurde von der Abteilung Datenverarbeitung, vertreten durch Sebastian Freundt,
+erstellt und dem Autor vorgelegt. Ein Auszug dieses Dokumentes befindet sich im Anhang auf Seite X.\par
+
+
 
 
 \clearpage
