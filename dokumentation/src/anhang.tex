@@ -92,6 +92,11 @@
 \subsubsection{Use-Case QGJoin}
 
 \subsection{Entwurfsphase}
+\subsubsection{Geschäftslogik Alt}
+\begin{figure}
+	\label{fig:geschäftslogikAlt}
+	\caption{UML Diagramm der bisherigen Geschäftslogik}
+\end{figure}
 \subsubsection{Nutzwertanalyse: Programmiersprachen}
 
 \begin{table}[!htp]
@@ -136,12 +141,18 @@
 \end{table}
 
 \subsubsection{Pseudocode: Algorithmus}
+\begin{figure}[!htp]
+	\caption{Aktivitätsdiagramm der Programmlogik}
+	\label{listing:pseudocode}
+	\lstinputlisting[language=C, caption=Pseudocode des zu implementierenden Algorithmus]{anhang/pseudo.code}
+	\centering
+\end{figure}
 \subsubsection{Aktivitätsdiagramm: Programmlogik}
 \begin{figure}[!htp]
-    \caption{Aktivitätsdiagramm der Programmlogik}
-    \label{programmlogik}
-    \includegraphics[width=\textwidth]{algo}
-    \centering
+	\caption{Programmlogik als UML Aktivitätsdiagramm}
+	\label{fig:programmlogik}
+	\includegraphics[width=\textwidth]{programmlogik}
+	\centering
 \end{figure}
 
 \subsubsection{Analyse: Verteilung der Qgramme}
@@ -176,3 +187,26 @@
 \lstinputlisting[language=C, label=listing:entwicklerDoku, caption=Beispiel eines Docstrings für Entwickler]{anhang/docstring.c}
 
 \subsubsection{Auszug: Endnutzerdokumentation}
+
+\begin{lstlisting}[style=xterm, label=fig:cliHelp, caption=Ausgabe der Endnutzerdokumentation über den --help parameter]
+
+	nils@chantico:~/git/ematch/src> ./qgjoin --help
+	Usage: qgjoin [OPTION] LEFT_LIST RIGHT_LIST
+	   or: cat RIGHT_LIST | qgjoin LEFT_LIST
+	Compare two lists of strings using a Q-gram-based Fuzzy Join algorithm.
+	LEFT_LIST is expected to be a path to a file. It is read entirely into memory;
+	it is your job to make sure it fits. The RIGHT_LIST argument can either be a file
+	path, or input piped via STDIN.
+	
+	LEFT_LIST               List of strings to be kept in memory.
+				Type: FILE PATH
+	RIGHT_LIST              List of strings to compare LEFT_LIST against.
+				Type: FILE PATH or STDIN
+	
+	--help, -h              Display this help output
+	--version, -v           Display the version of the program.
+	nils@chantico:~/git/ematch/src>
+
+\end{lstlisting}
+
+
