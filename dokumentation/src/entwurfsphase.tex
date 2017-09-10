@@ -5,7 +5,7 @@
 Wie aus der Sektion Projektziel entnommen werden kann, soll das Projekt als Kommandozeilenprogramm
 implementiert werden. Aufgrund der Anforderungen aus dem Lastenheft, welches Speicherperformanz sowie Geschwindigkeit fordert,
 fiel die Entscheidung der Programmiersprache recht schnell. C ist eine Hochsprache, welche effizient und extrem schnell
-die geforderten Berechnungen ausführen kann, und dem programmierer ein ideales Interface bietet, effizient im Speicher zu agieren.
+die geforderten Berechnungen ausführen kann, und dem Programmierer eine ideale Schnittstelle bietet, effizient im Speicher zu agieren.
 Um jedoch persönliche Erfahrungen und Ansichten zu verifizieren, wurden diverse weitere Sprachen anhand einer
 Nutzwertanalyse verglichen. Die wichtigste Rolle spielten hierbei folgende Kriterien:
 \begin{itemize}
@@ -15,15 +15,14 @@ Nutzwertanalyse verglichen. Die wichtigste Rolle spielten hierbei folgende Krite
     \item Systemische Vorraussetzungen - Anzahl und Aufwand der Vorraussetzungen um die Sprache zu nutzen
 \end{itemize}
 
-Die Ergebnisse dieses Vergleichs wurden in der Nutzwertanalyse, zu finden
-im Anhang auf Seite X, präsentiert.\par
+Die Ergebnisse dieses Vergleichs wurden in der Nutzwertanalyse \ref{nwa_sprachen} präsentiert.\par
 Letztendlich wurde an der initialen Entscheidung, die Sprache C zu nutzen, festgehalten.
 
 \subsection{Algorithmusdesign}
 In Zusammenarbeit mit der Abteilung für Datenverarbeitung hat der Autor einen simplen
 Pseudocode für die grundlegende Logik des Algorithmus entwickelt, welcher als Ausgangspunkt
 für die weitere Entwicklung genutzt wurde. Dieser wurde vom Autor in Form eines
-Aktivitätsdiagramms, einsehbar auf Seite X im Anhang, visualisiert.
+Aktivitätsdiagramm\ref{programmlogik} im Anhang, visualisiert.
 Der Pseudo code ist ebenfalls auf Seite X im Anhang einsehbar.
 Hierbei wurden sogenannte QGramme verwendet - diese verstehen sich als
 Teilstring eines Strings der Länge Q.
@@ -35,7 +34,11 @@ Das Projekt besteht aus 2 Header-Dateien und einer main.c. Die Header Dateien
 beinhalten zum einen die Algorithmus-spezifischen Funktionen zum Vergleich von
 Strings, zum anderen eine open-source Hashmap implementation.
 
-SCREENSHOT OF DIRECTORY LAYOUT
+\begin{figure}[!htp]
+	\label{folderstruct}
+	\caption{Übersicht der Ordnerstruktur. Hochauflösung im Anhang.}
+	\includegraphics[width=0.5\textwidth]{folder_struct}
+\end{figure}
 
 Auf programmatischer Ebene wurde das Programm in zwei Abschnitte unterteilt:
 \begin{itemize}
@@ -80,10 +83,11 @@ erstellt werden. Für Q bot sich hier eine Hashmap an - prinzipiell besteht
 hier zwar ein höherer Speicheraufwand, dieser ist jedoch abschätzbar, da die
 maximale Anzahl an möglichen Key-Value Einträgen begrenzt ist. Der darausfolgende
 O(1) Suchaufwand zum vergleich von Qgramme ist ein unschätzbarer Vorteil in der
-späteren Ausführung. Auch hier wurde wiederum eine Nutzwertanalyse durchgeführt,
+späteren Ausführung. Auch hier wurde wiederum eine Nutzwertanalyse\ref{nwa_datentyp} durchgeführt,
 um sicherzustellen dass die persönlichen Annahmen des Autors mit den technischen
 Gegebenheiten übereinstimmen.
 Hierzu wurden verschiedene Datenstrukturen nach folgenden Kriterien bewertet:
+
 \begin{enumerate}
     \item \textbf{Speicheraufwand} \\
     Da laut Vorgabe maximal 32GB zur Ausführung des Programms zur Verfügung stehen,
@@ -105,23 +109,30 @@ Hierzu wurden verschiedene Datenstrukturen nach folgenden Kriterien bewertet:
 Für M wird eine dynamisch wachsende Array benötigt, da die Anzahl der passenden
 QGramme je nach String variiert. Da die Anzahl der möglichen Zeichen pro QGramm von unserem
 verwendeten Zeichensatz begrenzt ist (7-Bit ASCII), konnte eine begründete Annahme
-über die Verteilung der QGramme in der Menge der Strings gemacht werden.
-Anhand dieser Analyse konnte eine optimale Startgröße festlegt werden, sodass in etwa der hälfte der Fälle
+über die Verteilung der QGramme in der Menge der Strings gemacht werden. Diese wurde anhand eines
+Graphen\ref{qgram_verteilung} dargestellt. Die Verteilung stellt als Quantil die 
+Menge an Qgrammen der String Daten dar.
+Anhand dieser Analyse konnte eine optimale Startgröße festlegt werden, sodass in etwa der Hälfte der Fälle
 erwartet werden kann, dass das Array nicht vergrößert werden muss, und somit die
 Speicherzuweisungen minimiert werden.
 
-Eine größere Ansicht des Graphen befindet sich im Anhang auf Seite X.
-
+\begin{figure}[!htp]
+	\label{qgram_verteilung_klein}
+	\caption{Qgramverteilung der Daten. Hochauflösung im Anhang.}
+	\includegraphics[width=.25\textwidth]{multiplicity_of_qgrams}
+\end{figure}
 
 In Einklang mit der test-getriebenen Entwicklung wurde von Anfang an ein Hauptaugenmerk
 auf die möglichst granulare Entwicklung des Codes gelegt. So wurden die Schritte
-des Algorithmus in jweils mindestens einen Test und eine dazugehörige Funktion unterteilt.
+des Algorithmus in jweils mindestens einen Test und eine dazugehörige Funktion unterteilt \ref{listing_tests}.
 Auch wurden für jeden selbsterstellten Datentypen und dazugehörige Funktionen
 ebenfalls zunächst ein Test geschrieben.
 
+
+
 \subsection{Entwurf der Benutzeroberfläche}
-Der GNU Codingstandard\footnote{https://www.gnu.org/prep/standards/standards.html#User-Interfaces},
-sowie die POSIX Utility Guidelines\footnote{http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html}
+Der GNU Codingstandard\footnote{\url{https://www.gnu.org/prep/standards/standards.html\#User-Interfaces}},
+sowie die POSIX Utility Guidelines\footnote{\url{http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html}}
 spezifizieren standardisierte Parameternamen und Funktionen eines Programms, sowie
 deren erwartete Funktion. Da es sich bei der Zielgruppe um erfahrene Linuxnutzer handelt, wurde das
 Kommandozeilenprogramm nach diesen Standards auch entwickelt. Ein Auszug dieser
@@ -159,5 +170,5 @@ unterschiedlichen Komponenten innerhalb der Geschäftslogik darstellt.
 \subsection{Pflichtenheft / Datenverarbeitungskonzept}
 Abschließend zur Entwurfsphase wurde ein Pflichtenheft erstellt und dieses als
 Roter Faden für das Projekt der Abteilung für Datenverarbeitung vorgelegt. Wie im
-Projektmanagement üblich, baut dieses auf dem Lastenheft auf, und erläutert die
-Lösungsansätze und die benötigten Mittel um das Projekt zu realisieren.
+Projektmanagement üblich, baut dieses auf dem Lastenheft auf.
+Ein Auszug des Pflichtenhefts befindet sich im Anhang.
