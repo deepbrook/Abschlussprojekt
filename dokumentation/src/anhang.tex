@@ -185,6 +185,34 @@
 
 \subsubsection{Pflichtenheft}
 \label{auszug:pflichtenheft}
+\begin{itemize}
+
+    \item Das Programm nimmt die Daten zum einen als Dateipfad, und zum anderen als Dateipfad oder Input über STDIN an.
+
+    \item Die Ausführung des Programms mit dem Parameter \-h bzw \-\-help ruft einen Hilfetext zur Nutzung des Programms auf.
+
+    \item Die Ausführung des Programms mit dem Parameter \-v bzw \-\-version ruft die derzeitige Versionsnummer des Programms auf.
+
+    \item Das Programm wird auf und für openSuSE 13.1 entwickelt und kompiliert.
+
+    \item Das Programm wird keine Form von Multithreading bzw Multiprocessing verwenden.
+
+    \item Die zuerst, über einen Dateipfad angegebene Liste wird in den Speicher gelesen;
+    die zweite kann entweder als Dateipfad oder über STDIN eingegeben werden und wird Zeile für Zeile geladen.
+
+    \item Das Programm garantiert einen konstanten Speicherverbrauch, welcher abhängig von der ersten Datei ist.
+
+    \item Das Programm wird keine Eingabeüberprüfung vollziehen - Dateigröße und Format müssen vom Nutzer erkannt und angepasst werden.
+
+    \item POSIX und GNU Guidelines werden für die Parameternamen der Kommandozeile eingehalten und angewendet.
+
+    \item Für jeder Routine, welche für das Programm geschrieben wird, wird es einen Test geben, der deren Funktion überprüft
+
+    \item Das Programm vergleicht Strings mitfhilde einer 5-Bit ASCII Kodierung, gibt die Strings aber so aus wie sie eingegeben worden sind.
+
+    \item Alle Funktionen werden über Dokumentationsblöcke dokumentiert; dies beinhaltet Datentypen der Parameter und funktionsweise der Routine.
+
+\end{itemize}
 
 \subsubsection{Pseudocode: Algorithmus}
 \begin{figure}[!htp]
