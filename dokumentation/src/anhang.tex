@@ -163,8 +163,9 @@
 		\item Das Programm muss auf einem einzigen Kern lauffähig sein, und
 		darf das laufen auf mehreren Kernen in einem Shared-Memory-Environment
 		unterstützen.
-		\item Das Programm darf mit maximal 32GB Arbeitsspeicher arbeiten, und nicht mehr
-		als 200 GB Festplattenspeicher zur Kalkulation verwenden. Zwischenprozessliche Kommunikationswege
+		\item Die Systemvoraussetzungen des Programms darf mindestens 32GB Arbeitsspeicher
+              und mindestens 200 GB Festplattenspeicher voraussetzen.
+              Zwischenprozessliche Kommunikationswege dürfen nicht vorausgesetzt werden.
 		sind ausgeschlossen.
 		\item Das Programm gibt Fehler und Debug Daten über STDERR aus.
 		\item Errechnete Ergebnisse werden über STDOUT ausgegeben.
