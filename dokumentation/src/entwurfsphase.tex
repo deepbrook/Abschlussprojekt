@@ -83,7 +83,7 @@ Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien be
 
 Für M wird ein dynamisch wachsendes Array benötigt, da die Anzahl der passenden
 Q-Gramme je nach String variiert. Die Anzahl der möglichen Zeichen pro Q-Gramm von unserem verwendeten Zeichensatz ist durch die Kodierung (7-Bit ASCII) begrenzt. Um Einschätzen zu können welche Startgröße des Arrays sinnvoll ist um die Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der Q-Gramme innerhalb des derzeitigen Datensatzes berechnet. Dies wurde anhand eines
-Graphen\ref{qgram_verteilung} dargestellt, welcher die Anzahl Strings auf X-Achse, der Anzahl Q-Gramme auf der Y-Achse als Quantil gegenüber.
+Graphen\ref{fig:qgram_verteilung} dargestellt, welcher die Anzahl Strings auf X-Achse, der Anzahl Q-Gramme auf der Y-Achse als Quantil gegenüber.
 % Stimmt dass so? 
 
 Anhand dieser Analyse konnte eine optimale Startgröße festlegt werden, sodass in etwa der Hälfte der Fälle
@@ -93,7 +93,7 @@ Speicherzuweisungen minimiert werden.
 
 Im Einklang mit der test-getriebenen Entwicklung wurde von Anfang an das Hauptaugenmerk
 auf die möglichst granulare Entwicklung des Codes gelegt. So wurden die Schritte
-des Algorithmus' in jeweils mindestens einen Test und eine dazugehörige Funktion unterteilt \ref{listing_tests}.
+des Algorithmus' in jeweils mindestens einen Test und eine dazugehörige Funktion unterteilt.
 Auch wurden für jeden selbst erstellten Datentyp und die dazugehörigen Funktionen Tests geschrieben.
 
 \footnotetext{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext dieses Projekts = Länge des Alphabets hoch Q-Grammlänge }
