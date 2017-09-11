@@ -11,11 +11,14 @@ nach Abschluss eines Projekts wieder verworfen, da es sich meist um spezialisier
 Somit besteht zur Zeit keine firmenweite Datenbank, welche die Symbole
 bereits verglichen und sortiert bereitstellt.\par
 
-Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein Distanz\footnotemark (kurz: DLD). Dieser sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
+Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein Distanz\footnote{Die Damerau-Levenshtein Distanz\cite{dl_distance} beschreibt die minimale Anzahl
+	an Operationen welche benötigt wird um einen String A in einen zu
+	vergleichenden String B zu verwandeln} (kurz: DLD). Dieser sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
 Anbieter darstellt. Dies resultiert in einem circa 23 PetaBytes großem Datenobjekt
 im Arbeitsspeicher unserer Systeme, und führt erwartungsgemäß zu Speicherüberläufen.
 In Rechenaufrufen ausgedrückt bedeutet dies, dass etwa \\
-1.038.901.988.746.226\footnotemark DLD Aufrufe benötigt werden um die Daten miteinander 
+1.038.901.988.746.226\footnote{Eine Billiarde achtunddreißig Billionen neunhundertein Milliarden
+	neunhundertachtundachtzig Millionen siebenhundertsechsundvierzigtausendzweihundertsechsundzwanzig} DLD Aufrufe benötigt werden um die Daten miteinander
 zu vergleichen und die Datenbank zu erstellen. Das DLD-Matrix-Verfahren schafft hierbei 
 etwa 1.340.000 Aufrufe pro Sekunde (CPU-Zeit).
 Daraus ergibt sich eine Initiallaufzeit von etwa 6,15 Jahren auf einem 4-Kern-Rechner bei voller Nutzlast (dies exkludiert die täglich hinzukommenden Daten
@@ -29,14 +32,6 @@ sodass die Daten auf einem firmeninternen 4-Kerner zeitnah ausgerechnet werden k
 Hierbei ist es nicht unbedingt erforderlich die, Damerau-Levenshtein-Distanz zu verwenden. Desweiteren soll der Zeitaufwand der ad-hoc 
 Vergleichue der Ergebnisse drastisch reduziert werden.\par
 
-% FOOTNOTES
-
-\footnotetext{Die Damerau-Levenshtein Distanz\cite{dl_distance} beschreibt die minimale Anzahl
-	an Operationen welche benötigt wird um einen String A in einen zu
-	vergleichenden String B zu verwandeln}
-
-\footnotetext{Eine Billiarde achtunddreißig Billionen neunhundertein Milliarden
-	neunhundertachtundachtzig Millionen siebenhundertsechsundvierzigtausendzweihundertsechsundzwanzig}
 
 
 
