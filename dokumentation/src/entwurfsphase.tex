@@ -68,12 +68,11 @@ Mit Ausnahme von Q und M können alle Datenstrukturen mit den geläufigen C
 Datentypen ausgedrückt werden.
 
 Für die Strukturen Q und M mussten jedoch neue Datenstrukturen
-erstellt werden. Für Q bot sich hier eine Hashmap an, die zwar einen höheren Speicheraufwand hat, welcher jedoch durch die Beschränkung des Alphabets und der Länge der Q-Gramme abschätzbar ist\footnotemark. Der daraus folgende
-O(1) Suchaufwand zum Vergleich von Q-Grammen ist ein unschätzbarer Vorteil in der
-späteren Ausführungsphase. Auch hier wurde wiederum eine Nutzwertanalyse\ref{nwa:datentyp} durchgeführt,
+erstellt werden. Für Q bot sich hier eine Hashmap an, die zwar einen höheren Speicheraufwand hat, welcher aber von dem der Struktur zugrundeliegende
+O(1) Suchaufwand zum Vergleich von Q-Grammen mehr als ausgeglichen wird. Auch hier wurde wiederum eine Nutzwertanalyse\ref{nwa:datentyp} durchgeführt,
 um sicherzustellen dass die persönlichen Annahmen des Autors mit den technischen
 Gegebenheiten übereinstimmen.
-Hierzu wurden verschiedene Datenstrukturen nach folgenden Kriterien bewertet:
+Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien bewertet:
 
 \begin{enumerate}
 	\item \textbf{Schnelligkeit Such-Befehl} - Wie hoch ist die Komplexität des Such-Befehls der Datenstruktur?
