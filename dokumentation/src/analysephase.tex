@@ -44,7 +44,7 @@ Dieses Tool vergleicht Daten jedoch nur in eine Richtung (One-To-Many), während
 Use-Case ein bidirektionales Verfahren benötigt (Many-To-Many).\par
 
 Somit stellte sich die Frage nach einer optimalen Vorgehensweise zur Umsetzung des
-Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse\ref{nwa:projektentwicklung} erstellt, um diversen Lösungswege zu evaluieren. \\
+Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse \ref{nwa:projektentwicklung} erstellt, um diversen Lösungswege zu evaluieren. \\
 Diese wurden anhand der folgenden Kriterien bewertet:
 
 
@@ -71,11 +71,23 @@ der Räumlichkeiten, Rechner, Software und weiterer Utensilien wurden mit 20€ 
 
 
 \subsubsection{Amortisationsdauer}
+Nach einer Einschätzung von der Abteilung für Datenverarbeitung wird zur Zeit in der Abteilung ein Mitarbeiter etwa 10 Stunden in der Woche
+darauf verwendet, Symboliken miteinander zu vergleichen. Dies ergibt, mit dem in der Projektkostenkalkulation verwendeten
+Stundenlöhnen und Kosten für Räumlichkeiten, Hard- und Software also 10*55€ = 550€ Pro Woche.
+Der Autor verspricht sich im schlechtesten Fall durch das Programm eine Beschleunigung des Vergleichsprozesses von etwa 30\%. Im optimal Fall würde der Prozess nur noch etwa 2 Stunden (80\% Verbesserung) dauern. Als realistisch schätzt der
+Autor eine Optimierung des Vorgangs um etwa 55\%\footnote{Die Zeiten wurden anhand von Kalkulationen der theorethischen Rechenvorgänge unter Einbezug von Schreib-, und Lesegeschwindigkeiten des Speichers, sowie Geschwindigkeit der CPU geschätzt.}.
 
+Anhand dieser Prozente lassen sich folgende Amortisationsdauern errechnen:\\
+\\
 
-\subsection{Anwendungsfälle}
-Um eine Übersicht über die Anwendungsfälle zu bekommen hat der Autor sich zunächst mit der Abteilung für Datenverarbeitung zusammengesetzt und evaluiert. Aus diesem Meeting erstellte der Autor ein Use-Case-Diagramm, um diese Fälle zu visualisieren und zu verdeutlichen. Das erstellte Diagramm wurde
-im Anhang\ref{fig:qgjoinUseCase} beigefügt.
+    \textbf{Bester Fall}:
+    \[\frac{3,883.75\text{Euro}}{550\text{Euro} \times 80\text{\%}} \approx 9 Wochen\]
+
+    \textbf{Wahrscheinlichster Fall}:
+    \[\frac{3,883.75\text{Euro}}{550\text{Euro} \times 55\text{\%}} \approx 13 Wochen\]
+
+    \textbf{Schlechtester Fall}:
+    \[\frac{3,883.75\text{Euro}}{550\text{Euro} \times 30\text{\%}} \approx 24 Wochen\]
 
 
 \subsection{Lastenheft / Fachkonzept}
