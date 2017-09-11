@@ -4,19 +4,16 @@
 \subsubsection{Vergleich: Theoretischer DLD vs QGram Zeitvergleich }
 \subsubsection{Use-Case QGJoin}
 \begin{figure}
-	\label{fig:qgjoinUseCase}
 	\caption{Use-Case Diagramm des QGJoin Programms}
+	\label{fig:qgjoinUseCase}
 	\includegraphics[width=\textwidth]{qgjoin_usecase}
 \end{figure}
+
 \subsubsection{Geschäftslogik Alt}
 \begin{figure}
-	\label{fig:geschäftslogikAlt}
 	\caption{UML Diagramm der bisherigen Geschäftslogik}
+	\label{fig:geschäftslogikAlt}
 \end{figure}
-
-
-
-
 
 
 
@@ -30,8 +27,8 @@
 
 \subsubsection{Projektstruktur}
 \begin{figure}[!htp]
+	\caption{Übersicht der Projektstruktur}
 	\label{fig:folderstruct}
-	\caption{Übersicht der Projektstruktur.}
 	\includegraphics[width=\textwidth]{folder_struct}
 \end{figure}
 
@@ -207,7 +204,7 @@
 \lstinputlisting[language=C, label=listing:entwicklerDoku, caption=Beispiel eines Docstrings für Entwickler]{anhang/docstring.c}
 
 \subsubsection{Auszug: Endnutzerdokumentation}
-\begin{lstlisting}[style=xterm, label=fig:cliHelp, caption=Ausgabe der Endnutzerdokumentation über den --help parameter]
+\begin{lstlisting}[style=xterm, caption=Ausgabe der Endnutzerdokumentation über den --help parameter, label=fig:cliHelp,]
 
 	nils@chantico:~/git/ematch/src> ./qgjoin --help
 	Usage: qgjoin [OPTION] LEFT_LIST RIGHT_LIST
