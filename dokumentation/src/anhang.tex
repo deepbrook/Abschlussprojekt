@@ -1,15 +1,15 @@
-\section{Anhang}
+\appendix
 \label{section:anhang}
-\subsection{Diagramme und Grafiken}
+\section{Diagramme und Grafiken}
 
-\subsubsection{Geschäftslogik (Alt)}
+\subsection{Geschäftslogik (Alt)}
 \begin{figure}[!htp]
 	\caption{UML Diagramm der bisherigen Geschäftslogik}
 	\label{fig:businessLogicAlt}
     \includegraphics{businessLogicOld}
 \end{figure}
 
-\subsubsection{Geschäftslogik (Neu)}
+\subsection{Geschäftslogik (Neu)}
 \begin{figure}[!htp]
 	\caption{UML Diagramm der Geschäftslogik nach Fertigstellung des Projekts}
 	\label{fig:businessLogicAlt}
@@ -17,7 +17,7 @@
 \end{figure}
 
 
-\subsubsection{Aktivitätsdiagramm: Programmlogik}
+\subsection{Aktivitätsdiagramm: Programmlogik}
 \begin{figure}[!htp]
 	\caption{Programmlogik als UML Aktivitätsdiagramm}
 	\label{fig:programmlogik}
@@ -25,14 +25,14 @@
 	\centering
 \end{figure}
 
-\subsubsection{Projektstruktur}
+\subsection{Projektstruktur}
 \begin{figure}[!htp]
 	\caption{Übersicht der Projektstruktur}
 	\label{fig:folderstruct}
 	\includegraphics[width=\textwidth]{folder_struct}
 \end{figure}
 
-\subsubsection{Analyse: Verteilung der Qgramme}
+\subsection{Analyse: Verteilung der Qgramme}
 \begin{figure}[!htp]
     \caption{Verteilung der QGramme im zu bearbeitenden Datensatz}
     \label{fig:qgram_verteilung}
@@ -40,7 +40,7 @@
     \centering
 \end{figure}
 
-\subsubsection{Datenmodell}
+\subsection{Datenmodell}
 \begin{figure}[!htp]
     \caption{UML Darstellung des Datenmodells}
     \label{fig:datenmodell}
@@ -50,8 +50,8 @@
 
 
 
-\subsection{Tabellen}
-\subsubsection{Projektkosten}
+\section{Tabellen}
+\subsection{Projektkosten}
 \begin{sidewaystable}[!htp]
 	\centering
 	\caption{Projektkosten}
@@ -69,7 +69,7 @@
 	\end{tabular}
 \end{sidewaystable}
 
-\subsubsection{Nutzwertanalyse: Projektentwicklung}
+\subsection{Nutzwertanalyse: Projektentwicklung}
 \begin{sidewaystable}[!htp]
 	\centering
 	\caption{Nutzwertanalyse Projektentwicklung}
@@ -89,7 +89,7 @@
 	\end{tabular}
 \end{sidewaystable}
 
-\subsubsection{Nutzwertanalyse: Programmiersprachen}
+\subsection{Nutzwertanalyse: Programmiersprachen}
 
 \begin{sidewaystable}[!htp]
 	\centering
@@ -112,7 +112,7 @@
 	\end{tabular}
 \end{sidewaystable}
 
-\subsubsection{Nutzwertanalyse: Datentyp der Menge Q}
+\subsection{Nutzwertanalyse: Datentyp der Menge Q}
 \begin{sidewaystable}[!htp]
 	\centering
 	\caption{Nutzwertanalyse der Datentypen für Q}
@@ -182,7 +182,7 @@
 	\end{tabular}
 \end{sidewaystable}
 
-\subsection{Auszüge}
+\section{Auszüge}
 \subsection{Ressourcen}
 \label{auszug:ressourcen}
 \textbf{Hardware}
@@ -208,7 +208,7 @@
 \end{itemize}
 
 
-\subsubsection{Lastenheft}
+\subsection{Lastenheft}
 \renewcommand{\labelenumii}{\theenumii}
 \renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 \label{auszug:lastenheft}
@@ -260,7 +260,7 @@
 \end{enumerate}
 
 
-\subsubsection{Pflichtenheft}
+\subsection{Pflichtenheft}
 \label{auszug:pflichtenheft}
 \begin{itemize}
 
@@ -291,22 +291,22 @@
 
 \end{itemize}
 
-\subsubsection{Pseudocode: Algorithmus}
+\subsection{Pseudocode: Algorithmus}
 \begin{figure}[!htp]
 	\lstinputlisting[language=C, caption=Pseudocode des zu implementierenden Algorithmus, label=listing:pseudocode]{anhang/pseudo.code}
 	\centering
 \end{figure}
 
-\subsubsection{Quellcodeauszug: Dynamische Array}
+\subsection{Quellcodeauszug: Dynamische Array}
 \lstinputlisting[language=C, caption=Auszug aus dem C Quellcode des dynamischen Array, label=lising:arrayImplementation,]{anhang/array.c}
 
-\subsubsection{Quellcodeauszug: Hashtable Implementation}
+\subsection{Quellcodeauszug: Hashtable Implementation}
 \lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der Hashmap, label=listing:hashtableImplmentation,]{anhang/hashmap.c}
 
-\subsubsection{Auszug: Entwicklerdokumentation}
+\subsection{Auszug: Entwicklerdokumentation}
 \lstinputlisting[language=C, caption=Beispiel eines Docstrings für Entwickler, label=listing:entwicklerDoku]{anhang/docstring.c}
 
-\subsubsection{Auszug: Endnutzerdokumentation}
+\subsection{Auszug: Endnutzerdokumentation}
 \begin{lstlisting}[style=xterm, caption=Ausgabe der Endnutzerdokumentation über den --help parameter, label=fig:cliHelp,]
 
 	nils@chantico:~/git/ematch/src> ./qgjoin --help
