@@ -1,4 +1,5 @@
 \section{Projektplanung}
+\label{section:projektplanung}
 \subsection{Projektphasen}
 Dem Autor standen 70 Arbeitsstunden zur Umsetzung des Projektes zur Verfügung.
 Vor Beginn des Projekts wurden diese auf die, für die Softwareentwicklung
@@ -11,10 +12,12 @@ detaillierte Zeitplanung (\ref{tabelle:zeitplanung}) entnommen werden.
 \subsection{Abweichungen vom Projektantrag}
 Ursprünglich wurde im Projektantrag eine Implementierung des Algorithmus in
 Python genannt. Diese wurde, nach gründlicherer Recherche und in Absprache mit der
-Abteilung Datenverarbeitung jedoch auf einen späteren Zeitpunkt verlegt. Grund
-hierfür ist, dass die C Implementierung höhere Priorität als die Python Einbindung hat.
-Deshalb wurde beschlossen, die bisherigen 7 Stunden, welche der Python Implementierung
-zugewiesen worden waren, stattdessen der Optimierung des C Programms zugeschrieben.
+Abteilung Datenverarbeitung jedoch auf einen späteren Zeitpunkt verlegt und nicht
+Teil des Pflichtenhefts. Grund hierfür ist, dass die C Implementierung höhere
+Priorität als die Python Bibilothek hat, der Einbindungsprozess letzterer jedoch komplexer
+ist als zuvor angenommen.
+Deshalb wurde beschlossen, die 7 Stunden, welche der Python Implementierung
+zugewiesen worden waren, stattdessen der Optimierung des C Programms zu zuweisen.
 
 \subsection{Ressourcenplanung}
 In der Ressourcenplanung finden sich sämtliche Einheiten aufgelistet, welche für
@@ -24,16 +27,16 @@ In der Ressourcenplanung finden sich sämtliche Einheiten aufgelistet, welche f�
 
 \subsection{Entwicklungsprozess}
 Für die Umsetzung des Projekts wurde vom Autor ein agiler Entwicklungsprozess in
-Form von Kanban entschieden. Ausschlaggebend waren hierfür die Tatsache dass es
-keine festen Phasenlängen gibt, und Prioritäten sofort angepasst werden, wenn
-neue Informationen(z.B. Abschluss von Arbeitspaketen) hinzukommen.\par
+Form von Kanban ausgewählt. Ausschlaggebend waren hierfür die Tatsache, dass es bei Kanban
+keine festen Phasenlängen gibt und Prioritäten sofort angepasst werden, wenn
+neue Informationen(z.B. Abschluss von Arbeitspaketen, Verzögerungen im Ablauf) hinzukommen.\par
 
 Das Kanbanboard wurde hierbei in 5 Bahnen aufgeteilt, welche repräsentativ für
 die 5 Stufen, in welche der Autor die Entwicklungsphase unterteilt hat, stehen:
 \begin{itemize}
     \item \textbf{Offen} -- Arbeitspakete in dieser Spalte befinden sich noch
     nicht in der Entwicklung, und warten darauf begonnen zu werden.
-    \item \textbf{Testentwicklung} -- Es werden Tests geschrieben, welches alle
+    \item \textbf{Testentwicklung} -- Es werden Tests geschrieben, welche alle
     Anforderungen an den erforderlichen Code zur Fertigstellung des Arbeitspakets
     überprüfen.
     \item \textbf{Implementation} -- Das Arbeitspaket befindet sich in der
@@ -48,6 +51,8 @@ die 5 Stufen, in welche der Autor die Entwicklungsphase unterteilt hat, stehen:
 Ein Augenmerk ist hierbei vor Allem auf die Spalte "Verifizierung" zu legen.
 Diese bereichert den Entwicklungsprozess um einen formellen, fest vorgesehenen
 Zeitpunkt im Entwicklungsprozess, die dem Kunden ermöglicht, direktes Feedback
-zur Lösung des Arbeitpakets zu geben, und frühzeitig möglicherweise notwendigen
-Anpassungen zu kommunizieren.\par
+zur Lösung des Arbeitpakets zu geben, und frühzeitig möglicherweise notwendige
+Anpassungen zu kommunizieren. Wichtig ist hierbei, dass die Überprüfung nicht in
+einem Meeting geschieht, da sonst der Entwicklungsprozess gestört wird. Feedback
+zu den einzelnen Arbeitspaketen geschieht ausschließlich über das Kanbanboard.\par
 
