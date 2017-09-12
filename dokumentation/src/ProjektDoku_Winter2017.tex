@@ -9,6 +9,7 @@
 \usepackage[german]{babel}
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
+\usepackage{amsmath}
 \DeclareGraphicsExtensions{.png, .eps, .pdf}
 \usepackage{palatino}
 \usepackage{hyperref}
@@ -78,6 +79,13 @@
 
 \tableofcontents{}
 \clearpage
+
+% List of figures and tables
+\thispagestyle{empty}
+\listoffigures
+\listoftables
+\newpage
+\pagenumbering{arabic}
 
 \label{section:acronyms}
 \input{acronyms}
