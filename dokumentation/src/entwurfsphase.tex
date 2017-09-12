@@ -1,20 +1,20 @@
 \section{Entwurfsphase}
 \label{section:entwurfsphase}
 \subsection{Zielplattform}
-Wie aus dem vorherigen Abschnitt\ref{section:einleitung} entnommen werden kann, soll das Projekt als Kommandozeilenprogramm
+Wie dem Abschnitt \ref{section:einleitung} entnommen werden kann, soll das Projekt als Kommandozeilenprogramm
 implementiert werden. Anhand der Anforderungen des Lastenhefts, welches Speicherperformanz sowie Geschwindigkeit fordert,
-fiel die Entscheidung der Programmiersprache recht schnell auf die Hochsprache C.Diese erlaubt effiziente Berechnungen bietet eine ideale Schnittstelle um effizient im Speicher agieren zu können.
-Zur Überprüfung dieser Einschätzung wurden diverse weitere Sprachen anhand einer
+fiel die Entscheidung der Programmiersprache recht schnell auf die Hochsprache C.Diese erlaubt effiziente Berechnungen und bietet eine ideale Schnittstelle um effizient im Speicher agieren zu können.
+Zur Überprüfung dieser Einschätzung wurden weitere Sprachen anhand einer
 Nutzwertanalyse mit der Sprache C verglichen. Die wichtigste Rolle spielten hierbei folgende Kriterien:
 \begin{itemize}
     \item \textbf{Performanz} - Geschwindigkeit der Sprache in der High-Performance-Computing (HPC) Domäne
-    \item \textbf{Speichereffizienz} - Der Fußabdruck der Sprache auf der Festplatte, sowie der Objekte im Speicher, soll möglichst gering sein
+    \item \textbf{Speichereffizienz} - Die Größe des Fußabdrucks der Sprache auf der Festplatte, sowie der Objekte im Speicher - weniger ist besser.
     \item \textbf{Dokumentation} - Bibliotheken und Module sollen gut und einsehbar dokumentiert sein.
-    \item \textbf{Systemische Vorraussetzungen} - Anzahl und Aufwand der Vorraussetzungen, um die Sprache zu nutzen
+    \item \textbf{Systemische Vorraussetzungen} - Anzahl und Aufwand der Vorraussetzungen, um die Sprache zu nutzen. Auch hier ist weniger besser.
 \end{itemize}
 
-Die Ergebnisse dieses Vergleichs wurden in der Nutzwertanalyse \ref{nwa:sprachen} präsentiert.
-Sie ist dem Anhang dieses Dokumentes beigefügt.\par
+Die Ergebnisse dieses Vergleichs wurden in der Nutzwertanalyse präsentiert.
+Sie ist dem Anhang (Abschnitt \ref{nwa:sprachen})  dieses Dokumentes beigefügt.\par
 Letztendlich wurde an der urprünglichen Entscheidung, die Sprache C zu nutzen, festgehalten.
 
 \subsection{Algorithmusdesign}
@@ -22,7 +22,7 @@ In Zusammenarbeit mit der Abteilung für Datenverarbeitung hat der Autor einen s
 Pseudocode für die grundlegende Logik des Algorithmus' entwickelt, welcher als Ausgangspunkt
 für die weitere Entwicklung genutzt wurde. Hierbei wurden sogenannte Q-Gramme verwendet - 
 diese verstehen sich als Teilstring eines Strings der Länge Q. Dieser Code wurde in Form eines
-Aktivitätsdiagramm\ref{fig:programmlogik} visualisiert. Der zugrunde liegende  Pseudocode des Diagramms ist ebenfalls im Anhang\ref{listing:pseudocode} einsehbar.
+Aktivitätsdiagramm (Anhang \ref{fig:programmlogik}) visualisiert. Der zugrunde liegende  Pseudocode des Diagramms ist ebenfalls im Anhang (Listing \ref{listing:pseudocode)} einsehbar.
 
 
 \clearpage
@@ -30,7 +30,7 @@ Aktivitätsdiagramm\ref{fig:programmlogik} visualisiert. Der zugrunde liegende  
 
 Das Projekt besteht aus zwei Header-Dateien und einer main.c. Die Header-Dateien
 beinhalten zum einen die algorithmusspezifischen Funktionen zum Vergleich von
-Strings, zum anderen eine open-source Hashmap-Implementierung.
+Strings, zum anderen eine Open Source Hashmap-Implementierung.
 
 Auf Programmebene wurde die Logik in zwei Abschnitte unterteilt:
 \begin{itemize}
@@ -39,7 +39,7 @@ Auf Programmebene wurde die Logik in zwei Abschnitte unterteilt:
     Variablen werden initialisiert und der Q-Gramm-Pool erstellt.
     \item \textbf{Ausführung} \\
     Das zweite Datenset wird über einen File-Pointer referenziert und die
-    Strings werden Zeile für Zeile ausgelesen. Die Q-Gramme jeder Zeile werden dann mit den Q-Grammen aus der Phase "Vorbereitung" verglichen. Erfüllt die Zeile die Anforderungen für Stringübereinstimmungen, wird sie über STDOUT ausgegeben.
+    Strings werden Zeile für Zeile ausgelesen. Die Q-Gramme jeder Zeile werden dann mit den Q-Grammen aus der Phase ''Vorbereitung'' verglichen. Erfüllt die Zeile die Anforderungen für Stringübereinstimmungen, wird sie über STDOUT ausgegeben.
 \end{itemize}
 
 Hieraus ergaben sich acht Subkomponenten, welche implementiert werden mussten:
@@ -55,10 +55,10 @@ Hieraus ergaben sich acht Subkomponenten, welche implementiert werden mussten:
     \item \textbf{Ausführung}
     \begin{itemize}
         \item \textbf{Variable I}: Die Menge, welche die gleiche Größe wie S hat und die
-        Anzahl der Qgramme zählt, welche für den jeweiligen Index eines Strings in
+        Anzahl der Q-Gramme zählt, welche für den jeweiligen Index eines Strings in
         S passen.
         \item \textbf{Variable f}: Eine Referenz zur zweiten Liste, über die wir zu vergleichende Strings holen können
-        \item \textbf{Variable T}: Die Menge der Qgramme in der aktuell ausgelesenen Zeile
+        \item \textbf{Variable T}: Die Menge der Q-Gramme in der aktuell ausgelesenen Zeile
         \item \textbf{Variable M}: Eine Menge der Indizes von Strings, welche auf die QGramme \textbf{T} am besten passen
     \end{itemize}
 \end{itemize}
@@ -67,8 +67,8 @@ Mit Ausnahme von Q und M können alle Datenstrukturen mit den geläufigen C
 Datentypen ausgedrückt werden.
 
 Für die Strukturen Q und M mussten jedoch neue Datenstrukturen
-erstellt werden. Für Q bot sich hier eine Hashmap an, die zwar einen höheren Speicheraufwand hat, welcher aber von dem der Struktur zugrundeliegende
-O(1) Suchaufwand zum Vergleich von Q-Grammen mehr als ausgeglichen wird. Auch hier wurde wiederum eine Nutzwertanalyse \ref{nwa:datentyp} durchgeführt,
+erstellt werden. Für Q bot sich hier eine Hashmap an, die zwar einen höheren Speicheraufwand hat, welcher aber von dem der Struktur zugrundeliegenden
+O(1) Suchaufwand zum Vergleich von Q-Grammen mehr als ausgeglichen wird. Auch hier wurde wiederum eine Nutzwertanalyse (Tabelle \ref{nwa:datentyp}) durchgeführt,
 um sicherzustellen dass die persönlichen Annahmen des Autors mit den technischen
 Gegebenheiten übereinstimmen.
 Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien bewertet:
@@ -81,8 +81,8 @@ Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien be
 \end{enumerate}
 
 Für M wird ein dynamisch wachsendes Array benötigt, da die Anzahl der passenden
-Q-Gramme je nach String variiert. Die Anzahl der möglichen Zeichen pro Q-Gramm von unserem verwendeten Zeichensatz ist durch die Kodierung (7-Bit ASCII) begrenzt. Um Einschätzen zu können welche Startgröße des Arrays sinnvoll ist um die Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der Q-Gramme innerhalb des derzeitigen Datensatzes berechnet. Dies wurde anhand eines
-Graphen\ref{fig:qgram_verteilung} dargestellt, welcher die Anzahl Strings auf X-Achse, der Anzahl Q-Gramme auf der Y-Achse als Quantil gegenüber.
+Q-Gramme je nach String variiert. Die Anzahl der möglichen Zeichen pro Q-Gramm von unserem verwendeten Zeichensatz ist durch die Kodierung (5-Bit ASCII) begrenzt. Um Einschätzen zu können welche Startgröße des Arrays sinnvoll ist um die Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der Q-Gramme innerhalb des derzeitigen Datensatzes berechnet. Dies wurde anhand eines
+Graphen (Abbildung \ref{fig:qgram_verteilung}) dargestellt, welcher die Anzahl Strings auf der X-Achse, der Anzahl Q-Gramme auf der Y-Achse als Quantil gegenüber stellt.
 
 Anhand dieser Analyse konnte eine optimale Startgröße festlegt werden, sodass in etwa der Hälfte der Fälle
 erwartet werden kann, dass das Array nicht vergrößert werden muss, und somit die
@@ -94,36 +94,36 @@ auf die möglichst granulare Entwicklung des Codes gelegt. So wurden die Schritt
 des Algorithmus' in jeweils mindestens einen Test und eine dazugehörige Funktion unterteilt.
 Auch wurden für jeden selbst erstellten Datentyp und die dazugehörigen Funktionen Tests geschrieben.
 
-\footnotetext{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext dieses Projekts = Länge des Alphabets hoch Q-Grammlänge }
+\footnotetext{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext dieses Projekts = $\text{Länge des Alphabets}^\text{Q-Grammlänge}$ }
 
 
 \subsection{Entwurf der Benutzeroberfläche}
 Der GNU Codingstandard\cite{gnuCodingStandard},
 sowie die POSIX Utility Guidelines\cite{posixGuidelines}
 spezifizieren standardisierte Parameternamen und Funktionen eines Programms, sowie
-deren erwartete Funktion. Da es sich bei der Zielgruppe um erfahrene Linuxnutzer handelt, wurde das Kommandozeilenprogramm nach diesen Standards entwickelt. Ein Auszug dieser Vorgaben befindet sich im Anhang auf Seite X.\par
+deren erwartete Funktion. Da es sich bei der Zielgruppe um erfahrene Linuxnutzer handelt, wurde das Kommandozeilenprogramm nach diesen Standards entwickelt.\par
 
-Da die bevorzugte Oberfläche der Endnutzer die Kommandozeile ist, wird keine grafische Oberfläche entwickelt.
+Da die bevorzugte Oberfläche der Endnutzer die Kommandozeile ist, wird auf eine grafische Oberfläche verzichtet.
 
 \subsection{Datenmodell}
 Aufgrund der Natur der Daten ist das Datenmodell für das Projekt trivial. Es besteht aus einer
 einspaltigen Tabelle, welche in Relation zu sich selbst steht. Aus diesen Gründen wird auf eine weitere Ausführung des 
-Modells verzichtet - die UML-Grafik des Modells kann jedoch im Anhang \ref{fig:datenmodell} eingesehen werden.
+Modells verzichtet - die UML-Grafik des Modells kann jedoch im Anhang (Abbildung \ref{fig:datenmodell}) eingesehen werden.
 
-Es ist zu klarzustellen, dass die GA Financial Solution ungern Datenbanksysteme wie
+Es ist klarzustellen, dass die GA Financial Solution ungern Datenbanksysteme wie
 MySQL, MongoDB u.Ä. nutzt. Stattdessen werden komprimierte CSV-Dateien verwendet, welche
-meist nur aus drei Zeilen (Zeitstempel, Typ und Wert) bestehen. Dies ergibt sich aus
+meist nur aus drei Spalten (Zeitstempel, Typ und Wert) bestehen. Dies ergibt sich aus
 der negativen Erfahrung mit Datenbankmanagementsystemen und der Vereinfachung des Workflows durch
 die Nutzung von CSV-Daten in Kombination mit der hauseigenen CLI-Toolchain.
 
 
 \subsection{Geschäftslogik}
-Zur Veranschaulichung der bisherigen Geschäftslogik, wurde eine Aktivitätendiagramm\ref{fig:businessLogicAlt}
+Zur Veranschaulichung der bisherigen Geschäftslogik, wurde eine Aktivitätsdiagramm (Abbildung \ref{fig:businessLogicAlt})
 erstellt.Wie man dort erkennen kann, ist die Abholung der Daten von Anbietern automatisiert, jedoch nicht deren Verarbeitung.
 Diese geschieht bei Bedarf und erfordert, unter Anderem, die Vorsortierung der Daten in handhabbare Datensätze, welche einfacher und in angemessener Zeit von unseren 4-Kern-Maschinen
-berechnet werden können. Zudem kommt eine erforderliche manuelle Überprüfung
+berechnet werden können. Hinzu kommt eine erforderliche manuelle Überprüfung
 der Ergebnisse. Die daraus entstehenden Daten werden schließlich für das derzeitig entwickelte Projekt
-genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisiert sind, und sich nicht zur generellen Nutzung innerhalb der Firma eignen.\par
+genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisiert sind, und sich nicht zur generellen Nutzung innerhalb der Firma eignen. Nach Einbindung des Programms durch die Abteilung Datenverarbeitung ergibt sich dass in Abbildung \ref{fig:businessLogicNeu}\par
 
 
 
@@ -131,4 +131,4 @@ genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisi
 Abschließend zur Entwurfsphase wurde ein Pflichtenheft erstellt und dieses als
 Roter Faden für das Projekt der Abteilung für Datenverarbeitung vorgelegt. Wie im
 Projektmanagement üblich, baut dieses auf dem Lastenheft auf.
-Ein Auszug des Pflichtenhefts\ref{auszug:pflichtenheft} befindet sich im Anhang.
+Ein Auszug des Pflichtenhefts befindet sich im Anhang (Abschnitt \ref{auszug:pflichtenheft}).

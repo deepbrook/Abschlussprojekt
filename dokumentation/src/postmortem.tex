@@ -4,7 +4,7 @@
 Rückblickend kann festgehalten werden, dass alle, im Pflichtenheft
 abgesprochenen Funktionen und Anforderungen eingehalten worden sind,
 und zur vollsten Zufriedenheit des Auftraggebers erstellt wurden. Hierbei
-spielt die Entscheidung, die Einbindung des C Codes in PYthon zu streichen, sicherlich
+spielt die Entscheidung, die Einbindung des C Codes in Python zu streichen, sicherlich
 eine elementare Rolle. Wie man erkennen kann, wurden die Stunden, welche durch
 die Streichung frei wurden, effektive und vollsten ausgenutzt um den Anforderungen
 des Projekts gerecht zu werden. Dabei wurden die von der IHK vorgegebenen 70 Stunden
@@ -13,17 +13,17 @@ konsequent eingehalten.
 \subsection{Post Mortem}
 
 Vor Allem die Entwurfsphase half dem Autor seine Kenntnisse aus dem Projektmanagement anzuwenden,
-und waren bei den Nutzwertanalysen besonders hilfreich. Auch stellte sich die Anwendung des
+und waren bei den Nutzwertanalysen besonders hilfreich. Auch erwies sich die Anwendung des
 testgetriebenen Entwicklungskreislaufs als große Unterstützung dar - so wurden lästige Segmentation Faults frühzeitig
-erkannt, und die Funktionen (und somit das gesamt Programm) konnten schneller zu Produktionsreife heranwachsen.
+erkannt, und die Funktionen (und somit das gesamt Programm) konnten schneller zu produktionsreife heranwachsen.
 Auch das genutzte Kanban-Board erwies sich als großartiges Werkzeug, um Prozesse und deren Fortschritt zu dokumentieren.
-Kurze Kommunikations- und Entshceidungswege ermöglichten eine agile Entwicklung der Projekts und werden
+Kurze Kommunikations- und Entscheidungswege ermöglichten eine agile Entwicklung der Projekts und werden
 dem Autor auch weiterhin als ein wichtiger Baustein produktiver Arbeitsumgebungen in Erinnerung bleiben.
 
 \subsection{Ausblick}
 Punkte, welche im Lastenheft genannt, aber nicht mit in das Pflichtenheft genommen worden,
 stehen nun natürlich auf der Liste der weiteren Schritte. Da der Code gut dokumentiert
-und mit viel Auge für Lesbarkeit geschrieben worden ist, ist eine Cythoneinbindung nun trivial.
+und mit viel Auge für Lesbarkeit geschrieben worden ist, ist eine Cythoneinbindung nun effizient umsetzbar.
 Durch die bereitgestellten Tests können ebenfalls schnell Python Unittests erstellt, und somit
 die Einbindung des C Codes effektiv und verlässlich auch in Python überprüft werden.
 
@@ -32,16 +32,13 @@ Schlussendlich bleiben noch zwei Punkte, welche in Zukunft angegangen werden kö
 
 \item Die Optimierung der Programmlogik \\
     \begin{itemize}
-        \item Verfeinerung der Hashfunktion -
-        \item
+        \item Verfeinerung der Hashmap - Da die maximale Anzahl an Schlüsselwörten bekannt ist, kann die Hashmap so implementiert werden, dass exakt so viele ''Felder'' im Speicher reserviert werden wie nötig - und kein einziges mehr.
+        \item Das Auswahlkriterium könnte als Funktion implementiert, und der Vergleichsfunktion als Pointer übergeben werden. So könnten Änderungen noch unkomplizierter realisiert werden.
     \end{itemize}
 
 
-\item Die Anpassung des Q-Gramm Filters
-    \begin{itemize}
-        \item
-        \item
-    \end{itemize}
+\item Weiteres fine-tuning des Q-Gramm Filters
+
 
 \end{enumerate}
 
