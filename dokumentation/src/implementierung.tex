@@ -3,7 +3,7 @@
 \subsection{Entwicklungsvorbereitung}
 Zunächst mussten einige organisatorische Bedingungen erfüllt werden, bevor die eigentliche Entwicklungsphase offiziell beginnen konnte. So wurden das Kanban Board mit den
 Aufgabenpaketen aus dem Pflichtenheft populiert. Hierzu wurden Tests und deren
-dazugehörigen Funktionen betrachtet und als Arbeitspaket beschrieben.
+dazugehörige Funktionen betrachtet und als Arbeitspaket beschrieben.
 
 \subsection{Implementierung der Datenstrukturen}
 Wie bereits im vorherigen Abschnitt erwähnt, werden zwei spezielle Datenstrukturen für das Programm benötigt - Hashmaps und dynamisch wachsende Arrays.
@@ -13,11 +13,11 @@ Wie bereits im vorherigen Abschnitt erwähnt, werden zwei spezielle Datenstruktu
 
 Auf die eigene Implementierung einer Hashmap wurde verzichtet, stattdessen wurde
 eine frei verfügbare Bibliothek genutzt, welche eine Hashmap für
-String-Integer Paare zur Verfügung steht.
+String-Integer Paare zur Verfügung stellt.
 
 Der Code wurde weitgehend verbatim übernommen, mit der Ausnahme des
-Containertyps, welche die Hashmap speichert. Da ein Q-Gramm in mehreren Strings
-vorkommen kann, musste der Containertyp von einem Integer zu einen dynamisch
+Containertyps, welchen die Hashmap speichert. Da ein Q-Gramm in mehreren Strings
+vorkommen kann, musste der Containertyp von einem Integer zu einem dynamisch
 wachsenden Array abgewandelt werden. Da letzteres ohnehin entwickelt werden muss,
 war die Komplexität dieser Anforderung gering.
 
@@ -25,7 +25,7 @@ war die Komplexität dieser Anforderung gering.
 C stellt nur simple Datentypen zur Verfügung, welche dem Nutzer erlauben komplexere
 Datenstrukturen abzubilden. Da ein dynamisch-wachsendes
 Array nicht in C zur Verfügung steht, musste eine Datenstruktur für dieses erstellt werden.
-Das Konzept hierbei ist recht einfach - sollte das Array voll sein, so wird beim
+Das Konzept hierbei ist recht einfach: Sollte das Array voll sein, so wird beim
 nächsten Aufruf der Insert-Funktion die Länge des Array verdoppelt. Hierfür wurde
 eine neue Datenstruktur angelegt und drei Funktionen definiert, um mit dem Array
 interagieren zu können.\par

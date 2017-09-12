@@ -4,53 +4,48 @@
 Dem Autor standen 70 Arbeitsstunden zur Umsetzung des Projektes zur Verfügung.
 Vor Beginn des Projekts wurden diese auf die, für die Softwareentwicklung
 typischen, Phasen verteilt. Eine ausführlichere Aufteilung der Stunden kann der Tabelle
-detaillierte Zeitplanung (\ref{table:zeitplanung}) entnommen werden.
+''Detaillierte Zeitplanung'' (\ref{table:zeitplanung}) entnommen werden.
 
 
 
 \subsection{Abweichungen vom Projektantrag}
-Ursprünglich wurde im Projektantrag eine Implementierung des Algorithmus in
+Ursprünglich wurde im Projektantrag eine Einbindung des Algorithmus in
 Python genannt. Diese wurde, nach gründlicherer Recherche und in Absprache mit der
-Abteilung Datenverarbeitung jedoch auf einen späteren Zeitpunkt verlegt und nicht
-Teil des Pflichtenhefts. Grund hierfür ist, dass die C Implementierung höhere
-Priorität als die Python Bibilothek hat, der Einbindungsprozess letzterer jedoch komplexer
+Abteilung Datenverarbeitung, jedoch auf einen späteren Zeitpunkt verlegt und nicht
+Teil des Pflichtenhefts. Grund hierfür ist, dass die C-Implementierung eine höhere
+Priorität hat als die Python Bibilothek, der Einbindungsprozess letzterer jedoch komplexer
 ist als zuvor angenommen.
-Deshalb wurde beschlossen, die 7 Stunden, welche der Python Implementierung
-zugewiesen worden waren, stattdessen der Optimierung des C Programms zu zuweisen.
+Deshalb wurde beschlossen die 7 Stunden, welche der Python-Implementierung
+zugewiesen wurden, stattdessen der Optimierung des C-Programms zuzuweisen.
 
 \subsection{Ressourcenplanung}
-In der Ressourcenplanung finden sich sämtliche Einheiten aufgelistet, welche für
- die Realisierung des Projektes benötigt wurden. Hierbei ist zu erwähnen dass
- hiermit Hard- und Softwareressourcen, sowie personelle Ressourcen gemeint sind.
+In der Ressourcenplanung finden sich sämtliche Einheiten aufgelistet, die für
+ die Realisierung des Projektes benötigt wurden. Hierbei ist zu erwähnen, dass mit ''Einheiten'' Hard- und Softwareressourcen, sowie personelle Ressourcen gemeint sind.
  Die Auflistung der Ressourcen kann im Abschnitt \ref{auszug:ressourcen} des Anhangs eingesehen werden.
 
 \subsection{Entwicklungsprozess}
 Für die Umsetzung des Projekts wurde vom Autor ein agiler Entwicklungsprozess in
-Form von Kanban ausgewählt. Ausschlaggebend waren hierfür die Tatsache, dass es bei Kanban
+Form von Kanban ausgewählt. Ausschlaggebend hierfür war die Tatsache, dass es bei Kanban
 keine festen Phasenlängen gibt und Prioritäten sofort angepasst werden, sobald
-neue Informationen(z.B. Abschluss von Arbeitspaketen, Verzögerungen im Ablauf) hinzukommen.\par
+neue Informationen (z.B. Abschluss von Arbeitspaketen, Verzögerungen im Ablauf) hinzukommen.\par
 
-Das Kanbanboard wurde hierbei in 5 Bahnen aufgeteilt, welche repräsentativ für
-die 5 Stufen, in welche der Autor die Implementierungsphase unterteilt hat, stehen:
+Das Kanbanboard wurde hierbei in fünf Bahnen aufgeteilt, welche repräsentativ für
+die fünf Stufen, in welche der Autor die Implementierungsphase unterteilt hat, stehen:
 \begin{itemize}
     \item \textbf{Offen} -- Arbeitspakete in dieser Spalte befinden sich noch
-    nicht in der Entwicklung, und warten darauf begonnen zu werden.
+    nicht in der Entwicklung, und warten darauf bearbeitet zu werden.
     \item \textbf{Testentwicklung} -- Es werden Tests geschrieben, welche alle
     Anforderungen an den erforderlichen Code zur Fertigstellung des Arbeitspakets
     überprüfen.
-    \item \textbf{Implementation} -- Das Arbeitspaket wird bearbeitet und der dazugehörige Code erstellt. Hierbei wird Code geschrieben der den Anforderungen
+    \item \textbf{Implementierung} -- Das Arbeitspaket wird bearbeitet und der dazugehörige Code erstellt. Hierbei wird Code geschrieben, der den Anforderungen
     des zuvor geschriebenen Tests gerecht wird.
     \item \textbf{Verifizierung} -- Das Arbeitspaket wurde fertiggestellt und
     muss nun von der Abteilung Datenverarbeitung abgesegnet werden.
-    \item \textbf{Erledigt} -- Arbeitspakete in dieser Spalte sind fertiggestellt
-    und vom Auftraggeber überprüft und unterschrieben worden.
+    \item \textbf{Erledigt} -- Arbeitspakete in dieser Spalte sind fertiggestellt,
+    vom Auftraggeber überprüft und unterschrieben worden.
 \end{itemize}
 
-Das Augenmerk ist hierbei vor Allem auf die Spalte ''Verifizierung'' zu legen.
-Diese bereichert den Entwicklungsprozess um einen formellen, fest vorgesehenen
-Zeitpunkt im Entwicklungsprozess, die dem Kunden ermöglicht, direktes Feedback
-zur Lösung des Arbeitpakets zu geben, und frühzeitig möglicherweise notwendige
-Anpassungen zu kommunizieren. Wichtig ist hierbei, dass die Überprüfung nicht in
-einem Meeting geschieht, da sonst der Entwicklungsprozess gestört wird. Feedback
-zu den einzelnen Arbeitspaketen geschieht ausschließlich über das Kanbanboard.\par
+Das Augenmerk liegt hierbei vor allem auf der Spalte ''Verifizierung''.
+Dieser bereichert den Entwicklungsprozess um einen formellen, fest vorgesehenen
+Zeitpunkt zur Feedback-Kommunikation. So können frühzeitig, möglicherweise notwendige Anpassungen geäußert und unter Umständen noch umgesetzt werden. Wichtig hierbei ist, dass die Überprüfung nicht im Rahmen eines Meetings geschieht, da sonst der Entwicklungsprozess gestört wird. Ein Feedback zu den einzelnen Arbeitspaketen wird ausschließlich über das Kanbanboard kommuniziert.\par
 

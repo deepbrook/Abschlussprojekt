@@ -5,57 +5,55 @@ Die GA Financial Solutions GmbH holt sich täglich aktuelle Symbole von sechs ve
 Anbietern ab: Interactive Brokers, Google, Yahoo, Morningstar, Bloomberg und GLEIS.
 Täglich ändern sich diese Symbole um einen gewissen Prozentsatz und es kommen im Durchschnitt etwa 1,67 Millionen Instrumente hinzu.\par
 
-Zur Zeit werden diese Symbole ad hoc mittels Heuristiken und Handarbeit verglichen -
-dabei wird meist nur eine kleine Teilmenge benutzt; gefundene Ergebnisse werden
+Zur Zeit werden diese Symbole ad hoc mittels Heuristiken und in Handarbeit verglichen.
+Dabei wird meist nur eine kleine Teilmenge benutzt und gefundene Ergebnisse werden
 nach Abschluss eines Projekts wieder verworfen, da es sich meist um spezialisierte Werte handelt.\par
 
 Somit besteht zur Zeit keine firmenweite Datenbank, welche die Symbole
 bereits verglichen und sortiert bereitstellt.\par
 
-Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein Distanz\footnote{Die Damerau-Levenshtein Distanz\cite{dl_distance} beschreibt die minimale Anzahl
-	an Operationen welche benötigt wird um einen String A in einen zu
-	vergleichenden String B zu verwandeln} (kurz: DLD). Dieser sieht vor, eine M x M Matrix zu generieren, wobei M sämtliche Symbole aller
-Anbieter darstellt. Dies resultiert in einem circa 23 PetaBytes großem Datenobjekt
-im Arbeitsspeicher unserer Systeme, und führt erwartungsgemäß zu Speicherüberläufen.
+Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein-Distanz\footnote{Die Damerau-Levenshtein-Distanz\cite{dl_distance} beschreibt die minimale Anzahl
+	an Operationen, welche benötigt werden, um einen String A in einen zu
+	vergleichenden String B zu verwandeln} (kurz: DLD). Dieser sieht vor, eine $M\timesM$-Matrix zu generieren, wobei M sämtliche Symbole aller
+Anbieter darstellt. Dies resultiert in einem ca. 23 PetaBytes großem Datenobjekt
+im Arbeitsspeicher unserer Systeme und führt erwartungsgemäß zu Speicherüberläufen.
 In Rechenaufrufen ausgedrückt bedeutet dies, dass etwa \\
-1.038.901.988.746.226\footnote{Eine Billiarde achtunddreißig Billionen neunhundertein Milliarden
-	neunhundertachtundachtzig Millionen siebenhundertsechsundvierzigtausendzweihundertsechsundzwanzig} DLD Aufrufe benötigt werden um die Daten miteinander
+1.038.901.988.746.226\footnote{Eine Billiarde achtunddreißig Billionen neunhundertein Milliarden neunhundertachtundachtzig Millionen siebenhundertsechsundvierzigtausendzweihundertsechsundzwanzig} DLD-Aufrufe benötigt werden, um die Daten miteinander
 zu vergleichen und die Datenbank zu erstellen. Das DLD-Matrix-Verfahren schafft hierbei 
 etwa 1.340.000 Aufrufe pro Sekunde (CPU-Zeit).
 Daraus ergibt sich eine Initiallaufzeit von etwa 6,15 Jahren auf einem 4-Kern-Rechner bei voller Nutzlast (dies exkludiert die täglich hinzukommenden Daten
 während der Berechnungszeit). Ist diese Datenbank erstellt, werden durch die neu
-hinzukommenden Daten circa ~16 Milliarden DLD-Aurfufe täglich benötigt um die
+hinzukommenden Daten ca. ~16 Milliarden DLD-Aufrufe täglich benötigt, um die
 Datenbank zu aktualisieren. Pro Tag entspricht dies weiteren ~33 Minuten Rechenzeit auf
 einem 4-Kerner.\par
 
-Gewünscht ist eine performantere und Ressourcen-schonendere Implementierung des obigen Prozesses,
+Gewünscht ist eine performantere und ressourcenschonendere Implementierung des obigen Prozesses,
 sodass die Daten auf einem firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
-Hierbei ist es nicht unbedingt erforderlich die, Damerau-Levenshtein-Distanz zu verwenden. Desweiteren soll der Zeitaufwand der ad-hoc 
-Vergleichung der Ergebnisse drastisch reduziert werden.\par
+Hierbei ist es nicht unbedingt erforderlich, die Damerau-Levenshtein-Distanz zu verwenden. Des weiteren soll der Zeitaufwand der ad hoc-Vergleiche der Ergebnisse drastisch reduziert werden.\par
 
 
 
 
 \subsection{Wirtschaftlichkeitsanalyse}
 \subsubsection{Make-or-Buy Entscheidung}
-Ein Tool, welches das oben beschriebene Problem löst gibt es zur Zeit nur mit dem
+Ein Tool, welches das oben beschriebene Problem löst, gibt es zur Zeit nur mit dem
 ressourcenintensiven DLD-Matrix-Verfahren. Ein Projekt, welches ein ähnliches
-Problem löst, ist das Open-source Projekt fuzzy-join\footnote{https://github.com/dgrtwo/fuzzyjoin}.
-Dieses Tool vergleicht Daten jedoch nur in eine Richtung (One-To-Many), während das Projektszenario ein bidirektionales Verfahren benötigt (Many-To-Many).\par
+Problem löst, ist das Open-Source-Projekt \textit{fuzzy-join}\footnote{https://github.com/dgrtwo/fuzzyjoin}.
+Dieses Tool vergleicht Daten jedoch nur in eine Richtung (\textit{One-To-Many}), während das Abschlussprojektszenario ein bidirektionales Verfahren benötigt (\textit{Many-To-Many}).\par
 
 Somit stellte sich die Frage nach einer optimalen Vorgehensweise zur Umsetzung des
-Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse (Anhang Abschnitt \ref{nwa:projektentwicklung}) erstellt, um diversen Lösungswege zu evaluieren. \\
+Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse (Anhang Abschnitt \ref{nwa:projektentwicklung}) erstellt, um diverse Lösungswege zu evaluieren.
 Diese wurden anhand der folgenden Kriterien bewertet:
 
 
 \begin{itemize}
     \item \textbf{Projektkosten} - Wie hoch sind die Personal-, Server- und/oder Softwarekosten der jeweiligen Lösung?
 
-    \item \textbf{Nachhaltigkeit} - Gibt es externe Abhängigkeiten? Wenn ja, wie viele und besteht ein Risiko eines technischen Ausfalls dieser Abhängigkeiten? Wie gut lässt sich das Programm in unseren Arbeitsprozess eingliedern? 
+    \item \textbf{Nachhaltigkeit} - Gibt es externe Abhängigkeiten? Wenn ja, wie viele und besteht das Risiko eines technischen Ausfalls dieser Abhängigkeiten? Wie gut lässt sich das Programm in unseren Arbeitsprozess eingliedern? 
 
-    \item \textbf{Flexibilität} - Wie leicht ist das Programm erweiterbar? Besteht die Möglichkeit in Zukunft weitere Parameter anzugeben um die Ergebnisse anzupassen? Wenn ja, wie sehr beeinträchtigt diese Erweiterung die Performanz des Programms?
+    \item \textbf{Flexibilität} - Wie leicht ist das Programm erweiterbar? Besteht die Möglichkeit, in Zukunft weitere Parameter anzugeben, um die Ergebnisse anzupassen? Wenn ja, wie sehr beeinträchtigt diese Erweiterung die Performanz des Programms?
 
-    \item \textbf{Unterhaltungskosten} - Neben den initialen Projektkosten, wie hoch sind die laufenden Kosten für die Lösung? Fallen Mietkosten für Server an? Wie hoch ist der Überwachungsaufwand der benötigt wird um die Funktionsfähigkeit der Lösung zu überprüfen?
+    \item \textbf{Unterhaltungskosten} - Neben den initialen Projektkosten, wie hoch sind die laufenden Kosten für die Lösung? Fallen Mietkosten für Server an? Wie hoch ist der Überwachungsaufwand, der benötigt wird, um die Funktionsfähigkeit der Lösung zu überprüfen?
 
 \end{itemize}
 
@@ -63,33 +61,36 @@ Diese wurden anhand der folgenden Kriterien bewertet:
 
 \subsubsection{Projektkosten}
 Als nächstes wurden die Projektkosten berechnet. Hierfür wurden pauschale Beträge 
-für Mitarbeiterstundenlöhne, sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
-(Papier, Drucker, Programme, Rechner etc) veranschlagt. Diese können in der Tabelle im Anhang (Abschnitt \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür ein Stundenlohn von 5,50€ für den
-Autoren, sowie ein Stundenlohn von 35€ für jeden weiteren Mitarbeiter angesetzt. Nutzungskosten 
-der Räumlichkeiten, Rechner, Software und weiterer Utensilien wurden mit 20€ pro Stunde kalkuliert. \par
+für Mitarbeiterstundenlöhne sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
+(Papier, Drucker, Programme, Rechner etc.) veranschlagt. Diese können in der Tabelle im Anhang (Abschnitt \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür ein Stundenlohn von 5,50€ für den Autoren, sowie ein Stundenlohn von 35€ für jeden weiteren Mitarbeiter angesetzt. Nutzungskosten der Räumlichkeiten, Rechner, Software und weiterer Utensilien wurden mit 20€ pro Stunde kalkuliert. \par
 
 
 \subsubsection{Amortisationsdauer}
 Nach einer Einschätzung der Abteilung für Datenverarbeitung wird zur Zeit jede Woche ein Mitarbeiter etwa 10 Stunden pro Woche benötigt, um Symboliken miteinander zu vergleichen. Dies ergibt, mit dem in der Projektkostenkalkulation verwendeten
-Stundenlöhnen und Kosten für Räumlichkeiten, Hard- und Software also $10 Stunden*55\text{\euro} = \frac{550\text{\euro}{\text{Woche}}}$ pro Woche.
-Der Autor verspricht sich durch das Programm eine Beschleunigung des Vergleichsprozesses um etwa 30\%, da der größte zeitliche Anteil vom manuellen Vergleich beansprucht wird. Im Optimalfall würde der Prozess nur noch etwa zwei Stunden (80\% Verbesserung) dauern und eine Verbesserung von 55\% wird vom Autor als realistisch eingeschätzt\footnote{Die Zeiten wurden anhand von Kalkulationen der theorethischen Rechenvorgänge unter Einbezug der Schreib-, und Lesegeschwindigkeiten des Speichers, sowie Geschwindigkeit der CPU geschätzt.}.
+Stundenlöhnen und Kosten für Räumlichkeiten, Hard- und Software also 
+\begin{figure}[!htp]
+ $10\frac{\text{h}}{\text{Woche}} \times 55\frac{\text{\euro}}{\text{h}} = 550\frac{\text{\euro}}{\text{Woche}}$
+\end{figure}
 
-Anhand dieser Prozente lassen sich folgende Amortisationsdauern errechnen:\\
+Der Autor verspricht sich durch das Programm eine Beschleunigung des Vergleichsprozesses um etwa 30\%, da der größte zeitliche Anteil vom manuellen Vergleich beansprucht wird. Im Optimalfall ist eine Verbesserung von 80\% zu erwarten, womit der Prozess noch etwa zwei Stunden dauern würde. Eine Verbesserung von 55\% wird vom Autor als realistisch eingeschätzt\footnote{Die Zeiten wurden anhand von Kalkulationen der theorethischen Rechenvorgänge unter Einbezug der Schreib-, und Lesegeschwindigkeiten des Speichers, sowie Geschwindigkeit der CPU geschätzt.}.
+
+Anhand dieser Werte lassen sich folgende Amortisationsdauern errechnen:\\
 \\
 
 \textbf{Bester Fall}: \\
 \\
-$\frac{3,883.75\text{\euro}}{550\text{\euro} \times 80\text{\%}} \approx 9 Wochen$
+$\frac{3.883,75\text{\euro}}{550\frac{\text{\euro}}{\text{Woche}} \times 80\text{\%}}} \approx 9 Wochen$
 \\
 
 \textbf{Wahrscheinlichster Fall}:\\
 \\
-$\frac{3,883.75\text{\euro}}{550\text{\euro} \times 55\text{\%}} \approx 13 Wochen$
+$\frac{3.883,75\text{\euro}}{550\frac{\text{\euro}}{\text{Woche}} \times 55\text{\%}}} \approx 13 Wochen$
 \\
+
 
 \textbf{Schlechtester Fall}:\\
 \\
-$\frac{3,883.75\text{\euro}}{550\text{\euro} \times 30\text{\%}} \approx 24 Wochen$
+$\frac{3.883,75\text{\euro}}{500\frac{\text{\euro}}{\text{Woche}} \times 30\text{\%}}} \approx 24 Wochen$
 \\
 
 \subsection{Lastenheft / Fachkonzept}

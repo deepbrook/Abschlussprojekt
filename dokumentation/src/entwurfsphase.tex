@@ -3,12 +3,12 @@
 \subsection{Zielplattform}
 Wie dem Abschnitt \ref{section:einleitung} entnommen werden kann, soll das Projekt als Kommandozeilenprogramm
 implementiert werden. Anhand der Anforderungen des Lastenhefts, welches Speicherperformanz sowie Geschwindigkeit fordert,
-fiel die Entscheidung der Programmiersprache recht schnell auf die Hochsprache C.Diese erlaubt effiziente Berechnungen und bietet eine ideale Schnittstelle um effizient im Speicher agieren zu können.
+fiel die Entscheidung der Programmiersprache recht schnell auf die Hochsprache C. Diese erlaubt effiziente Berechnungen und bietet eine ideale Schnittstelle, um effizient im Speicher agieren zu können.
 Zur Überprüfung dieser Einschätzung wurden weitere Sprachen anhand einer
 Nutzwertanalyse mit der Sprache C verglichen. Die wichtigste Rolle spielten hierbei folgende Kriterien:
 \begin{itemize}
     \item \textbf{Performanz} - Geschwindigkeit der Sprache in der High-Performance-Computing (HPC) Domäne
-    \item \textbf{Speichereffizienz} - Die Größe des Fußabdrucks der Sprache auf der Festplatte, sowie der Objekte im Speicher - weniger ist besser.
+    \item \textbf{Speichereffizienz} - Der Fußabdrucks der Sprache auf der Festplatte sowie der Objekte im Speicher soll möglichst gering sein. 
     \item \textbf{Dokumentation} - Bibliotheken und Module sollen gut und einsehbar dokumentiert sein.
     \item \textbf{Systemische Vorraussetzungen} - Anzahl und Aufwand der Vorraussetzungen, um die Sprache zu nutzen. Auch hier ist weniger besser.
 \end{itemize}
@@ -19,23 +19,23 @@ Letztendlich wurde an der urprünglichen Entscheidung, die Sprache C zu nutzen, 
 
 \subsection{Algorithmusdesign}
 In Zusammenarbeit mit der Abteilung für Datenverarbeitung hat der Autor einen simplen
-Pseudocode für die grundlegende Logik des Algorithmus' entwickelt, welcher als Ausgangspunkt
+Pseudocode für die grundlegende Logik des Algorithmus entwickelt, welcher als Ausgangspunkt
 für die weitere Entwicklung genutzt wurde. Hierbei wurden sogenannte Q-Gramme verwendet - 
-diese verstehen sich als Teilstring eines Strings der Länge Q. Dieser Code wurde in Form eines
-Aktivitätsdiagramm (Anhang \ref{fig:programmlogik}) visualisiert. Der zugrunde liegende  Pseudocode des Diagramms ist ebenfalls im Anhang (Listing \ref{listing:pseudocode)} einsehbar.
+diese verstehen sich als Teilstring eines Strings, wobei \textbf{Q} die Länge des Teilstrings ist. Dieser Code wurde in Form eines
+Aktivitätsdiagramm (Anhang \ref{fig:programmlogik}) visualisiert. Der zugrunde liegende  Pseudocode des Diagramms ist ebenfalls im Anhang (Listing \ref{listing:pseudocode}) einsehbar.
 
 
 \clearpage
 \subsection{Architekturdesign}
 
-Das Projekt besteht aus zwei Header-Dateien und einer main.c. Die Header-Dateien
-beinhalten zum einen die algorithmusspezifischen Funktionen zum Vergleich von
-Strings, zum anderen eine Open Source Hashmap-Implementierung.
+Das Projekt besteht aus zwei Header-Dateien und einer main.c-Datei. Die Header-Dateien
+beinhalten zum einen die algorithmusspezifischen Funktionen zum Vergleichen von
+Strings, zum anderen eine Open-Source-Hashmap-Implementierung.
 
 Auf Programmebene wurde die Logik in zwei Abschnitte unterteilt:
 \begin{itemize}
     \item \textbf{Vorbereitung} \\
-    Hier werden Daten aus der ersten Datei geladen und benötigte Datenstrukturen im Speicher angefordert.
+    Hier werden Daten aus der ersten Datei geladen und benötigte Datenstrukturen im Speicher angelegt.
     Variablen werden initialisiert und der Q-Gramm-Pool erstellt.
     \item \textbf{Ausführung} \\
     Das zweite Datenset wird über einen File-Pointer referenziert und die
@@ -48,87 +48,86 @@ Hieraus ergaben sich acht Subkomponenten, welche implementiert werden mussten:
 \begin{itemize}
     \item \textbf{Vorbereitung}:
     \begin{itemize}
-        \item \textbf{Variable S}: Die Menge aller Strings aus der ersten Liste bzw. Datei
-        \item \textbf{Variable Q}: Die Menge aller QGramme, welche sich aus den jeweils einzelnen Strings in S generieren lässt
+        \item \textbf{Variable S} = Die Menge aller Strings aus der ersten Liste bzw. Datei
+        \item \textbf{Variable Q} = Die Menge aller Q-Gramme, welche sich aus den jeweils einzelnen Strings in \textbf{S} generieren lässt
     \end{itemize}
 
     \item \textbf{Ausführung}
     \begin{itemize}
-        \item \textbf{Variable I}: Die Menge, welche die gleiche Größe wie S hat und die
-        Anzahl der Q-Gramme zählt, welche für den jeweiligen Index eines Strings in
-        S passen.
-        \item \textbf{Variable f}: Eine Referenz zur zweiten Liste, über die wir zu vergleichende Strings holen können
-        \item \textbf{Variable T}: Die Menge der Q-Gramme in der aktuell ausgelesenen Zeile
-        \item \textbf{Variable M}: Eine Menge der Indizes von Strings, welche auf die QGramme \textbf{T} am besten passen
+        \item \textbf{Variable I} = Die Menge, welche die gleiche Größe hat wie \textbf{S} und die
+        Anzahl der Q-Gramme zählt, die für den jeweiligen Index eines Strings in
+       \textbf{S} passen.
+        \item \textbf{Variable f} = Eine Referenz zur zweiten Liste, über die wir zu vergleichende Strings holen können
+        \item \textbf{Variable T} = Die Menge der Q-Gramme in der aktuell ausgelesenen Zeile
+        \item \textbf{Variable M} = Eine Menge der Indizes von Strings, welche auf die Q-Gramme \textbf{T} am besten passen
     \end{itemize}
 \end{itemize}
 
-Mit Ausnahme von Q und M können alle Datenstrukturen mit den geläufigen C
-Datentypen ausgedrückt werden.
+Mit Ausnahme von \textbf{Q} und \textbf{M} konnten  alle Datenstrukturen mit den geläufigen C-Datentypen ausgedrückt werden.
 
-Für die Strukturen Q und M mussten jedoch neue Datenstrukturen
-erstellt werden. Für Q bot sich hier eine Hashmap an, die zwar einen höheren Speicheraufwand hat, welcher aber von dem der Struktur zugrundeliegenden
-O(1) Suchaufwand zum Vergleich von Q-Grammen mehr als ausgeglichen wird. Auch hier wurde wiederum eine Nutzwertanalyse (Tabelle \ref{nwa:datentyp}) durchgeführt,
-um sicherzustellen dass die persönlichen Annahmen des Autors mit den technischen
+Für die Strukturen \textbf{Q} und \textbf{M} mussten jedoch neue Datenstrukturen
+erstellt werden. Für \textbf{Q} bot sich hier eine Hashmap an. Diese benötigt zwar mehr Speicherplatz, verfügt jedoch auch über einen O(1)-Suchaufwand - dies bot einen entscheidenden Geschwindigkeitsvorteil beim späteren Vergleich der Q-Gramme.
+Auch hier wurde wiederum eine Nutzwertanalyse (Tabelle \ref{nwa:datentyp}) durchgeführt,
+um sicherzustellen, dass die persönlichen Annahmen des Autors mit den technischen
 Gegebenheiten übereinstimmen.
 Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien bewertet:
 
 \begin{enumerate}
-	\item \textbf{Schnelligkeit Such-Befehl} - Wie hoch ist die Komplexität des Such-Befehls der Datenstruktur?
+	\item \textbf{Schnelligkeit Suchbefehl} - Wie hoch ist die Komplexität des Suchbefehls der Datenstruktur?
     \item \textbf{Speicheraufwand} - Wie hoch ist der maximale Speicheraufwand des Datentyps wenn die Menge aller möglichen Q-Gramme eingefügt wird?
     \item \textbf{Schnelligkeit Einfügen-Befehl} - Wie hoch ist die Komplexität des Einfügen-Befehls der Datenstruktur?\\
 
 \end{enumerate}
 
-Für M wird ein dynamisch wachsendes Array benötigt, da die Anzahl der passenden
-Q-Gramme je nach String variiert. Die Anzahl der möglichen Zeichen pro Q-Gramm von unserem verwendeten Zeichensatz ist durch die Kodierung (5-Bit ASCII) begrenzt. Um Einschätzen zu können welche Startgröße des Arrays sinnvoll ist um die Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der Q-Gramme innerhalb des derzeitigen Datensatzes berechnet. Dies wurde anhand eines
-Graphen (Abbildung \ref{fig:qgram_verteilung}) dargestellt, welcher die Anzahl Strings auf der X-Achse, der Anzahl Q-Gramme auf der Y-Achse als Quantil gegenüber stellt.
+Für \textbf{M} wird ein dynamisch wachsendes Array benötigt, da die Anzahl der passenden
+Q-Gramme je nach String variiert. Die Anzahl der möglichen Zeichen pro Q-Gramm von unserem verwendeten Zeichensatz ist durch die Kodierung (5-Bit ASCII) begrenzt\footnote{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext dieses Projekts = $\text{Länge des Alphabets}^\text{Q-Grammlänge}$ }. Um einschätzen zu können, welche Startgröße des Arrays sinnvoll ist, um die Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der Q-Gramme innerhalb des derzeitigen Datensatzes berechnet. Dies wurde anhand eines
+Graphen (Abbildung \ref{fig:qgram_verteilung}) dargestellt, welcher die Anzahl Strings auf der X-Achse, der Anzahl der Q-Gramme auf der Y-Achse als Quantil gegenüber stellt.
 
 Anhand dieser Analyse konnte eine optimale Startgröße festlegt werden, sodass in etwa der Hälfte der Fälle
 erwartet werden kann, dass das Array nicht vergrößert werden muss, und somit die
 Speicherzuweisungen minimiert werden.
 
 
-Im Einklang mit der test-getriebenen Entwicklung wurde von Anfang an das Hauptaugenmerk
+Im Einklang mit der testgetriebenen Entwicklung wurde von Anfang an das Hauptaugenmerk
 auf die möglichst granulare Entwicklung des Codes gelegt. So wurden die Schritte
-des Algorithmus' in jeweils mindestens einen Test und eine dazugehörige Funktion unterteilt.
+des Algorithmus in jeweils mindestens einen Test und eine dazugehörige Funktion unterteilt.
 Auch wurden für jeden selbst erstellten Datentyp und die dazugehörigen Funktionen Tests geschrieben.
 
-\footnotetext{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext dieses Projekts = $\text{Länge des Alphabets}^\text{Q-Grammlänge}$ }
+
 
 
 \subsection{Entwurf der Benutzeroberfläche}
 Der GNU Codingstandard\cite{gnuCodingStandard},
 sowie die POSIX Utility Guidelines\cite{posixGuidelines}
-spezifizieren standardisierte Parameternamen und Funktionen eines Programms, sowie
+spezifizieren standardisierte Parameternamen und Funktionen eines Programms sowie
 deren erwartete Funktion. Da es sich bei der Zielgruppe um erfahrene Linuxnutzer handelt, wurde das Kommandozeilenprogramm nach diesen Standards entwickelt.\par
 
-Da die bevorzugte Oberfläche der Endnutzer die Kommandozeile ist, wird auf eine grafische Oberfläche verzichtet.
+Die bevorzugte Oberfläche der Endnutzer ist die Kommandozeile, daher wird auf eine grafische Oberfläche verzichtet.
 
 \subsection{Datenmodell}
 Aufgrund der Natur der Daten ist das Datenmodell für das Projekt trivial. Es besteht aus einer
 einspaltigen Tabelle, welche in Relation zu sich selbst steht. Aus diesen Gründen wird auf eine weitere Ausführung des 
 Modells verzichtet - die UML-Grafik des Modells kann jedoch im Anhang (Abbildung \ref{fig:datenmodell}) eingesehen werden.
 
-Es ist klarzustellen, dass die GA Financial Solution ungern Datenbanksysteme wie
-MySQL, MongoDB u.Ä. nutzt. Stattdessen werden komprimierte CSV-Dateien verwendet, welche
+Es ist klarzustellen, dass die GA Financial Solutions GmbH es bevorzugt nicht mit Datenbanksystemen, wie
+ zum Beispiel MySQL oder MongoDB, zu arbeiten. Stattdessen werden komprimierte CSV-Dateien verwendet, welche
 meist nur aus drei Spalten (Zeitstempel, Typ und Wert) bestehen. Dies ergibt sich aus
 der negativen Erfahrung mit Datenbankmanagementsystemen und der Vereinfachung des Workflows durch
 die Nutzung von CSV-Daten in Kombination mit der hauseigenen CLI-Toolchain.
 
 
 \subsection{Geschäftslogik}
-Zur Veranschaulichung der bisherigen Geschäftslogik, wurde eine Aktivitätsdiagramm (Abbildung \ref{fig:businessLogicAlt})
+Zur Veranschaulichung der bisherigen Geschäftslogik, wurde ein Aktivitätsdiagramm (Abbildung \ref{fig:businessLogicAlt})
 erstellt.Wie man dort erkennen kann, ist die Abholung der Daten von Anbietern automatisiert, jedoch nicht deren Verarbeitung.
-Diese geschieht bei Bedarf und erfordert, unter Anderem, die Vorsortierung der Daten in handhabbare Datensätze, welche einfacher und in angemessener Zeit von unseren 4-Kern-Maschinen
+Diese geschieht bei Bedarf und erfordert unter anderem die Vorsortierung der Daten in handhabbare Datensätze, welche einfacher und in angemessener Zeit von unseren 4-Kern-Maschinen
 berechnet werden können. Hinzu kommt eine erforderliche manuelle Überprüfung
 der Ergebnisse. Die daraus entstehenden Daten werden schließlich für das derzeitig entwickelte Projekt
-genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisiert sind, und sich nicht zur generellen Nutzung innerhalb der Firma eignen. Nach Einbindung des Programms durch die Abteilung Datenverarbeitung ergibt sich dass in Abbildung \ref{fig:businessLogicNeu}\par
+genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisiert sind, und sich nicht zur generellen Nutzung innerhalb der Firma eignen. Nach Einbindung des Programms durch die Abteilung Datenverarbeitung ergibt sich eine neue, in Abbildung \ref{fig:businessLogicNeu} ersichtliche, Geschäftslogik.\par
 
 
 
-\subsection{Pflichtenheft / Datenverarbeitungskonzept}
+\subsection{Pflichtenheft}
 Abschließend zur Entwurfsphase wurde ein Pflichtenheft erstellt und dieses als
-Roter Faden für das Projekt der Abteilung für Datenverarbeitung vorgelegt. Wie im
+roter Faden für das Projekt der Abteilung für Datenverarbeitung vorgelegt. Wie im
 Projektmanagement üblich, baut dieses auf dem Lastenheft auf.
 Ein Auszug des Pflichtenhefts befindet sich im Anhang (Abschnitt \ref{auszug:pflichtenheft}).
