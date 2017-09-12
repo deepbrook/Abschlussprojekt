@@ -131,56 +131,63 @@
 	\end{tabular}
 \end{sidewaystable}
 
-\begin{sidewaystable}[!htp]
-	\caption{Detaillierte Zeitplanung}
-	\label{tabelle:zeitplanung}
-	\begin{tabular}{ |l r r r|  }
-		\hline
-		Analysephase & & & 9h \\
-		\hline
-		1. Analyse des Ist-Zustands & & 3h & \\
-		1.1 Fachgespräch mit der Datenverarbetungsabteilung & 1h & &  \\
-		1.2 Prozessanalyse & 2h & &  \\
-		2. "Make or Buy" Entscheidung und Wirtschaftlichkeitsanalyse & & 1h & \\
-		3. Erstellen eines "Use-Case" Diagramms & & 2h & \\
-		4. Erstellen eines Lastenhefts mit der Abteilung Datenverarbeitung & & 3h &  \\
-		\hline
-		Entwurfsphase & & & 26h \\
-		\hline
-		1. Prozessentwurf & & 2h & \\
-		2. Algorithmusentwurf & & 14h & \\
-		3. Entwurf von C Datenstrukturen & & 5h & \\
-		3.1 Speicherarme Q-Gramm Liste & 3h &  & \\
-		3.2 Selbst-ausgleichender Binär Baum & 2h & & \\
-		4. Entwurf der Kommandozeilenoberfläche & & 2h & \\
-		5. Erstellen eines UML Komponentendiagramms der Anwendung & & 4h & \\
-		6. Erstellen des Pflichtenhefts & & 4h & \\
-		\hline
-		Implementierungsphase & & & 21h \\
-		\hline
-		1. Unittests erstellen & & 5h & \\
-		2. C Datenstrukturen Implementieren & & 8h & \\
-		3. Algorithmus Logik in C Implementieren & & 8h & \\
-		\hline
-		Abnahmephase & & & 2h \\
-		\hline
-		1. Code-Flight mit Abteilungsleitung  & & 1h & \\
-		2. Präsentation & & 1h & \\
-		\hline
-		Dokumentationsphase & & & 9h \\
-		\hline
-		1. Erstellen der Nutzerdokumentation als Man Page & & 2h & \\
-		2. Erstellen der Projektdokumentation & & 7h & \\
-		\hline
-		Pufferzeit & & & 2h \\
-		\hline
-		1. Puffer & & 3h & \\
-		\hline
-		\hline
-		Gesamt & & & 70h \\
-		\hline
-	\end{tabular}
-\end{sidewaystable}
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\caption{Detaillierte Zeitplanung}
+\label{table:zeitplanung}
+\begin{tabular}{|lrrr|}
+\hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Analysephase}}            & {\color[HTML]{FFFFFF} \textbf{}} & {\color[HTML]{FFFFFF} \textbf{}} & {\color[HTML]{FFFFFF} \textbf{9h}} \\ \hline
+1. Analyse des Ist-Zustands                                        &                                  & 3h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+1.1 Fachgespräch mit der Datenverarbetungsabteilung                & \textit{1h}                    &                                  &                                               \\
+1.2 Prozessanalyse                                                 & \textit{2h}                    &                                  &                                               \\
+\rowcolor[HTML]{BBDAFF}
+2. "Make or Buy" Entscheidung und Wirtschaftlichkeitsanalyse       &                                  & 1h                               &                                               \\
+3. Erstellen eines "Use-Case" Diagramms                            &                                  & 2h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+4. Erstellen eines Lastenhefts mit der Abteilung Datenverarbeitung &                                  & 3h                               &                                               \\ \hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Entwurfsphase}}                    & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} \textbf{26h}}         \\ \hline
+1. Prozessentwurf                                                  &                                  & 2h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+2. Algorithmusentwurf                                              &                                  & 14h                              &                                               \\
+3. Entwurf von C Datenstrukturen                                   &                                  & 5h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+3.1 Speicherarme Q-Gramm Liste                                     & \textit{3h}                    &                                  &                                               \\
+3.2 Selbst-ausgleichender Binär Baum                               & \textit{2h}                    &                                  &                                               \\
+\rowcolor[HTML]{BBDAFF}
+4. Entwurf der Kommandozeilenoberfläche                            &                                  & 2h                               &                                               \\
+5. Erstellen eines UML Komponentendiagramms der Anwendung          &                                  & 4h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+6. Erstellen des Pflichtenhefts                                    &                                  & 4h                               &                                               \\ \hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Implementierungsphase}}            & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} \textbf{21h}}         \\ \hline
+1. Unittests erstellen                                             &                                  & 5h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+2. C Datenstrukturen Implementieren                                &                                  & 8h                               &                                               \\
+3. Algorithmus Logik in C Implementieren                           &                                  & 8h                               &                                               \\ \hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Abnahmephase}}                     & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} \textbf{2h}}          \\ \hline
+1. Code-Flight mit Abteilungsleitung                               &                                  & 1h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+2. Präsentation                                                    &                                  & 1h                               &                                               \\ \hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Dokumentationsphase}}              & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} \textbf{9h}}          \\ \hline
+1. Erstellen der Nutzerdokumentation als Man Page                  &                                  & 2h                               &                                               \\
+\rowcolor[HTML]{BBDAFF}
+2. Erstellen der Projektdokumentation                              &                                  & 7h                               &                                               \\ \hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Pufferzeit}}                                  & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} 2h}                     \\ \hline
+1. Puffer                                                          &                                  & 3h                               &                                               \\ \hline
+\rowcolor[HTML]{9698ED}
+{\color[HTML]{FFFFFF} \textbf{Gesamt}}                           & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} }          & {\color[HTML]{FFFFFF} \textbf{70h}}         \\ \hline
+\end{tabular}
+\end{table}
 
 \section{Auszüge}
 \subsection{Ressourcen}
@@ -291,11 +298,9 @@
 
 \end{itemize}
 
+\clearpage
 \subsection{Pseudocode: Algorithmus}
-\begin{figure}[!htp]
-	\lstinputlisting[language=C, caption=Pseudocode des zu implementierenden Algorithmus, label=listing:pseudocode]{anhang/pseudo.code}
-	\centering
-\end{figure}
+\lstinputlisting[language=C, caption=Pseudocode des zu implementierenden Algorithmus, label=listing:pseudocode]{anhang/pseudo.c}
 
 \subsection{Quellcodeauszug: Dynamische Array}
 \lstinputlisting[language=C, caption=Auszug aus dem C Quellcode des dynamischen Array, label=lising:arrayImplementation,]{anhang/array.c}
