@@ -51,32 +51,3 @@ while read t from T with |t| >= 5
 		output s, t, max
 	end
 end
-
-## Alternative
-while read t from T with |t| >= 5
-	Q <- 5grams(t)
-	I <- call zero_interns
-	for each q from Q
-		for each r from R(q)
-			I(r)++
-		end
-	end
-
-	max <- 0
-	for each s from S with |s| >= 5
-		i <- intern(s)
-		if (I(i) > max)
-			max = I(i)
-		end
-	end
-
-	## Optional max check
-	if (max < |t| / 2)
-		continue
-	end
-
-	## Output
-	for each s from S with |s| >= 5 and I(intern(s)) == max:
-		output s, t
-	end
-end
