@@ -2,22 +2,27 @@
 \label{section:anhang}
 \section{Diagramme und Grafiken}
 
-\subsection{Geschäftslogik (Alt)}
-\begin{figure}[!htp]
-	\caption{UML Diagramm der bisherigen Geschäftslogik}
-	\label{fig:businessLogicAlt}
-    \includegraphics{businessLogicOld}
-\end{figure}
+\begin{landscape}
+\subsection{Geschäftslogik}
+    \begin{figure}[!htp]
+       \centering
+       \begin{minipage}{0.45\textwidth}
+         \centering
+         \caption{UML Diagramm der bisherigen Geschäftslogik}%
+         \label{fig:businessLogicAlt}%
+         \includegraphics[height=11cm, angle=0]{businessLogicOld}%
+       \end{minipage}\hspace*{4ex}%
+       \begin{minipage}{0.57\textwidth}
+         \centering
+         \caption{UML Diagramm der Geschäftslogik nach Fertigstellung des Projekts}%
+         \label{fig:businessLogicAlt}%
+         \includegraphics[height=11cm, angle=0]{businessLogicNew}%
+       \end{minipage}
+    \end{figure}
 
-\subsection{Geschäftslogik (Neu)}
-\begin{figure}[!htp]
-	\caption{UML Diagramm der Geschäftslogik nach Fertigstellung des Projekts}
-	\label{fig:businessLogicAlt}
-    \includegraphics{businessLogicNew}
-\end{figure}
+\end{landscape}
 
 
-\subsection{Aktivitätsdiagramm: Programmlogik}
 \begin{figure}[!htp]
 	\caption{Programmlogik als UML Aktivitätsdiagramm}
 	\label{fig:programmlogik}
@@ -25,14 +30,13 @@
 	\centering
 \end{figure}
 
-\subsection{Projektstruktur}
+\clearpage
 \begin{figure}[!htp]
 	\caption{Übersicht der Projektstruktur}
 	\label{fig:folderstruct}
 	\includegraphics[width=\textwidth]{folder_struct}
 \end{figure}
 
-\subsection{Analyse: Verteilung der Qgramme}
 \begin{figure}[!htp]
     \caption{Verteilung der QGramme im zu bearbeitenden Datensatz}
     \label{fig:qgram_verteilung}
@@ -40,7 +44,6 @@
     \centering
 \end{figure}
 
-\subsection{Datenmodell}
 \begin{figure}[!htp]
     \caption{UML Darstellung des Datenmodells}
     \label{fig:datenmodell}
@@ -48,11 +51,11 @@
     \centering
 \end{figure}
 
-
-
+\clearpage
+\begin{landscape}
 \section{Tabellen}
-\subsection{Projektkosten}
-\begin{sidewaystable}[!htp]
+
+\begin{table}[!htp]
 	\centering
 	\caption{Projektkosten}
 	\label{tabelle:projektkosten}
@@ -67,53 +70,57 @@
 		Abnahme                                 & 2                                           & 0.5                                     & 35.00 €                                  & 9.25 €                                     & 44.25 €                                \\
 		&                                             &                                         & \multicolumn{2}{l}{\textbf{Projektkosten Gesamt:}}                                    & \textbf{3,883.75 €}
 	\end{tabular}
-\end{sidewaystable}
+\end{table}
 
-\subsection{Nutzwertanalyse: Projektentwicklung}
-\begin{sidewaystable}[!htp]
-	\centering
-	\caption{Nutzwertanalyse Projektentwicklung}
-	\label{nwa:projektentwicklung}
-	\begin{tabular}{llllllllll}
-		\rowcolor[HTML]{9698ED}
-		{\color[HTML]{FFFFFF} \textbf{Kriterien}} & {\color[HTML]{FFFFFF} \textbf{Gewicht}} & {\color[HTML]{FFFFFF} \textbf{Externe Entwicklung}} & {\color[HTML]{FFFFFF} \textbf{}}       & {\color[HTML]{FFFFFF} \textbf{Interne Entwicklung}} & {\color[HTML]{FFFFFF} \textbf{}}       & {\color[HTML]{FFFFFF} \textbf{Dedizierter 12-Kerner}} & {\color[HTML]{FFFFFF} \textbf{}}       & {\color[HTML]{FFFFFF} \textbf{Cluster}}   & {\color[HTML]{FFFFFF} \textbf{}}       \\
-		\rowcolor[HTML]{9698ED}
-		{\color[HTML]{FFFFFF} \textbf{}}          & {\color[HTML]{FFFFFF} \textbf{}}        & {\color[HTML]{FFFFFF} \textbf{Bewertung}}           & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}           & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}             & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} \\
-		Projektkosten                             & 45.00\%                                 & 4                                                   & 1.8                                    & 5                                                   & 2.25                                   & 4                                                     & 1.8                                    & 3                                         & 1.35                                   \\
-		\rowcolor[HTML]{BBDAFF}
-		Nachhaltigkeit                            & 15.00\%                                 & 4                                                   & 0.6                                    & 4                                                   & 0.6                                    & 1                                                     & 0.15                                   & 1                                         & 0.15                                   \\
-		Flexibilität                              & 5.00\%                                  & 3                                                   & 0.15                                   & 5                                                   & 0.25                                   & 4                                                     & 0.2                                    & 4                                         & 0.2                                    \\
-		\rowcolor[HTML]{BBDAFF}
-		Unterhaltskosten                          & 35.00\%                                 & 4                                                   & 1.4                                    & 4                                                   & 1.4                                    & 2                                                     & 0.7                                    & 1                                         & 0.35                                   \\
-		\textbf{Gesamt}                           & \textbf{100.00\%}                       & \textbf{}                                           & \textbf{3.95}                          & \textbf{}                                           & \textbf{4.5}                           & \textbf{}                                             & \textbf{2.85}                          & \textbf{}                                 & \textbf{2.05}
-	\end{tabular}
-\end{sidewaystable}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[!htp]
+\centering
+\caption{Nutzwertanalyse Projektentwicklung}
+\label{nwa:projektentwicklung}
+\begin{tabular}{lccccccccc}
+\rowcolor[HTML]{9698ED}
+\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} } & \cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} } & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Externe Entwicklung}}} & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Interne Entwicklung}}} & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Dedizierter 12-Kerner}}} & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Cluster}}} \\
+\rowcolor[HTML]{9698ED}
+\multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Kriterien}}} & \multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} \\
+Projektkosten & 45.00\% & 4 & 1.8 & 5 & 2.25 & 4 & 1.8 & 3 & 1.35 \\
+\rowcolor[HTML]{9698ED}
+Nachhaltigkeit & 15.00\% & 4 & 0.6 & 4 & 0.6 & 1 & 0.15 & 1 & 0.15 \\
+Flexibilität & 5.00\% & 3 & 0.15 & 5 & 0.25 & 4 & 0.2 & 4 & 0.2 \\
+\rowcolor[HTML]{BBDAFF}
+Unterhaltskosten & 35.00\% & 4 & 1.4 & 4 & 1.4 & 2 & 0.7 & 1 & 0.35 \\
+\rowcolor[HTML]{FFFFFF}
+{\color[HTML]{000000} \textbf{Gesamt}} & {\color[HTML]{000000} \textbf{100.00\%}} & {\color[HTML]{000000} \textbf{}} & {\color[HTML]{000000} \textbf{3.95}} & {\color[HTML]{000000} \textbf{}} & {\color[HTML]{000000} \textbf{4.5}} & {\color[HTML]{000000} \textbf{}} & {\color[HTML]{000000} \textbf{2.85}} & {\color[HTML]{000000} \textbf{}} & {\color[HTML]{000000} \textbf{2.05}}
+\end{tabular}
+\end{table}
+\end{landscape}
 
-\subsection{Nutzwertanalyse: Programmiersprachen}
+\clearpage
+\begin{landscape}
+\begin{table}[!htp]
+\centering
+\caption{Nutzwertanalyse der Programmiersprachen}
+\label{nwa:sprachen}
+\begin{tabular}{llllllllll}
+\rowcolor[HTML]{9698ED}
+\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} } & \cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} } & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{C}}} & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{C++}}} & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Java}}} & \multicolumn{2}{l}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Haskell}}} \\
+\rowcolor[HTML]{9698ED}
+\multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Kriterien}}} & \multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} \\
+Performanz & 30.00\% & 5 & 1.5 & 5 & 1.5 & 4 & 1.2 & 5 & 1.5 \\
+\rowcolor[HTML]{BBDAFF}
+Speichereffizienz & 30.00\% & 5 & 1.5 & 5 & 1.5 & 3 & 0.9 & 4 & 1.2 \\
+Dokumentation & 20.00\% & 5 & 1 & 4 & 0.8 & 4 & 0.8 & 2 & 0.4 \\
+\rowcolor[HTML]{BBDAFF}
+\begin{tabular}[c]{@{}l@{}}Systemische \\ Vorraussetzungen\end{tabular} & 10.00\% & 5 & 0.5 & 5 & 0.5 & 3 & 0.3 & 3 & 0.3 \\
+Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
+\rowcolor[HTML]{BBDAFF}
+\textbf{Gesamt} & \textbf{100.00\%} & \textbf{} & \textbf{4.8} & \textbf{} & \textbf{4.7} & \textbf{} & \textbf{3.7} & \textbf{} & \textbf{3.9}
+\end{tabular}
+\end{table}
 
-\begin{sidewaystable}[!htp]
-	\centering
-	\caption{Nutzwertanalyse der Programmiersprachen}
-	\label{nwa:sprachen}
-	\begin{tabular}{llllllllll}
-		\rowcolor[HTML]{9698ED}
-		{\color[HTML]{FFFFFF} \textbf{Kriterien}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}} & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{C}}}                                                                                              & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{C++}}}                                                                                            & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Java}}}                                                                                           & \multicolumn{2}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Haskell}}}                                                                                        \\
-		\rowcolor[HTML]{9698ED}
-		{\color[HTML]{FFFFFF} \textbf{}}          & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{}}}        & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Bewertung}}} & \multicolumn{1}{c}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gesamt}}} \\
-		Performanz                                & 30.00\%                                                                             & 5                                                                                     & 1.5                                                                                & 5                                                                                     & 1.5                                                                                & 4                                                                                     & 1.2                                                                                & 5                                                                                     & 1.5                                                                                \\
-		\rowcolor[HTML]{BBDAFF}
-		Speichereffizienz                         & 30.00\%                                                                             & 5                                                                                     & 1.5                                                                                & 5                                                                                     & 1.5                                                                                & 3                                                                                     & 0.9                                                                                & 4                                                                                     & 1.2                                                                                \\
-		Dokumentation                             & 20.00\%                                                                             & 5                                                                                     & 1                                                                                  & 4                                                                                     & 0.8                                                                                & 4                                                                                     & 0.8                                                                                & 2                                                                                     & 0.4                                                                                \\
-		\rowcolor[HTML]{BBDAFF}
-		Systemische Vorraussetzungen              & 10.00\%                                                                             & 5                                                                                     & 0.5                                                                                & 5                                                                                     & 0.5                                                                                & 3                                                                                     & 0.3                                                                                & 3                                                                                     & 0.3                                                                                \\
-		Datenstrukturen                           & 10.00\%                                                                             & 3                                                                                     & 0.3                                                                                & 4                                                                                     & 0.4                                                                                & 5                                                                                     & 0.5                                                                                & 5                                                                                     & 0.5                                                                                \\
-		\rowcolor[HTML]{BBDAFF}
-		\textbf{Gesamt}                           & \textbf{100.00\%}                                                                   & \textbf{}                                                                             & \textbf{4.8}                                                                       & \textbf{}                                                                             & \textbf{4.7}                                                                       & \textbf{}                                                                             & \textbf{3.7}                                                                       & \textbf{}                                                                             & \textbf{3.9}
-	\end{tabular}
-\end{sidewaystable}
-
-\subsection{Nutzwertanalyse: Datentyp der Menge Q}
-\begin{sidewaystable}[!htp]
+\begin{table}[!htp]
 	\centering
 	\caption{Nutzwertanalyse der Datentypen für Q}
 	\label{nwa:datentyp}
@@ -129,12 +136,11 @@
 		\rowcolor[HTML]{BBDAFF}
 		\textbf{Gesamt}                                                                     & \textbf{100.00\%}                                                                 & \textbf{}                                  & \textbf{4.25}                          & \textbf{}                                   & \textbf{3.5}
 	\end{tabular}
-\end{sidewaystable}
+\end{table}
+\end{landscape}
 
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[]
+
+\begin{table}[!htp]
 \centering
 \caption{Detaillierte Zeitplanung}
 \label{table:zeitplanung}
@@ -189,6 +195,8 @@
 \end{tabular}
 \end{table}
 
+
+\clearpage
 \section{Auszüge}
 \subsection{Ressourcen}
 \label{auszug:ressourcen}
@@ -297,23 +305,21 @@
     \item Alle Funktionen werden über Dokumentationsblöcke dokumentiert; dies beinhaltet Datentypen der Parameter und funktionsweise der Routine.
 
 \end{itemize}
-
 \clearpage
-\subsection{Pseudocode: Algorithmus}
+
+\section{Quellcodeauszüge}
+
 \lstinputlisting[language=C, caption=Pseudocode des zu implementierenden Algorithmus, label=listing:pseudocode]{anhang/pseudo.c}
 
-\subsection{Quellcodeauszug: Dynamische Array}
 \lstinputlisting[language=C, caption=Auszug aus dem C Quellcode des dynamischen Array, label=lising:arrayImplementation,]{anhang/array.c}
 
-\subsection{Quellcodeauszug: Hashtable Implementation}
 \lstinputlisting[language=C, caption=Auszug aus dem C Quellcode der Hashmap, label=listing:hashtableImplmentation,]{anhang/hashmap.c}
 
 \clearpage
 
-\subsection{Auszug: Entwicklerdokumentation}
+
 \lstinputlisting[language=C, caption=Beispiel eines Docstrings für Entwickler, label=listing:entwicklerDoku]{anhang/docstring.c}
 
-\subsection{Auszug: Endnutzerdokumentation}
 \begin{lstlisting}[style=xterm, caption=Ausgabe der Endnutzerdokumentation über den --help parameter, label=fig:cliHelp,]
 
 	nils@chantico:~/git/ematch/src> ./qgjoin --help
