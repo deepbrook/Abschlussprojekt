@@ -1,6 +1,6 @@
 Vorgang	Mitarbeiter	Stunden	Personal	Ressources	Gesamt
-Entwicklungskosten	1	70	385.00 €	1,295.00 €	1,680.00 €
-Fachgespräch	2	5	350.00 €	92.50 €	1,842.50 €
-Code Review	2	2	140.00 €	37.00 €	317.00 €
-Abnahme	2	0.5	35.00 €	9.25 €	44.25 €
-			Projektkosten Gesamt:		3,883.75 €
+Entwicklungskosten	1	70	385.00 \euro{}	1,295.00 \euro{}	1,680.00 \euro{}
+Fachgespräch	2	5	350.00 \euro{}	92.50 \euro{}	1,842.50 \euro{}
+Code Review	2	2	140.00 \euro{}	37.00 \euro{}	317.00 \euro{}
+Abnahme	2	0.5	35.00 \euro{}	9.25 \euro{}	44.25 \euro{}
+			Projektkosten Gesamt:		3,883.75 \euro{}

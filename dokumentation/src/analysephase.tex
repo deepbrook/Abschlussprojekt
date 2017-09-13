@@ -30,25 +30,18 @@ hinzukommenden Daten ca. ~16 Milliarden DLD-Aufrufe täglich benötigt, um die
 Datenbank zu aktualisieren. Pro Tag entspricht dies weiteren ~33 Minuten Rechenzeit auf
 einem 4-Kerner.\par
 
+\subsection{Wirtschaftlichkeitsanalyse}
 Gewünscht wurde eine performantere und ressourcenschonendere Implementierung des obigen Prozesses,
 sodass die Daten auf einem firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
 Hierbei war es nicht unbedingt erforderlich, die Damerau-Levenshtein-Distanz zu verwenden.
 Des weiteren sollte der Zeitaufwand der ad hoc-Vergleiche der Ergebnisse drastisch reduziert werden.\par
 
-
-
-
-\subsection{Wirtschaftlichkeitsanalyse}
 \subsubsection{Make-or-Buy Entscheidung}
 Ein Tool, welches das oben beschriebene Problem löst, gibt es zur Zeit nur mit dem
 ressourcenintensiven DLD-Matrix-Verfahren. Ein Projekt, welches ein ähnliches
 Problem löst, ist das Open-Source-Projekt \textit{fuzzy-join}\footnote{https://github.com/dgrtwo/fuzzyjoin}.
 Dieses Tool vergleicht Daten jedoch nur in eine Richtung (\textit{One-To-Many}),
 während das Abschlussprojektszenario ein bidirektionales Verfahren benötigt (\textit{Many-To-Many}).\par
-
-Somit stellte sich die Frage nach einer optimalen Vorgehensweise zur Umsetzung des
-Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse (Anhang Abschnitt \ref{sec:tabellen}, Tabelle \ref{nwa:projektentwicklung}) erstellt, um diverse Lösungswege zu evaluieren.
-Diese wurden anhand der folgenden Kriterien bewertet:
 
 
 \begin{itemize}
@@ -69,9 +62,9 @@ Als nächstes wurden die Projektkosten berechnet. Hierfür wurden pauschale Betr
 für Mitarbeiterstundenlöhne sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
 (Papier, Drucker, Programme, Rechner, etc.) veranschlagt. Diese können in der Tabelle im
 Anhang (Abschnitt \ref{sec:tabellen}, Tabelle \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür
-ein Stundenlohn von 5,50\euro für den Autoren, sowie ein Stundenlohn von 35\euro  für jeden
+ein Stundenlohn von 5,50\euro{}für den Autoren, sowie ein Stundenlohn von 35\euro{} für jeden
 weiteren Mitarbeiter angesetzt. Nutzungskosten der Räumlichkeiten, Rechner, Software
-und weiterer Utensilien wurden mit 20\euro  pro Stunde kalkuliert. \par
+und weiterer Utensilien wurden mit 20\euro{} pro Stunde kalkuliert. \par
 
 
 \subsubsection{Amortisationsdauer}
@@ -96,18 +89,18 @@ Anhand dieser Werte lassen sich folgende Amortisationsdauern errechnen:\\
 
 \textbf{Bester Fall}: \\
 \\
-$\frac{3.883,75\text{\euro}}{550\frac{\text{\euro}}{\text{Woche}} \times 80\text{\%}} \approx 9 \text{Wochen}$
+$\frac{3.883,75\text{\euro}}{550\frac{\text{\euro}}{\text{Woche}} \times 80\text{\%}} \approx 9 \text{\,Wochen}$
 \\
 
 \textbf{Wahrscheinlichster Fall}:\\
 \\
-$\frac{3.883,75\text{\euro}}{550\frac{\text{\euro}}{\text{Woche}} \times 55\text{\%}} \approx 13 \text{Wochen}$
+$\frac{3.883,75\text{\euro}}{550\frac{\text{\euro}}{\text{Woche}} \times 55\text{\%}} \approx 13 \text{\,Wochen}$
 \\
 
 
 \textbf{Schlechtester Fall}:\\
 \\
-$\frac{3.883,75\text{\euro}}{500\frac{\text{\euro}}{\text{Woche}} \times 30\text{\%}} \approx 24 \text{Wochen}$
+$\frac{3.883,75\text{\euro}}{500\frac{\text{\euro}}{\text{Woche}} \times 30\text{\%}} \approx 24 \text{\,Wochen}$
 \\
 
 \subsection{Lastenheft / Fachkonzept}
