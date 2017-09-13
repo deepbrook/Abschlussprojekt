@@ -1,7 +1,7 @@
 \section{Entwurfsphase}
 \label{section:entwurfsphase}
 \subsection{Zielplattform}
-Wie dem Abschnitt \ref{section:einleitung} entnommen werden kann, soll das Projekt als Kommandozeilenprogramm
+Wie der Einleitung dieser Dokumentation entnommen werden kann, soll das Projekt als Kommandozeilenprogramm
 implementiert werden. Anhand der Anforderungen des Lastenhefts, welches Speicherperformanz sowie Geschwindigkeit fordert,
 fiel die Entscheidung der Programmiersprache recht schnell auf die Hochsprache C. Diese erlaubt effiziente Berechnungen und bietet eine ideale Schnittstelle, um effizient im Speicher agieren zu können.
 Zur Überprüfung dieser Einschätzung wurden weitere Sprachen anhand einer
@@ -14,7 +14,7 @@ Nutzwertanalyse mit der Sprache C verglichen. Die wichtigste Rolle spielten hier
 \end{itemize}
 
 Die Ergebnisse dieses Vergleichs wurden in der Nutzwertanalyse präsentiert.
-Sie ist dem Anhang (Abschnitt \ref{nwa:sprachen})  dieses Dokumentes beigefügt.\par
+Sie ist dem Anhang (Abschnitt \ref{sec:tabellen}, Tabelle \ref{nwa:sprachen})  dieses Dokumentes beigefügt.\par
 Letztendlich wurde an der urprünglichen Entscheidung, die Sprache C zu nutzen, festgehalten.
 
 \subsection{Algorithmusdesign}
@@ -22,7 +22,9 @@ In Zusammenarbeit mit der Abteilung für Datenverarbeitung hat der Autor einen s
 Pseudocode für die grundlegende Logik des Algorithmus entwickelt, welcher als Ausgangspunkt
 für die weitere Entwicklung genutzt wurde. Hierbei wurden sogenannte Q-Gramme verwendet --
 diese verstehen sich als Teilstring eines Strings, wobei \textbf{Q} die Länge des Teilstrings ist. Dieser Code wurde in Form eines
-Aktivitätsdiagramm (Anhang \ref{fig:programmlogik}) visualisiert. Der zugrunde liegende  Pseudocode des Diagramms ist ebenfalls im Anhang (Listing \ref{listing:pseudocode}) einsehbar.
+Aktivitätsdiagramm (Anhang \ref{sec:figures}, Abbildung \ref{fig:programmlogik})
+visualisiert. Der zugrunde liegende  Pseudocode des Diagramms ist ebenfalls im Anhang
+(Anhang \ref{sec:codeAuszüge}, Auszug \ref{listing:pseudocode}) einsehbar.
 
 
 \clearpage
@@ -68,7 +70,7 @@ Mit Ausnahme von \textbf{Q} und \textbf{M} konnten  alle Datenstrukturen mit den
 Für die Strukturen \textbf{Q} und \textbf{M} mussten jedoch neue Datenstrukturen
 erstellt werden. Für \textbf{Q} bot sich hier eine Hashmap an. Diese benötigt zwar
 mehr Speicherplatz, verfügt jedoch auch über einen O(1)-Suchaufwand - dies bot einen entscheidenden Geschwindigkeitsvorteil beim späteren Vergleich der Q-Gramme.
-Auch hier wurde wiederum eine Nutzwertanalyse (Tabelle \ref{nwa:datentyp}) durchgeführt,
+Auch hier wurde wiederum eine Nutzwertanalyse (Anhang \ref{sec:tabellen}, Tabelle \ref{nwa:datentyp}) durchgeführt,
 um sicherzustellen, dass die persönlichen Annahmen des Autors mit den technischen
 Gegebenheiten übereinstimmen.
 Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien bewertet:
@@ -87,7 +89,7 @@ begrenzt\footnote{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext d
 Um einschätzen zu können, welche Startgröße des Arrays sinnvoll ist, um die
 Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der
 Q-Gramme innerhalb des derzeitigen Datensatzes berechnet. Dies wurde anhand eines
-Graphen (Abbildung \ref{fig:qgram_verteilung}) dargestellt, welcher die Anzahl
+Graphen (Anhang \ref{sec:figures}, Abbildung \ref{fig:qgram_verteilung}) dargestellt, welcher die Anzahl
 Q-Gramme auf der X-Achse, der Anzahl der Strings in der diese vorkommen auf der Y-Achse als Quantil gegenüber stellt.
 
 Anhand dieser Analyse konnte eine optimale Startgröße festlegt werden, sodass in etwa der Hälfte der Fälle
@@ -114,7 +116,7 @@ Die bevorzugte Oberfläche der Endnutzer ist die Kommandozeile, daher wird auf e
 \subsection{Datenmodell}
 Aufgrund der Natur der Daten ist das Datenmodell für das Projekt trivial. Es besteht aus einer
 einspaltigen Tabelle, welche in Relation zu sich selbst steht. Aus diesen Gründen wird auf eine weitere Ausführung des 
-Modells verzichtet -- die UML-Grafik des Modells kann jedoch im Anhang (Abbildung \ref{fig:datenmodell}) eingesehen werden.
+Modells verzichtet -- die UML-Grafik des Modells kann jedoch im Anhang (Anhang \ref{sec:figures}, Abbildung \ref{fig:datenmodell}) eingesehen werden.
 
 Es ist klarzustellen, dass die GA Financial Solutions GmbH es bevorzugt nicht mit Datenbanksystemen, wie
  zum Beispiel MySQL oder MongoDB, zu arbeiten. Stattdessen werden komprimierte CSV-Dateien verwendet, welche
@@ -124,7 +126,7 @@ die Nutzung von CSV-Daten in Kombination mit der hauseigenen CLI-Toolchain.
 
 
 \subsection{Geschäftslogik}
-Zur Veranschaulichung der bisherigen Geschäftslogik, wurde ein Aktivitätsdiagramm (Abbildung \ref{fig:businessLogicAlt})
+Zur Veranschaulichung der bisherigen Geschäftslogik, wurde ein Aktivitätsdiagramm (Anhang \ref{sec:figures}, Abbildung \ref{fig:businessLogicAlt})
 erstellt. Wie man dort erkennen kann, ist die Abholung der Daten von Anbietern automatisiert, jedoch nicht deren Verarbeitung.
 Diese geschieht bei Bedarf und erfordert unter anderem die Vorsortierung der Daten
 in handhabbare Datensätze, welche einfacher und in angemessener Zeit von unseren 4-Kern-Maschinen
@@ -133,7 +135,7 @@ der Ergebnisse. Die daraus entstehenden Daten werden schließlich für das derze
 genutzt und schlussendlich wieder verworfen, da die Datensätze hoch parametrisiert
 sind und sich nicht zur generellen Nutzung innerhalb der Firma eignen. Nach
 Einbindung des Programms durch die Abteilung Datenverarbeitung ergibt sich eine
-neue, in Abbildung \ref{fig:businessLogicNeu} ersichtliche, Geschäftslogik.\par
+neue, in Anhang \ref{sec:figures}, Abbildung \ref{fig:businessLogicNeu}, ersichtliche, Geschäftslogik.\par
 
 
 
@@ -141,4 +143,4 @@ neue, in Abbildung \ref{fig:businessLogicNeu} ersichtliche, Geschäftslogik.\par
 Abschließend zur Entwurfsphase wurde ein Pflichtenheft erstellt und dieses als
 roter Faden für das Projekt der Abteilung für Datenverarbeitung vorgelegt. Wie im
 Projektmanagement üblich, baut dieses auf dem Lastenheft auf.
-Ein Auszug des Pflichtenhefts befindet sich im Anhang (Abschnitt \ref{auszug:pflichtenheft}).
+Ein Auszug des Pflichtenhefts befindet sich im Anhang (Anhang \ref{sec:textAuszüge}, Abschnitt \ref{auszug:pflichtenheft}).
