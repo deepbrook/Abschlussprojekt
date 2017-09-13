@@ -59,13 +59,13 @@
 	\begin{tabular}{llllll}
 		\rowcolor[HTML]{9698ED}
 		{\color[HTML]{FFFFFF} \textbf{Vorgang}} & {\color[HTML]{FFFFFF} \textbf{Mitarbeiter}} & {\color[HTML]{FFFFFF} \textbf{Stunden}} & {\color[HTML]{FFFFFF} \textbf{Personal}} & {\color[HTML]{FFFFFF} \textbf{Ressources}} & {\color[HTML]{FFFFFF} \textbf{Gesamt}} \\
-		Entwicklungskosten                      & 1                                           & 70                                      & 385.00 €                                 & 1,295.00 €                                 & 1,680.00 €                             \\
+		Entwicklungskosten                      & 1                                           & 70                                      & 385.00 \euro{}                                 & 1,295.00 \euro{}                                 & 1,680.00 \euro{}                             \\
 		\rowcolor[HTML]{BBDAFF}
-		Fachgespräch                            & 2                                           & 5                                       & 350.00 €                                 & 92.50 €                                    & 1,842.50 €                             \\
-		Code Review                             & 2                                           & 2                                       & 140.00 €                                 & 37.00 €                                    & 317.00 €                               \\
+		Fachgespräch                            & 2                                           & 5                                       & 350.00 \euro{}                                 & 92.50 \euro{}                                    & 1,842.50 \euro{}                             \\
+		Code Review                             & 2                                           & 2                                       & 140.00 \euro{}                                 & 37.00 \euro{}                                    & 317.00 \euro{}                               \\
 		\rowcolor[HTML]{BBDAFF}
-		Abnahme                                 & 2                                           & 0.5                                     & 35.00 €                                  & 9.25 €                                     & 44.25 €                                \\
-		&                                             &                                         & \multicolumn{2}{l}{\textbf{Projektkosten Gesamt:}}                                    & \textbf{3,883.75 €}
+		Abnahme                                 & 2                                           & 0.5                                     & 35.00 \euro{}                                  & 9.25 \euro{}                                     & 44.25 \euro{}                                \\
+		&                                             &                                         & \multicolumn{2}{l}{\textbf{Projektkosten Gesamt:}}                                    & \textbf{3,883.75 \euro{}}
 	\end{tabular}
 \end{table}
 
@@ -128,7 +128,7 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 		\multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Kriterien}}} & \multirow{-2}{*}{\cellcolor[HTML]{9698ED}{\color[HTML]{FFFFFF} \textbf{Gewicht}}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}  & {\color[HTML]{FFFFFF} \textbf{Gesamt}} & {\color[HTML]{FFFFFF} \textbf{Bewertung}}   & {\color[HTML]{FFFFFF} \textbf{Gesamt}}  \\
 		Speicheraufwand                                                                     & 25.00\%                                                                           & 2                                          & 0.5                                    & 2                                           & 0.5                                     \\
 		\rowcolor[HTML]{BBDAFF}
-		Schnelligkeit Daten Einfügen (Insert                                                & 20.00\%                                                                           & 5                                          & 1                                      & 4                                           & 0.8                                     \\
+		Schnelligkeit Daten Einfügen (Insert)                                                & 20.00\%                                                                           & 5                                          & 1                                      & 4                                           & 0.8                                     \\
 		Schnelligkeit Auslesen (Look-up)                                                    & 55.00\%                                                                           & 5                                          & 2.75                                   & 4                                           & 2.2                                     \\
 		\rowcolor[HTML]{BBDAFF}
 		\textbf{Gesamt}                                                                     & \textbf{100.00\%}                                                                 & \textbf{}                                  & \textbf{4.25}                          & \textbf{}                                   & \textbf{3.5}
@@ -235,14 +235,14 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 		welche den Strings aus der zweiten Liste ähneln. Die gefundenen Stringpaare
 		sollen ausgegeben werden.
 		\item Der Algorithmus ist in C zu programmieren.
-		\item der Algorithmus verarbeitet 7-Bit ASCII Strings schreibungsunabhängig. Zeichensetzung
+		\item Der Algorithmus verarbeitet 7-Bit ASCII Strings schreibungsunabhängig. Zeichensetzung
 		ist beim Vergleich generell zu ignorieren; Ausnahmen bilden die
-		Charaktere Bindestrich, Unterstrich und Leerzeichen.
+		Zeichen Bindestrich, Unterstrich und Leerzeichen.
 	\end{enumerate}
 	\item Spezifikationen des Kommandozeilenprogramms
 	\begin{enumerate}
 		\item Der Algorithmus muss über die Kommmandozeile ausführbar sein.
-		\item Die Erste Liste wird immer als Dateiname übergeben.
+		\item Die erste Liste wird immer als Dateiname übergeben.
 		\item Die zweite Liste kann entweder als Dateiname oder über STDIN übergeben werden.
 		\item die GNU Standards für Kommandozeilenprogramme müssen eingehalten werden.
 		\item Die POSIX Utility Guidelines müssen eingehalten werden.
@@ -252,7 +252,7 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 		\item Das Programm muss auf einem einzigen Kern lauffähig sein, aber
 		darf das Laufen auf mehreren Kernen in einem Shared-Memory-Environment
 		unterstützen.
-		\item Die Systemvoraussetzungen des Programms dürfen ein Minimumg von 32GB Arbeitsspeicher
+		\item Die Systemvoraussetzungen des Programms dürfen ein Minimum von 32GB Arbeitsspeicher
               und ein Minimum von 200 GB Festplattenspeicher voraussetzen.
               Zwischenprozessliche Kommunikationswege dürfen nicht vorausgesetzt werden.
 		\item Das Programm gibt Fehler und Debug Daten über STDERR aus.
@@ -266,7 +266,7 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 	\end{enumerate}
 	\item Spezifikationen der Dokumentation
 	\begin{enumerate}
-		\item Sämtliche Funktionen müssen über einen Doc String dokumentiert werden
+		\item Sämtliche Funktionen müssen über einen Dokoumentationsblock dokumentiert werden
 		\item Die Doc Strings der Funktionen müssen auf Englisch geschrieben werden.
 	\end{enumerate}
 \end{enumerate}
@@ -276,11 +276,11 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 \label{auszug:pflichtenheft}
 \begin{itemize}
 
-    \item Das Programm nimmt die Daten zum einen als Dateipfad, und zum anderen als Dateipfad oder Input über STDIN an.
+    \item Das Programm nimmt die Daten zum einen als Dateipfad oder Input über STDIN an.
 
-    \item Die Ausführung des Programms mit dem Parameter \texttt{-h} bzw \texttt{---help} ruft einen Hilfetext zur Nutzung des Programms auf.
+    \item Die Ausführung des Programms mit dem Parameter \texttt{-h} bzw. \texttt{---help} ruft einen Hilfetext zur Nutzung des Programms auf.
 
-    \item Die Ausführung des Programms mit dem Parameter \texttt{-v} bzw \texttt{---version} ruft die derzeitige Versionsnummer des Programms auf.
+    \item Die Ausführung des Programms mit dem Parameter \texttt{-v} bzw. \texttt{---version} ruft die derzeitige Versionsnummer des Programms auf.
 
     \item Das Programm wird auf und für openSuSE 13.1 entwickelt und kompiliert.
 
@@ -295,7 +295,7 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 
     \item POSIX und GNU Guidelines werden für die Parameternamen der Kommandozeile eingehalten und angewendet.
 
-    \item Für jede Routine, welche für das Programm geschrieben wird, wird es einen Test geben, der deren Funktion überprüft
+    \item Für jede Routine, welche für das Programm geschrieben wird, wird es einen Test geben, der deren Funktion überprüft.
 
     \item Das Programm vergleicht Strings mit Hilfe einer Rekodierung von 7-Bit auf 5-Bit ASCII, gibt die Strings aber so aus wie sie eingegeben worden sind.
 
