@@ -206,18 +206,18 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 
 \textbf{Software}
 \begin{itemize}
-    \item openSuSE 13.1 - Linux Distribution
-    \item Atom IDE - Modulare, Open-Source Entwicklungsumgebung für eine Vielfalt an Sprachen
-    \item LaTeX - Textsatzsystem zur Erstellung von Dokumenten
-    \item GNU Compiler Collection (GCC) - Compilersammlung des GNU Projekts
-    \item Git - Dezentralisierte Versionsverwaltung
+    \item openSuSE 13.1 -- Linux Distribution
+    \item Atom IDE -- Modulare, Open-Source Entwicklungsumgebung für eine Vielfalt an Sprachen
+    \item \LaTeX -- Textsatzsystem zur Erstellung von Dokumenten
+    \item GNU Compiler Collection (GCC) -- Compilersammlung des GNU Projekts
+    \item Git -- Denzentrale Versionsverwaltung
 \end{itemize}
 
 \textbf{Personal}
 \begin{itemize}
-    \item Mitarbeiter der Abteilung Datenverarbeitung - Festlegung der Anforderungen sowie Abnahme des Projektes
-    \item Entwickler - Umsetzung des Projekts
-    \item Anwendungsentwickler - Code Review
+    \item Mitarbeiter der Abteilung Datenverarbeitung -- Festlegung der Anforderungen sowie Abnahme des Projektes
+    \item Entwickler -- Umsetzung des Projekts
+    \item Anwendungsentwickler -- Code Review
 \end{itemize}
 
 
@@ -232,7 +232,7 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 		wobei eine dieser Listen garantiert in den Speicher passt und die zweite
 		eine beliebige Größe haben kann.
 		\item Der Algorithmus muss aus der ersten Liste sämtliche Strings finden,
-		welche den Strings aus der zweiten Liste ähneln. Die gefundenen Strings
+		welche den Strings aus der zweiten Liste ähneln. Die gefundenen Stringpaare
 		sollen ausgegeben werden.
 		\item Der Algorithmus ist in C zu programmieren.
 		\item der Algorithmus verarbeitet 7-Bit ASCII Strings schreibungsunabhängig. Zeichensetzung
@@ -249,13 +249,12 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 		\item Das Programm muss unter openSuSE 13.1 laufen.
 		\item Alle für das Programm erforderliche Abhängigkeiten
 		(z.B. Pakete, Bibliotheken) müssen für openSuSE 13.1 verfügbar sein.
-		\item Das Programm muss auf einem einzigen Kern lauffähig sein, und
-		darf das laufen auf mehreren Kernen in einem Shared-Memory-Environment
+		\item Das Programm muss auf einem einzigen Kern lauffähig sein, aber
+		darf das Laufen auf mehreren Kernen in einem Shared-Memory-Environment
 		unterstützen.
-		\item Die Systemvoraussetzungen des Programms darf mindestens 32GB Arbeitsspeicher
-              und mindestens 200 GB Festplattenspeicher voraussetzen.
+		\item Die Systemvoraussetzungen des Programms dürfen ein Minimumg von 32GB Arbeitsspeicher
+              und ein Minimum von 200 GB Festplattenspeicher voraussetzen.
               Zwischenprozessliche Kommunikationswege dürfen nicht vorausgesetzt werden.
-		sind ausgeschlossen.
 		\item Das Programm gibt Fehler und Debug Daten über STDERR aus.
 		\item Errechnete Ergebnisse werden über STDOUT ausgegeben.
 		\item Die Zielplatform ist Intel x86-64 (intel64).
@@ -279,15 +278,15 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 
     \item Das Programm nimmt die Daten zum einen als Dateipfad, und zum anderen als Dateipfad oder Input über STDIN an.
 
-    \item Die Ausführung des Programms mit dem Parameter \-h bzw \-\-help ruft einen Hilfetext zur Nutzung des Programms auf.
+    \item Die Ausführung des Programms mit dem Parameter \texttt{-h} bzw \texttt{---help} ruft einen Hilfetext zur Nutzung des Programms auf.
 
-    \item Die Ausführung des Programms mit dem Parameter \-v bzw \-\-version ruft die derzeitige Versionsnummer des Programms auf.
+    \item Die Ausführung des Programms mit dem Parameter \texttt{-v} bzw \texttt{---version} ruft die derzeitige Versionsnummer des Programms auf.
 
     \item Das Programm wird auf und für openSuSE 13.1 entwickelt und kompiliert.
 
     \item Das Programm wird keine Form von Multithreading bzw Multiprocessing verwenden.
 
-    \item Die zuerst, über einen Dateipfad angegebene Liste wird in den Speicher gelesen;
+    \item Die zuerst über einen Dateipfad angegebene Liste wird in den Speicher gelesen;
     die zweite kann entweder als Dateipfad oder über STDIN eingegeben werden und wird Zeile für Zeile geladen.
 
     \item Das Programm garantiert einen konstanten Speicherverbrauch, welcher abhängig von der ersten Datei ist.
@@ -296,11 +295,11 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 
     \item POSIX und GNU Guidelines werden für die Parameternamen der Kommandozeile eingehalten und angewendet.
 
-    \item Für jeder Routine, welche für das Programm geschrieben wird, wird es einen Test geben, der deren Funktion überprüft
+    \item Für jede Routine, welche für das Programm geschrieben wird, wird es einen Test geben, der deren Funktion überprüft
 
-    \item Das Programm vergleicht Strings mitfhilde einer 5-Bit ASCII Kodierung, gibt die Strings aber so aus wie sie eingegeben worden sind.
+    \item Das Programm vergleicht Strings mit Hilfe einer Rekodierung von 7-Bit auf 5-Bit ASCII, gibt die Strings aber so aus wie sie eingegeben worden sind.
 
-    \item Alle Funktionen werden über Dokumentationsblöcke dokumentiert; dies beinhaltet Datentypen der Parameter und funktionsweise der Routine.
+    \item Alle Funktionen werden über Dokumentationsblöcke dokumentiert; dies beinhaltet Datentypen der Parameter und Funktionsweise der Routine.
 
 \end{itemize}
 \clearpage
