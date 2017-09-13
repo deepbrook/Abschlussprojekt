@@ -3,7 +3,7 @@
 \subsection{Ist-Analyse}
 Die GA Financial Solutions GmbH holt sich täglich aktuelle Symbole von sechs verschiedenen
 Anbietern ab: Interactive Brokers, Google, Yahoo, Morningstar, Bloomberg und GLEIS.
-Täglich ändern sich diese Symbole um einen gewissen Prozentsatz und es kommen im Durchschnitt etwa 1,67 Millionen Instrumente hinzu.\par
+Täglich ändern sich diese Symbole um einen gewissen Prozentsatz und es kommen im Durchschnitt etwa 1,67 Millionen Instrumentsymbole hinzu.\par
 
 Zur Zeit werden diese Symbole ad hoc mittels Heuristiken und in Handarbeit verglichen.
 Dabei wird meist nur eine kleine Teilmenge benutzt und gefundene Ergebnisse werden
@@ -12,7 +12,7 @@ nach Abschluss eines Projekts wieder verworfen, da es sich meist um spezialisier
 Somit besteht zur Zeit keine firmenweite Datenbank, welche die Symbole
 bereits verglichen und sortiert bereitstellt.\par
 
-Es besteht ein theorethischer Lösungsansatz auf Basis der Damerau-Levenshtein-Distanz\footnote{Die Damerau-Levenshtein-Distanz\cite{dl_distance} beschreibt die minimale Anzahl
+Es besteht ein theoretischer Lösungsansatz auf Basis der Damerau-Levenshtein-Distanz\footnote{Die Damerau-Levenshtein-Distanz\cite{dl_distance} beschreibt die minimale Anzahl
 	an Operationen, welche benötigt werden, um einen String A in einen zu
 	vergleichenden String B zu verwandeln} (kurz: DLD). Dieser sieht vor, eine $M\timesM$-Matrix zu generieren, wobei M sämtliche Symbole aller
 Anbieter darstellt. Dies resultiert in einem ca. 23 PetaBytes großem Datenobjekt
@@ -27,9 +27,10 @@ hinzukommenden Daten ca. ~16 Milliarden DLD-Aufrufe täglich benötigt, um die
 Datenbank zu aktualisieren. Pro Tag entspricht dies weiteren ~33 Minuten Rechenzeit auf
 einem 4-Kerner.\par
 
-Gewünscht ist eine performantere und ressourcenschonendere Implementierung des obigen Prozesses,
+Gewünscht wurde eine performantere und ressourcenschonendere Implementierung des obigen Prozesses,
 sodass die Daten auf einem firmeninternen 4-Kerner zeitnah ausgerechnet werden können.
-Hierbei ist es nicht unbedingt erforderlich, die Damerau-Levenshtein-Distanz zu verwenden. Des weiteren soll der Zeitaufwand der ad hoc-Vergleiche der Ergebnisse drastisch reduziert werden.\par
+Hierbei war es nicht unbedingt erforderlich, die Damerau-Levenshtein-Distanz zu verwenden.
+Des weiteren sollte der Zeitaufwand der ad hoc-Vergleiche der Ergebnisse drastisch reduziert werden.\par
 
 
 
@@ -39,7 +40,8 @@ Hierbei ist es nicht unbedingt erforderlich, die Damerau-Levenshtein-Distanz zu 
 Ein Tool, welches das oben beschriebene Problem löst, gibt es zur Zeit nur mit dem
 ressourcenintensiven DLD-Matrix-Verfahren. Ein Projekt, welches ein ähnliches
 Problem löst, ist das Open-Source-Projekt \textit{fuzzy-join}\footnote{https://github.com/dgrtwo/fuzzyjoin}.
-Dieses Tool vergleicht Daten jedoch nur in eine Richtung (\textit{One-To-Many}), während das Abschlussprojektszenario ein bidirektionales Verfahren benötigt (\textit{Many-To-Many}).\par
+Dieses Tool vergleicht Daten jedoch nur in eine Richtung (\textit{One-To-Many}),
+während das Abschlussprojektszenario ein bidirektionales Verfahren benötigt (\textit{Many-To-Many}).\par
 
 Somit stellte sich die Frage nach einer optimalen Vorgehensweise zur Umsetzung des
 Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse (Anhang Abschnitt \ref{nwa:projektentwicklung}) erstellt, um diverse Lösungswege zu evaluieren.
@@ -47,13 +49,13 @@ Diese wurden anhand der folgenden Kriterien bewertet:
 
 
 \begin{itemize}
-    \item \textbf{Projektkosten} - Wie hoch sind die Personal-, Server- und/oder Softwarekosten der jeweiligen Lösung?
+    \item \textbf{Projektkosten} -- Wie hoch sind die Personal-, Server- und/oder Softwarekosten der jeweiligen Lösung?
 
-    \item \textbf{Nachhaltigkeit} - Gibt es externe Abhängigkeiten? Wenn ja, wie viele und besteht das Risiko eines technischen Ausfalls dieser Abhängigkeiten? Wie gut lässt sich das Programm in unseren Arbeitsprozess eingliedern? 
+    \item \textbf{Nachhaltigkeit} -- Gibt es externe Abhängigkeiten? Wenn ja, wie viele und besteht das Risiko eines technischen Ausfalls dieser Abhängigkeiten? Wie gut lässt sich das Programm in unseren Arbeitsprozess eingliedern?
 
-    \item \textbf{Flexibilität} - Wie leicht ist das Programm erweiterbar? Besteht die Möglichkeit, in Zukunft weitere Parameter anzugeben, um die Ergebnisse anzupassen? Wenn ja, wie sehr beeinträchtigt diese Erweiterung die Performanz des Programms?
+    \item \textbf{Flexibilität} -- Wie leicht ist das Programm erweiterbar? Besteht die Möglichkeit, in Zukunft weitere Parameter anzugeben, um die Ergebnisse anzupassen? Wenn ja, wie sehr beeinträchtigt diese Erweiterung die Performanz des Programms?
 
-    \item \textbf{Unterhaltungskosten} - Neben den initialen Projektkosten, wie hoch sind die laufenden Kosten für die Lösung? Fallen Mietkosten für Server an? Wie hoch ist der Überwachungsaufwand, der benötigt wird, um die Funktionsfähigkeit der Lösung zu überprüfen?
+    \item \textbf{Unterhaltungskosten} -- Neben den initialen Projektkosten, wie hoch sind die laufenden Kosten für die Lösung? Fallen Mietkosten für Server an? Wie hoch ist der Überwachungsaufwand, der benötigt wird, um die Funktionsfähigkeit der Lösung zu überprüfen?
 
 \end{itemize}
 
@@ -62,7 +64,11 @@ Diese wurden anhand der folgenden Kriterien bewertet:
 \subsubsection{Projektkosten}
 Als nächstes wurden die Projektkosten berechnet. Hierfür wurden pauschale Beträge 
 für Mitarbeiterstundenlöhne sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
-(Papier, Drucker, Programme, Rechner etc.) veranschlagt. Diese können in der Tabelle im Anhang (Abschnitt \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür ein Stundenlohn von 5,50€ für den Autoren, sowie ein Stundenlohn von 35€ für jeden weiteren Mitarbeiter angesetzt. Nutzungskosten der Räumlichkeiten, Rechner, Software und weiterer Utensilien wurden mit 20€ pro Stunde kalkuliert. \par
+(Papier, Drucker, Programme, Rechner, etc.) veranschlagt. Diese können in der Tabelle im
+Anhang (Abschnitt \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür
+ein Stundenlohn von 5,50\euro für den Autoren, sowie ein Stundenlohn von 35\euro für jeden
+weiteren Mitarbeiter angesetzt. Nutzungskosten der Räumlichkeiten, Rechner, Software
+und weiterer Utensilien wurden mit 20\euro pro Stunde kalkuliert. \par
 
 
 \subsubsection{Amortisationsdauer}
