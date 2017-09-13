@@ -304,13 +304,11 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 \end{itemize}
 \clearpage
 
+
+
+
 \section{Codeauszüge}
 \label{sec:codeAuszüge}
-
-\lstinputlisting[language=C, basicstyle=\tiny, caption=Pseudocode des zu implementierenden Algorithmus, label=listing:pseudocode]{anhang/pseudo.c}
-
-\clearpage
-
 
 \lstinputlisting[language=C, basicstyle=\tiny, caption=Beispiel eines Docstrings für Entwickler, label=listing:entwicklerDoku]{anhang/docstring.c}
 
@@ -334,5 +332,63 @@ Datenstrukturen & 10.00\% & 3 & 0.3 & 4 & 0.4 & 5 & 0.5 & 5 & 0.5 \\
 	nils@chantico:~/git/ematch/src>
 
 \end{lstlisting}
+
+\begin{algorithm}
+  \caption{Pseudocode}
+  \label{listing:pseudocode}
+  \begin{algorithmic}[1]
+    \Procedure{qgjoin}{}
+    \State $S_1, S_2 \gets \text{vectors of strings}$
+    \State $S_1 \times S_2 \puts \text{vector of tuples of matches}$
+
+    \Label \emph{Setup:}
+    \If {$\left\vert S_1 \right\vert < \left\vert S_2 \right\vert$}
+    \State $S \gets S_1$
+    \State $T \gets S_2$
+    \Else
+    \State $S \gets S2$
+    \State $T \gets S1$
+    \EndIf
+
+    \ForAll {$s\in S$}
+    \State $i \gets \Call{intern}{s}$
+    \State $Q \gets \Call{5grams}{s}$
+      \ForAll {$q\in Q$}
+      \State $R_q \gets R_q \cup i$
+      \EndFor
+    \EndFor
+
+    \Label \emph{Run:}
+    \ForAll {$t\in T$}
+    \State $Q \gets \Call{5grams}{t}$
+    \State $W \gets 1$, $I_r \gets 0$
+    \ForAll {$q\in Q$}
+      \ForAll {$r\in R_q$}
+      \State $I_r \gets I_r + W$
+      \EndFor
+    \State $W \gets 2W$
+    \EndFor
+
+    \State $J_i \gets 0$, $max \gets 0$, $M \gets \emptyset$
+    \ForAll {$s\in S$}
+    \State $i \gets \Call{intern}{s}$
+    \State $J_i \gets \Call{longest\_streak}{I_i}$
+    \If {$J_i > max$}
+    \State $max \gets J_i$
+    \State $M \gets \{s\}$
+    \ElsIf {$J_i = max$}
+    \State $M \gets M \cup s$
+    \EndIf
+    \EndFor
+
+    \If {$max$ good enough} \Comment{criterion can use the full state}
+    \ForAll {$s\in M$}
+    \State $\Call{output}{s, t}$
+    \EndFor
+    \EndIf
+    \EndFor
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
 
 

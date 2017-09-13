@@ -31,7 +31,14 @@
 \usepackage{pdflscape}
 \setlist[enumerate]{label*=\arabic*.}
 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
+\makeatletter
+\def\Label{\vspace*{2ex plus 1ex minus 1ex}\hskip-\ALG@thistlm}
+\makeatother
+
+\def\puts{\ensuremath{\to}}
 
 \lstdefinestyle{xterm}
 {
