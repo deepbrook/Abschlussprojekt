@@ -84,7 +84,7 @@ Hierzu wurden zwei in Frage kommende Datenstrukturen nach folgenden Kriterien be
 
 Für \textbf{M} wird ein dynamisch wachsendes Array benötigt, da die Anzahl der passenden
 Q-Gramme je nach String variiert. Die Anzahl der möglichen Zeichen pro Q-Gramm
-von unserem verwendeten Zeichensatz ist durch die Kodierung (5-Bit ASCII)
+von unserem verwendeten Zeichensatz ist durch die Rekodierung (von 7 auf 5-Bit ASCII)
 begrenzt\footnote{Maximale Anzahl an Schlüsselworten einer Hashmap im Kontext dieses Projekts = $\text{Länge des Alphabets}^\text{Q-Grammlänge}$ }.
 Um einschätzen zu können, welche Startgröße des Arrays sinnvoll ist, um die
 Speicherzuweisungsaufrufe möglichst gering zu halten, wurde die Verteilung der
