@@ -3,7 +3,8 @@
 \subsection{Ist-Analyse}
 Die GA Financial Solutions GmbH holt sich täglich aktuelle Symbole von sechs verschiedenen
 Anbietern ab: Interactive Brokers, Google, Yahoo, Morningstar, Bloomberg und GLEIS.
-Täglich ändern sich diese Symbole um einen gewissen Prozentsatz und es kommen im Durchschnitt etwa 1,67 Millionen Instrumentsymbole hinzu.\par
+Täglich ändern sich diese Symbole um einen gewissen Prozentsatz und es kommen im 
+Durchschnitt etwa 1,67 Millionen Instrumentsymbole hinzu.\par
 
 Zur Zeit werden diese Symbole ad hoc mittels Heuristiken und in Handarbeit verglichen.
 Dabei wird meist nur eine kleine Teilmenge benutzt und gefundene Ergebnisse werden
@@ -12,9 +13,11 @@ nach Abschluss eines Projekts wieder verworfen, da es sich meist um spezialisier
 Somit besteht zur Zeit keine firmenweite Datenbank, welche die Symbole
 bereits verglichen und sortiert bereitstellt.\par
 
-Es besteht ein theoretischer Lösungsansatz auf Basis der Damerau-Levenshtein-Distanz\footnote{Die Damerau-Levenshtein-Distanz\cite{dl_distance} beschreibt die minimale Anzahl
-	an Operationen, welche benötigt werden, um einen String A in einen zu
-	vergleichenden String B zu verwandeln} (kurz: DLD). Dieser sieht vor, eine $\text{M} \times \text{M}$ -Matrix zu generieren, wobei M sämtliche Symbole aller
+Es besteht ein theoretischer Lösungsansatz auf Basis der 
+Damerau-Levenshtein-Distanz\footnote{Die Damerau-Levenshtein-Distanz\cite{dl_distance} 
+beschreibt die minimale Anzahl an Operationen, welche benötigt werden, um einen 
+String A in einen zu vergleichenden String B zu verwandeln} (kurz: DLD). 
+Dieser sieht vor, eine $\text{M} \times \text{M}$ -Matrix zu generieren, wobei \textbf{M} sämtliche Symbole aller
 Anbieter darstellt. Dies resultiert in einem ca. 23 PetaBytes großem Datenobjekt
 im Arbeitsspeicher unserer Systeme und führt erwartungsgemäß zu Speicherüberläufen.
 In Rechenaufrufen ausgedrückt bedeutet dies, dass etwa \\
@@ -44,7 +47,7 @@ Dieses Tool vergleicht Daten jedoch nur in eine Richtung (\textit{One-To-Many}),
 während das Abschlussprojektszenario ein bidirektionales Verfahren benötigt (\textit{Many-To-Many}).\par
 
 Somit stellte sich die Frage nach einer optimalen Vorgehensweise zur Umsetzung des
-Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse (Anhang Abschnitt \ref{nwa:projektentwicklung}) erstellt, um diverse Lösungswege zu evaluieren.
+Projekts. Hierzu wurde vom Autor eine Nutzwertanalyse (Anhang Abschnitt \ref{sec:tabellen}, Tabelle \ref{nwa:projektentwicklung}) erstellt, um diverse Lösungswege zu evaluieren.
 Diese wurden anhand der folgenden Kriterien bewertet:
 
 
@@ -65,20 +68,28 @@ Diese wurden anhand der folgenden Kriterien bewertet:
 Als nächstes wurden die Projektkosten berechnet. Hierfür wurden pauschale Beträge 
 für Mitarbeiterstundenlöhne sowie Kosten für Räumlichkeiten, Strom und sonstige Utensilien 
 (Papier, Drucker, Programme, Rechner, etc.) veranschlagt. Diese können in der Tabelle im
-Anhang (Abschnitt \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür
+Anhang (Abschnitt \ref{sec:tabellen}, Tabelle \ref{tabelle:projektkosten}) eingesehen werden. Es wurden hierfür
 ein Stundenlohn von 5,50\euro für den Autoren, sowie ein Stundenlohn von 35\euro  für jeden
 weiteren Mitarbeiter angesetzt. Nutzungskosten der Räumlichkeiten, Rechner, Software
 und weiterer Utensilien wurden mit 20\euro  pro Stunde kalkuliert. \par
 
 
 \subsubsection{Amortisationsdauer}
-Nach einer Einschätzung der Abteilung für Datenverarbeitung wird zur Zeit jede Woche ein Mitarbeiter etwa 10 Stunden pro Woche benötigt, um Symboliken miteinander zu vergleichen. Dies ergibt, mit dem in der Projektkostenkalkulation verwendeten
+Nach einer Einschätzung der Abteilung für Datenverarbeitung wird zur Zeit jede 
+Woche ein Mitarbeiter etwa 10 Stunden pro Woche benötigt, um Symboliken miteinander 
+zu vergleichen. Dies ergibt, mit dem in der Projektkostenkalkulation verwendeten
 Stundenlöhnen und Kosten für Räumlichkeiten, Hard- und Software also 
 \begin{figure}[!htp]
  $10\frac{\text{h}}{\text{Woche}} \times 55\frac{\text{\euro}}{\text{h}} = 550\frac{\text{\euro}}{\text{Woche}}$
 \end{figure}
 
-Der Autor verspricht sich durch das Programm eine Beschleunigung des Vergleichsprozesses um etwa 30\%, da der größte zeitliche Anteil vom manuellen Vergleich beansprucht wird. Im Optimalfall ist eine Verbesserung von 80\% zu erwarten, womit der Prozess noch etwa zwei Stunden dauern würde. Eine Verbesserung von 55\% wird vom Autor als realistisch eingeschätzt\footnote{Die Zeiten wurden anhand von Kalkulationen der theorethischen Rechenvorgänge unter Einbezug der Schreib-, und Lesegeschwindigkeiten des Speichers, sowie Geschwindigkeit der CPU geschätzt.}.
+Der Autor verspricht sich durch das Programm eine Beschleunigung des 
+Vergleichsprozesses um etwa 30\%, da der größte zeitliche Anteil vom manuellen 
+Vergleich beansprucht wird. Im Optimalfall ist eine Verbesserung von 80\% zu 
+erwarten, womit der Prozess noch etwa zwei Stunden dauern würde. Eine Verbesserung 
+von 55\% wird vom Autor als realistisch eingeschätzt\footnote{Die Zeiten wurden 
+anhand von Kalkulationen der theorethischen Rechenvorgänge unter Einbezug der 
+Schreib-, und Lesegeschwindigkeiten des Speichers, sowie Geschwindigkeit der CPU geschätzt.}.
 
 Anhand dieser Werte lassen sich folgende Amortisationsdauern errechnen:\\
 \\
@@ -101,5 +112,5 @@ $\frac{3.883,75\text{\euro}}{500\frac{\text{\euro}}{\text{Woche}} \times 30\text
 
 \subsection{Lastenheft / Fachkonzept}
 Ein Lastenheft wurde von der Abteilung Datenverarbeitung, vertreten durch Sebastian Freundt,
-erstellt und dem Autor vorgelegt. Ein Auszug dieses Dokumentes befindet sich im Anhang  (Abschnitt \ref{auszug:lastenheft}).\par
+erstellt und dem Autor vorgelegt. Ein Auszug dieses Dokumentes befindet sich im Anhang  (Abschnitt \ref{sec:textAuszüge}, Auszug \ref{auszug:lastenheft}).\par
 
